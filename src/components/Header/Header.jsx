@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Briefcase, Building2, Search, UserCircle, Bell } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -19,7 +20,9 @@ const Header = () => {
       <div className="container header-container">
         
         <div className="header-logo">
-          <img src="/logo.png" alt="EmpleosAqua Logo" className="logo-icon-img" />
+          <Link to="/">
+            <img src="/logo.png" alt="EmpleosAqua Logo" className="logo-icon-img" />
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
@@ -32,10 +35,10 @@ const Header = () => {
 
         {/* Action Buttons */}
         <div className="header-actions desktop-only">
-          <button className="btn btn-outline btn-sm">
+          <Link to="/login" className="btn btn-outline btn-sm no-underline flex items-center gap-2">
             <UserCircle size={18} />
             <span>Ingresar</span>
-          </button>
+          </Link>
           <div className="divider"></div>
           <button className="btn btn-primary btn-sm btn-glow">
             <Building2 size={18} />
@@ -63,7 +66,7 @@ const Header = () => {
             <a href="#tarifas" className="mobile-link"><Building2 size={20}/> Tarifas</a>
           </nav>
           <div className="mobile-actions">
-            <button className="btn btn-outline w-full mb-3 text-center justify-center">Ingresar</button>
+            <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="btn btn-outline w-full mb-3 text-center justify-center no-underline">Ingresar</Link>
             <button className="btn btn-primary w-full text-center justify-center">Soy Empresa</button>
           </div>
         </div>

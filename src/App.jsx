@@ -1,30 +1,18 @@
 import React from 'react';
-import Header from './components/Header/Header';
-import Hero from './components/Hero/Hero';
-import QuickActions from './components/QuickActions/QuickActions';
-import Stats from './components/Stats/Stats';
-import FeaturedJobs from './components/FeaturedJobs/FeaturedJobs';
-import ValueBlock from './components/ValueBlock/ValueBlock';
-import LaborInfoHub from './components/LaborInfoHub/LaborInfoHub';
-import Institutional from './components/Institutional/Institutional';
-import Footer from './components/Footer/Footer';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import PostulanteDashboard from './pages/Dashboard/PostulanteDashboard';
+import EmpresaDashboard from './pages/Dashboard/EmpresaDashboard';
 
 function App() {
   return (
-    <div className="app-container">
-      <Header />
-      <main>
-        <Hero />
-        <QuickActions />
-        <Stats />
-        <FeaturedJobs />
-        <ValueBlock />
-        <LaborInfoHub />
-        <Institutional />
-      </main>
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/dashboard/postulante" element={<PostulanteDashboard />} />
+      <Route path="/dashboard/empresa" element={<EmpresaDashboard />} />
+    </Routes>
   );
 }
 
