@@ -1,0 +1,108 @@
+.val-section {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.val-bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(77, 222, 255, 0.1) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.val-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .val-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.val-block {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal);
+}
+
+.val-block:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+.val-deco {
+  position: absolute;
+  top: 0;
+  filter: blur(80px);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.deco-cyan {
+  left: -50px;
+  background: var(--color-secondary);
+}
+
+.deco-gold {
+  right: -50px;
+  background: #d97706; /* Darker gold/amber */
+}
+
+.text-cyan { color: var(--color-secondary); }
+.text-gold { color: #d97706; }
+
+.val-content {
+  position: relative;
+  z-index: 2;
+}
+
+.val-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.val-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.val-list span {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.border-gold {
+  border-color: rgba(217, 119, 6, 0.3);
+  color: #d97706;
+}
+
+.text-gold-hover:hover {
+  background: #fffbeb;
+  color: #d97706;
+  border-color: #d97706;
+}
