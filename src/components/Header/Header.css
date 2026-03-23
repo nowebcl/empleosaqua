@@ -60,12 +60,18 @@
 .nav-link {
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--color-text-muted);
+  color: #ffffff; /* White when over dark image */
   transition: color var(--transition-fast);
   position: relative;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Improve legibility just in case */
 }
 
-.nav-link:hover {
+.header-scrolled .nav-link {
+  color: var(--color-text-muted);
+  text-shadow: none;
+}
+
+.nav-link:hover, .header-scrolled .nav-link:hover {
   color: var(--color-primary);
 }
 
@@ -79,6 +85,10 @@
   background: var(--color-primary);
   transition: width var(--transition-normal);
   border-radius: var(--radius-full);
+}
+
+.header-scrolled .nav-link::after {
+  background: var(--color-primary);
 }
 
 .nav-link:hover::after {
