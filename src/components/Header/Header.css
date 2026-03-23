@@ -32,10 +32,17 @@
 }
 
 .logo-icon-img {
-  height: 80px;
+  height: 50px; /* Small for mobile */
   width: auto;
   border-radius: var(--radius-sm);
   object-fit: contain;
+  transition: height var(--transition-fast);
+}
+
+@media (min-width: 768px) {
+  .logo-icon-img {
+    height: 80px; /* Large for desktop */
+  }
 }
 
 .logo-text {
