@@ -8,11 +8,14 @@
   background: var(--color-background-dark);
 }
 
-.hero-with-image {
-  background-image: url('/acuicultura_hero_bg.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .hero-bg-overlay {
