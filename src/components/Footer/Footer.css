@@ -36,8 +36,8 @@
   gap: 0.5rem;
 }
 
-.logo-icon-small-img {
-  height: 44px;
+.logo-icon-footer-img {
+  height: 80px;
   width: auto;
   border-radius: var(--radius-sm);
   object-fit: contain;

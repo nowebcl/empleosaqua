@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Briefcase, Building2, Search, UserCircle, Bell } from 'lucide-react';
+import { Menu, X, UserCircle, Building2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
@@ -27,23 +27,25 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="header-nav desktop-only">
-          <a href="#buscar" className="nav-link">Buscar Empleo</a>
-          <a href="#empresas" className="nav-link">Para Empresas</a>
-          <a href="#info" className="nav-link">Info Laboral</a>
-          <a href="#tarifas" className="nav-link">Tarifas</a>
+          <Link to="/publicar-oferta" className="nav-link">Publicar Oferta</Link>
+          <Link to="/tarifas" className="nav-link">Tarifas</Link>
+          <Link to="/espacios-publicitarios" className="nav-link">Espacios Publicitarios</Link>
+          <Link to="/nosotros" className="nav-link">Nosotros</Link>
+          <Link to="/info-laboral" className="nav-link">Info Laboral</Link>
+          <Link to="/preguntas-frecuentes" className="nav-link">Preguntas Frecuentes</Link>
+          <Link to="/contacto" className="nav-link">Contacto</Link>
         </nav>
 
         {/* Action Buttons */}
         <div className="header-actions desktop-only">
           <Link to="/login" className="btn btn-outline btn-sm no-underline flex items-center gap-2">
             <UserCircle size={18} />
-            <span>Ingresar</span>
+            <span>Soy Postulante</span>
           </Link>
-          <div className="divider"></div>
-          <button className="btn btn-primary btn-sm btn-glow">
+          <Link to="/dashboard/empresa" className="btn btn-primary btn-sm btn-glow no-underline flex items-center gap-2">
             <Building2 size={18} />
             <span>Soy Empresa</span>
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -60,14 +62,21 @@ const Header = () => {
       {mobileMenuOpen && (
         <div className="mobile-menu">
           <nav className="mobile-nav">
-            <a href="#buscar" className="mobile-link"><Search size={20}/> Buscar Empleo</a>
-            <a href="#empresas" className="mobile-link"><Building2 size={20}/> Para Empresas</a>
-            <a href="#info" className="mobile-link"><Briefcase size={20}/> Info Laboral</a>
-            <a href="#tarifas" className="mobile-link"><Building2 size={20}/> Tarifas</a>
+            <Link to="/publicar-oferta" className="mobile-link">Publicar Oferta</Link>
+            <Link to="/tarifas" className="mobile-link">Tarifas</Link>
+            <Link to="/espacios-publicitarios" className="mobile-link">Espacios Publicitarios</Link>
+            <Link to="/nosotros" className="mobile-link">Nosotros</Link>
+            <Link to="/info-laboral" className="mobile-link">Info Laboral</Link>
+            <Link to="/preguntas-frecuentes" className="mobile-link">Preguntas Frecuentes</Link>
+            <Link to="/contacto" className="mobile-link">Contacto</Link>
           </nav>
           <div className="mobile-actions">
-            <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="btn btn-outline w-full mb-3 text-center justify-center no-underline">Ingresar</Link>
-            <button className="btn btn-primary w-full text-center justify-center">Soy Empresa</button>
+            <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="btn btn-outline w-full mb-3 text-center justify-center no-underline">
+              Soy Postulante
+            </Link>
+            <Link to="/dashboard/empresa" onClick={() => setMobileMenuOpen(false)} className="btn btn-primary w-full text-center justify-center no-underline">
+              Soy Empresa
+            </Link>
           </div>
         </div>
       )}

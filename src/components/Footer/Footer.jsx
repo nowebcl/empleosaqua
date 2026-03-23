@@ -11,13 +11,11 @@ const Footer = () => {
           {/* Column 1: Brand */}
           <div className="footer-col brand-col">
             <div className="footer-logo mb-6">
-              <img src="/logo.png" alt="EmpleosAqua Logo" className="logo-icon-small-img" />
+              <img src="/logo.png" alt="EmpleosAqua Logo" className="logo-icon-footer-img" />
             </div>
-            <p className="text-muted text-sm mb-6">Plataforma digital líder para el rubro acuícola y marítimo. Conectando talento con las mejores empresas de la industria desde 2010.</p>
             <div className="social-links flex gap-4">
               <a href="#" className="social-icon"><Linkedin size={20}/></a>
               <a href="#" className="social-icon"><Facebook size={20}/></a>
-              <a href="#" className="social-icon"><Twitter size={20}/></a>
               <a href="#" className="social-icon"><Instagram size={20}/></a>
             </div>
           </div>
@@ -39,25 +37,28 @@ const Footer = () => {
             <h4 className="footer-title">Soy Empresa</h4>
             <ul className="footer-links">
               <li><a href="#">Publicar Oferta</a></li>
-              <li><a href="#">Buscar Candidatos</a></li>
-              <li><a href="#">Tarifas y Planes</a></li>
+              <li><a href="#">Planes y tarifas</a></li>
               <li><a href="#">Espacios Publicitarios</a></li>
-              <li><a href="#">Acceso Empresa</a></li>
             </ul>
           </div>
 
           {/* Column 4: Contact & Info */}
           <div className="footer-col">
-            <h4 className="footer-title">Plataforma</h4>
-            <ul className="footer-links mb-6">
-              <li><a href="#">Quiénes Somos</a></li>
-              <li><a href="#">Hub de Información</a></li>
-              <li><a href="#">Preguntas Frecuentes</a></li>
-            </ul>
+            <h4 className="footer-title">Contáctanos</h4>
             <div className="footer-contact text-sm text-muted">
-              <div className="contact-item flex items-center gap-2 mb-2"><Mail size={16}/> soporte@empleosaqua.cl</div>
-              <div className="contact-item flex items-center gap-2 mb-2"><Phone size={16}/> +56 2 2947 5000</div>
-              <div className="contact-item flex items-center gap-2"><MapPin size={16}/> Puerto Montt, Región de Los Lagos</div>
+              <div className="contact-item flex items-center gap-2 mb-3">
+                <Mail size={16}/> 
+                <span>
+                  empleosaqua<br/>
+                  b2bmg.cl
+                </span>
+              </div>
+              <div className="contact-item flex items-center gap-2 mb-3">
+                <Phone size={16}/> (56-65) 247 0107
+              </div>
+              <div className="contact-item flex items-center gap-2">
+                <MapPin size={16}/> Puerto Montt, Región de Los Lagos.
+              </div>
             </div>
           </div>
 

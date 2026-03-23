@@ -1,46 +1,73 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FilePlus, Search, Star, FileText, Heart, Anchor } from 'lucide-react';
+import { FileText, Search, Star, Heart, Anchor, FilePlus, DollarSign, Image } from 'lucide-react';
 import './QuickActions.css';
 
-const actions = [
-  { id: 1, title: 'Publicar Oferta', icon: <FilePlus size={24} />, desc: 'Encuentra al talento ideal para tu empresa', color: '#10B981' },
-  { id: 2, title: 'Ver Ofertas', icon: <Search size={24} />, desc: 'Explora miles de oportunidades laborales', color: '#3B82F6' },
-  { id: 3, title: 'Destacadas', icon: <Star size={24} />, desc: 'Las mejores ofertas del sector acuícola', color: '#F59E0B' },
-  { id: 4, title: 'Crear Currículum', icon: <FileText size={24} />, desc: 'Destaca tu perfil profesional hoy', color: '#8B5CF6' },
-  { id: 5, title: 'Inclusivas', icon: <Heart size={24} />, desc: 'Ofertas bajo la ley de inclusión laboral', color: '#EC4899' },
-  { id: 6, title: 'Prácticas', icon: <Anchor size={24} />, desc: 'Comienza tu carrera en la industria', color: '#00E5FF' },
+const actionsPostulante = [
+  { id: 1, title: 'Crear Currículo', icon: <FileText size={20} />, color: '#0EA5E9' },
+  { id: 2, title: 'Todas las ofertas', icon: <Search size={20} />, color: '#0EA5E9' },
+  { id: 3, title: 'Ofertas destacadas', icon: <Star size={20} />, color: '#0EA5E9' },
+  { id: 4, title: 'Ofertas inclusivas', icon: <Heart size={20} />, color: '#0EA5E9' },
+  { id: 5, title: 'Prácticas', icon: <Anchor size={20} />, color: '#0EA5E9' },
+];
+
+const actionsEmpresa = [
+  { id: 6, title: 'Publicar ofertas', icon: <FilePlus size={20} />, color: '#06B6D4' },
+  { id: 7, title: 'Tarifas', icon: <DollarSign size={20} />, color: '#06B6D4' },
+  { id: 8, title: 'Espacios publicitarios', icon: <Image size={20} />, color: '#06B6D4' },
 ];
 
 const QuickActions = () => {
   return (
-    <section className="quicks-section container">
-      <div className="section-header text-center mb-12">
-        <h2 className="text-3xl lg:text-4xl mb-4">¿Qué necesitas hacer hoy?</h2>
-        <p className="text-muted max-w-2xl mx-auto">Accesos rápidos a las herramientas más utilizadas de la plataforma.</p>
+    <section className="quicks-section container mx-auto">
+      {/* Postulantes Section */}
+      <div className="quicks-postulantes mb-8">
+        <h3 className="section-title-small mb-4 text-center text-muted uppercase tracking-wider text-sm font-semibold">Postulantes</h3>
+        <div className="quicks-grid-5">
+          {actionsPostulante.map((action, index) => (
+            <motion.div 
+              key={action.id}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              className="quick-card-small glass-panel"
+              style={{ '--hover-color': action.color }}
+            >
+              <div className="quick-icon-small" style={{ color: action.color, background: `${action.color}15` }}>
+                {action.icon}
+              </div>
+              <div className="quick-content-small">
+                <h4 className="quick-title-small">{action.title}</h4>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
-      <div className="quicks-grid">
-        {actions.map((action, index) => (
-          <motion.div 
-            key={action.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="quick-card glass-panel"
-            style={{ '--hover-color': action.color }}
-          >
-            <div className="quick-icon" style={{ color: action.color, background: `${action.color}15` }}>
-              {action.icon}
-            </div>
-            <div className="quick-content">
-              <h3 className="quick-title">{action.title}</h3>
-              <p className="quick-desc">{action.desc}</p>
-            </div>
-            <div className="quick-arrow">→</div>
-          </motion.div>
-        ))}
+      {/* Empresas Section */}
+      <div className="quicks-empresas">
+        <h3 className="section-title-small mb-4 text-center text-muted uppercase tracking-wider text-sm font-semibold">Empresas</h3>
+        <div className="quicks-grid-3">
+          {actionsEmpresa.map((action, index) => (
+            <motion.div 
+              key={action.id}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              className="quick-card-small glass-panel"
+              style={{ '--hover-color': action.color }}
+            >
+              <div className="quick-icon-small" style={{ color: action.color, background: `${action.color}15` }}>
+                {action.icon}
+              </div>
+              <div className="quick-content-small">
+                <h4 className="quick-title-small">{action.title}</h4>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -8,61 +8,40 @@
   background: var(--color-background-dark);
 }
 
-.hero-bg-glow {
-  position: absolute;
-  top: -10%;
-  left: 30%;
-  width: 60%;
-  height: 60%;
-  background: radial-gradient(circle, rgba(77, 222, 255, 0.2) 0%, rgba(0, 91, 148, 0.05) 50%, transparent 70%);
-  filter: blur(60px);
-  z-index: 0;
-  border-radius: 50%;
-  pointer-events: none;
+.hero-with-image {
+  background-image: url('/acuicultura_hero_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-.hero-grid {
+.hero-bg-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(0, 91, 148, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 91, 148, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  z-index: 0;
-  mask-image: linear-gradient(to bottom, transparent, black 10%, black 80%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 80%, transparent);
-  pointer-events: none;
+  background: linear-gradient(to right, rgba(0, 48, 73, 0.9), rgba(0, 48, 73, 0.6));
+  z-index: 1;
 }
 
 .hero-container {
   position: relative;
   z-index: 10;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 4rem;
+  display: flex;
+  justify-content: center;
   align-items: center;
-}
-
-@media (min-width: 1024px) {
-  .hero-container {
-    grid-template-columns: 1.2fr 0.8fr;
-  }
+  width: 100%;
 }
 
 .hero-content {
   text-align: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (min-width: 1024px) {
-  .hero-content {
-    text-align: left;
-    align-items: flex-start;
-  }
-}
 
 .hero-title {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
