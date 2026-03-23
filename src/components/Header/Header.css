@@ -54,11 +54,11 @@
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 2rem;
 }
 
 .nav-link {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: #ffffff; /* White when over dark image */
   transition: color var(--transition-fast);

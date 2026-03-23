@@ -27,12 +27,10 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="header-nav desktop-only">
-          <Link to="/publicar-oferta" className="nav-link">Publicar Oferta</Link>
-          <Link to="/tarifas" className="nav-link">Tarifas</Link>
-          <Link to="/espacios-publicitarios" className="nav-link">Espacios Publicitarios</Link>
           <Link to="/nosotros" className="nav-link">Nosotros</Link>
-          <Link to="/info-laboral" className="nav-link">Info Laboral</Link>
           <Link to="/preguntas-frecuentes" className="nav-link">Preguntas Frecuentes</Link>
+          <Link to="/mediakit" className="nav-link">Mediakit</Link>
+          <Link to="/tarifas" className="nav-link">Tarifas</Link>
           <Link to="/contacto" className="nav-link">Contacto</Link>
         </nav>
 
@@ -62,12 +60,10 @@ const Header = () => {
       {mobileMenuOpen && (
         <div className="mobile-menu">
           <nav className="mobile-nav">
-            <Link to="/publicar-oferta" className="mobile-link">Publicar Oferta</Link>
-            <Link to="/tarifas" className="mobile-link">Tarifas</Link>
-            <Link to="/espacios-publicitarios" className="mobile-link">Espacios Publicitarios</Link>
             <Link to="/nosotros" className="mobile-link">Nosotros</Link>
-            <Link to="/info-laboral" className="mobile-link">Info Laboral</Link>
             <Link to="/preguntas-frecuentes" className="mobile-link">Preguntas Frecuentes</Link>
+            <Link to="/mediakit" className="mobile-link">Mediakit</Link>
+            <Link to="/tarifas" className="mobile-link">Tarifas</Link>
             <Link to="/contacto" className="mobile-link">Contacto</Link>
           </nav>
           <div className="mobile-actions">
