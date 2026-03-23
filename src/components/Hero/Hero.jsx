@@ -20,7 +20,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="badge badge-new mb-6 shimmer inline-flex mx-auto"
+            className="badge badge-new mb-4 shimmer inline-flex mx-auto"
           >
             <span>La nueva generación de empleo acuícola</span>
           </motion.div>
@@ -39,7 +39,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="hero-subtitle mb-8 mx-auto"
+            className="hero-subtitle mb-6 mx-auto"
           >
             Plataforma líder orientada a perfiles técnicos, operativos y profesionales vinculados a la salmonicultura, pesca, logística, plantas de proceso, transporte marítimo y servicios industriales.
           </motion.p>
@@ -48,7 +48,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="hero-search-bar glass-panel mt-12 mx-auto justify-center search-bar-centered"
+            className="hero-search-bar glass-panel mt-8 mx-auto justify-center search-bar-centered"
           >
             <div className="search-input-group">
               <Briefcase size={20} className="search-icon" />

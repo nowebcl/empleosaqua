@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Building2, Clock, ChevronRight, Bookmark, Star } from 'lucide-react';
+import { MapPin, Building2, Clock, ChevronRight, Bookmark, Star, Target } from 'lucide-react';
 import './FeaturedJobs.css';
 
 const mockJobs = [
@@ -28,7 +28,7 @@ const FeaturedJobs = () => {
     <section id="buscar" className="jobs-section w-full">
       <div className="section-header-flex">
         <div>
-          <h2 className="text-3xl lg:text-4xl mb-2">🚀 Encuentra tu próximo desafío</h2>
+          <h2 className="text-3xl lg:text-4xl mb-2 flex items-center gap-3"><Target className="text-cyan-600" size={32} /> Encuentra tu próximo desafío</h2>
           <p className="text-muted">Las mejores ofertas publicadas en tiempo real.</p>
         </div>
         

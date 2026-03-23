@@ -1,7 +1,7 @@
 .hero-section {
   position: relative;
-  padding: 10rem 0 6rem;
-  min-height: 100vh;
+  padding: 8.5rem 0 4.5rem; /* More compact top/bottom padding */
+  min-height: auto; /* Allow it to be more compact instead of forced 100vh */
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -57,15 +57,16 @@
   letter-spacing: 0.5px;
   text-transform: uppercase;
   font-size: 0.75rem;
+  margin-bottom: 1rem; /* More compact margin */
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2rem, 3.5vw, 3.5rem); /* Tighter and more pro font sizing */
   letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Tighter spacing */
   color: #ffffff;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .hero-title .text-gradient {
