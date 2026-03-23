@@ -54,32 +54,41 @@
 
 /* Trust Section */
 .trust-section {
-  padding: 4rem 1.5rem;
+  padding: 4rem 0; /* Remove horizontal padding so the marquee touches edges */
   background: #ffffff;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
 
-.trust-logos {
-  display: flex;
-  flex-wrap: wrap;
+.trust-marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.trust-logos-track {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
+  gap: 4rem;
+  padding-right: 4rem; /* Precise mathematical padding to make the 50% translation seamless */
+  animation: scrollLogos 25s linear infinite;
   opacity: 0.6;
   filter: grayscale(100%);
-  transition: all var(--transition-normal);
+  transition: opacity var(--transition-normal), filter var(--transition-normal);
 }
 
-.trust-logos:hover {
+.trust-logos-track:hover {
   opacity: 1;
   filter: grayscale(0%);
+  animation-play-state: paused; /* Allows user to inspect logos by hovering */
 }
 
-@media (min-width: 768px) {
-  .trust-logos {
-    gap: 4rem;
-  }
+@keyframes scrollLogos {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .trust-logo-img {
@@ -88,6 +97,7 @@
   max-width: 220px;
   object-fit: contain;
   transition: transform var(--transition-normal);
+  flex-shrink: 0;
 }
 
 .trust-logo-img:hover {
