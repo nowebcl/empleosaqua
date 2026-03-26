@@ -18,7 +18,25 @@ const Home = () => {
   return (
     <div className="app-container">
       <Header />
-      <main>
+      <main className="relative">
+        {/* Publicidad Lateral Izquierda - Fija a los costados exteriores */}
+        <div className="hidden min-[1600px]:block fixed left-4 top-32 w-[160px] 2xl:w-[200px] z-40">
+          <AdBanner 
+            src="https://tpc.googlesyndication.com/simgad/4141843103343703535" 
+            href="https://www.aqua-forum.cl/" 
+            alt="AquaForum Los Lagos 29 Abril" 
+          />
+        </div>
+
+        {/* Publicidad Lateral Derecha - Fija a los costados exteriores */}
+        <div className="hidden min-[1600px]:block fixed right-4 top-32 w-[160px] 2xl:w-[200px] z-40">
+          <AdBanner 
+            src="https://tpc.googlesyndication.com/simgad/18162141951724842782" 
+            href="https://www.aqua-forum.cl/" 
+            alt="AquaForum Internacional 05 Nov" 
+          />
+        </div>
+
         <Hero />
         
         {/* Publicidad: Banner horizontal */}
@@ -39,16 +57,6 @@ const Home = () => {
           </div>
 
           <aside className="lg:w-[300px] w-full shrink-0 flex flex-col gap-6 pt-16">
-            <AdBanner 
-              src="https://tpc.googlesyndication.com/simgad/4141843103343703535" 
-              href="https://www.aqua-forum.cl/" 
-              alt="AquaForum Los Lagos 29 Abril" 
-            />
-            <AdBanner 
-              src="https://tpc.googlesyndication.com/simgad/18162141951724842782" 
-              href="https://www.aqua-forum.cl/" 
-              alt="AquaForum Internacional 05 Nov" 
-            />
             <AdBanner 
               src="https://tpc.googlesyndication.com/simgad/16919953663833581379" 
               href="https://www.facebook.com/Empleosaqua" 
