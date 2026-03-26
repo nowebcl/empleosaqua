@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div className="app-container">
       <Header />
-      <main className="w-full relative overflow-x-hidden">
+      <main className="w-full relative">
         <Hero />
         
         {/* Layout Principal centrado con Sidebar Ads a los costados exteriores */}
