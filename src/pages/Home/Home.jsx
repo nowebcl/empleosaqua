@@ -9,11 +9,10 @@ import Footer from '../../components/Footer/Footer';
 import '../../App.css'; // Global App styles
 
 const Home = () => {
-  const PlaceholderBanner = ({ label, height = 'h-64' }) => (
-    <div className={`w-full ${height} rounded-lg flex items-center justify-center font-bold text-gray-500 text-center p-4`} 
-         style={{ backgroundColor: '#f8fafc', border: '2px dashed #cbd5e1' }}>
-      {label}
-    </div>
+  const AdBanner = ({ src, href, alt }) => (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="block w-full overflow-hidden transition-opacity hover:opacity-90">
+      <img src={src} alt={alt} className="w-full h-auto object-cover rounded-lg" />
+    </a>
   );
 
   return (
@@ -24,7 +23,11 @@ const Home = () => {
         
         {/* Publicidad: Banner horizontal */}
         <div className="container mx-auto px-4 mt-8 mb-4">
-          <PlaceholderBanner label="Banner Horizontal (Ejemplo)" height="h-32" />
+          <AdBanner 
+            src="https://tpc.googlesyndication.com/simgad/8863766421333283423" 
+            href="https://www.linkedin.com/company/ddconsultingchile/posts/?feedView=all" 
+            alt="DD Reclutamiento y Selección" 
+          />
         </div>
 
         <QuickActions />
@@ -36,10 +39,21 @@ const Home = () => {
           </div>
 
           <aside className="lg:w-[300px] w-full shrink-0 flex flex-col gap-6 pt-16">
-            <PlaceholderBanner label="Banner Lateral 1 Superior" />
-            <PlaceholderBanner label="Banner Lateral 2 Superior" />
-            <PlaceholderBanner label="Banner Lateral 1 Inferior" />
-            <PlaceholderBanner label="Banner Lateral 2 Inferior" />
+            <AdBanner 
+              src="https://tpc.googlesyndication.com/simgad/4141843103343703535" 
+              href="https://www.aqua-forum.cl/" 
+              alt="AquaForum Los Lagos 29 Abril" 
+            />
+            <AdBanner 
+              src="https://tpc.googlesyndication.com/simgad/18162141951724842782" 
+              href="https://www.aqua-forum.cl/" 
+              alt="AquaForum Internacional 05 Nov" 
+            />
+            <AdBanner 
+              src="https://tpc.googlesyndication.com/simgad/16919953663833581379" 
+              href="https://www.facebook.com/Empleosaqua" 
+              alt="Empleos Aqua Redes Sociales" 
+            />
           </aside>
         </div>
 
