@@ -36,7 +36,7 @@ const Home = () => {
           {/* Contenido Central */}
           <div className="flex-1 w-full max-w-[1200px]">
             {/* Publicidad: Banner horizontal */}
-            <div className="w-full px-2 lg:px-4 mt-8 mb-4">
+            <div className="w-full px-2 lg:px-4 mt-4 mb-2">
               <AdBanner 
                 src="https://tpc.googlesyndication.com/simgad/8863766421333283423" 
                 href="https://www.linkedin.com/company/ddconsultingchile/posts/?feedView=all" 
