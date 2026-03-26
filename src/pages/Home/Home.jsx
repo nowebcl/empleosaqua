@@ -45,13 +45,7 @@ const Home = () => {
                 <FeaturedJobs />
               </div>
 
-              <aside className="lg:w-[300px] w-full shrink-0 flex flex-col gap-6 pt-16">
-                <AdBanner 
-                  src="https://tpc.googlesyndication.com/simgad/16919953663833581379" 
-                  href="https://www.facebook.com/Empleosaqua" 
-                  alt="Empleos Aqua Redes Sociales" 
-                />
-              </aside>
+
             </div>
 
             <Institutional />
