@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, MapPin, Briefcase } from 'lucide-react';
 import './Hero.css';
 
-const heroImages = [
-  '/acuicultura_hero_bg.png', // Assuming this is one of them or fallback
-  '/acuicultura_hero_bg.png', // User should replace with actual images
-  '/acuicultura_hero_bg.png'  // User should replace with actual images
-];
+import img1 from '../../assets/hero1.png';
+import img2 from '../../assets/hero2.png';
+import img3 from '../../assets/hero3.png';
+
+const heroImages = [img1, img2, img3];
 
 const Hero = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -27,10 +27,10 @@ const Hero = () => {
           <motion.img
             key={currentImage}
             src={heroImages[currentImage]}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.5 }}
             className="hero-video-bg w-full h-full object-cover absolute inset-0"
             alt="Hero background"
           />
@@ -57,8 +57,8 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="hero-title"
           >
-            Conectamos tu empresa con el <br/>
-            <span className="text-gradient">talento que necesitas</span>
+            Conectamos tu empresa<br/>
+            con el <span className="text-gradient">talento que necesitas</span>
           </motion.h1>
 
           <motion.p 
