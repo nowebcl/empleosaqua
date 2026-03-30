@@ -43,8 +43,8 @@ const Hero = () => {
       {/* Background image/video overlay */}
       <div className="hero-bg-overlay"></div>
 
-      <div className="absolute inset-0 z-10 w-full flex items-center justify-center pointer-events-none px-4">
-        <div className="hero-content w-full flex flex-col items-center justify-center text-center max-w-[900px] pointer-events-auto">
+      <div className="relative z-10 w-full flex items-center justify-center px-4 py-12">
+        <div className="hero-content w-full max-w-[900px] flex flex-col items-center justify-center text-center mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,9 +55,9 @@ const Hero = () => {
           </motion.div>
 
           <motion.h1 
-            initial={{ opacity: 0, scale: 0.95, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.4 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="hero-title w-full text-center"
           >
             Conectamos tu empresa con el<br/>
