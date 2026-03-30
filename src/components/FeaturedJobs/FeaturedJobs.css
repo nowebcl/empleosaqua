@@ -22,14 +22,14 @@
   display: inline-flex;
   padding: 0.25rem;
   border-radius: var(--radius-lg);
-  background: #e2e8f0; /* Darker than pure white for tab bg */
+  background: var(--color-primary); /* Changed to blue */
 }
 
 .tab-btn {
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius-md);
   font-weight: 500;
-  color: var(--color-text-muted);
+  color: #e0f2fe; /* Light text for dark tabs bg */
   transition: all var(--transition-fast);
 }
 
@@ -83,8 +83,10 @@
 }
 
 .featured-job-card {
-  border-color: rgba(245, 158, 11, 0.3);
+  border-top: 3px solid;
+  border-image: linear-gradient(to right, #f97316, #fbbf24) 1;
   background: linear-gradient(to bottom right, #ffffff, #fffbeb);
+  position: relative;
 }
 
 .job-card-header-small {

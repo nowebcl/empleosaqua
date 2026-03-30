@@ -1,15 +1,41 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Search, MapPin, Briefcase } from 'lucide-react';
 import './Hero.css';
 
+const heroImages = [
+  '/acuicultura_hero_bg.png', // Assuming this is one of them or fallback
+  '/acuicultura_hero_bg.png', // User should replace with actual images
+  '/acuicultura_hero_bg.png'  // User should replace with actual images
+];
+
 const Hero = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="hero-section">
-      {/* Background video */}
-      <video className="hero-video-bg" autoPlay loop muted playsInline>
-        <source src="/fondo.mp4" type="video/mp4" />
-      </video>
+      {/* Background carousel */}
+      <div className="hero-carousel-container absolute inset-0 w-full h-full overflow-hidden">
+        <AnimatePresence initial={false}>
+          <motion.img
+            key={currentImage}
+            src={heroImages[currentImage]}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="hero-video-bg w-full h-full object-cover absolute inset-0"
+            alt="Hero background"
+          />
+        </AnimatePresence>
+      </div>
       
       {/* Background image/video overlay */}
       <div className="hero-bg-overlay"></div>
@@ -41,7 +67,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="hero-subtitle mb-6 mx-auto"
           >
-            Plataforma líder orientada a perfiles técnicos, operativos y profesionales vinculados a la salmonicultura, pesca, logística, plantas de proceso, transporte marítimo y servicios industriales.
+            Plataforma líder orientada a perfiles operativos, técnicos y profesionales vinculados a la salmonicultura, pesca, logística, transporte marítimo y servicios industriales.
           </motion.p>
 
           <motion.div 
@@ -59,7 +85,10 @@ const Hero = () => {
               <MapPin size={20} className="search-icon" />
               <input type="text" placeholder="Región o ciudad..." className="search-input" />
             </div>
-            <button className="btn btn-primary search-btn">
+            <button className="btn btn-primary search-btn" onClick={() => {
+              const el = document.getElementById('buscar');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}>
               <Search size={20} /> <span className="search-btn-text">Buscar</span>
             </button>
           </motion.div>

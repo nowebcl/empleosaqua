@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import './Stats.css';
 
 const StatCounter = ({ value, label, suffix = '', prefix = '' }) => {
   const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   useEffect(() => {
+    if (!isInView) return;
+    
     let start = 0;
     const end = parseInt(value.replace(/,/g, ''));
     const duration = 2000;
@@ -28,23 +32,23 @@ const StatCounter = ({ value, label, suffix = '', prefix = '' }) => {
     }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [value]);
+  }, [value, isInView]);
 
   const displayCount = count.toLocaleString('es-CL');
 
   return (
-    <div className="stat-item glass-panel">
-      <div className="stat-value text-gradient">
+    <div ref={ref} className="stat-item glass-panel relative overflow-hidden">
+      <div className="stat-value text-gradient font-bold text-4xl mb-2">
         {prefix}{displayCount}{suffix}
       </div>
-      <div className="stat-label">{label}</div>
+      <div className="stat-label text-black font-semibold uppercase tracking-wider">{label}</div>
     </div>
   );
 };
 
 const Stats = () => {
   return (
-    <section className="stats-section">
+    <section className="stats-section mb-16">
       <div className="container stats-container">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}

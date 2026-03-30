@@ -30,8 +30,15 @@
   width: 100%;
   height: 100%;
   background-image: url('/login-bg.png');
-  background-size: cover;
+  background-size: 150% 150%;
   background-position: center;
+  animation: waveBg 25s ease-in-out infinite;
+}
+
+@keyframes waveBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .login-left-overlay {

@@ -1,5 +1,5 @@
 .commercial-banner {
-  padding: 4rem 1.5rem;
+  padding: 1.5rem;
 }
 
 .banner-animated-bg {
@@ -18,7 +18,7 @@
   position: relative;
   overflow: hidden;
   display: flex;
-  padding: 3rem;
+  padding: 2rem;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
 }
@@ -33,7 +33,7 @@
 
 @media (min-width: 1024px) {
   .banner-content {
-    padding: 5rem 4rem;
+    padding: 2.5rem 2rem;
   }
 }
 
@@ -75,14 +75,10 @@
   gap: 4rem;
   padding-right: 4rem; /* Precise mathematical padding to make the 50% translation seamless */
   animation: scrollLogos 25s linear infinite;
-  opacity: 0.6;
-  filter: grayscale(100%);
-  transition: opacity var(--transition-normal), filter var(--transition-normal);
+  transition: transform var(--transition-normal);
 }
 
 .trust-logos-track:hover {
-  opacity: 1;
-  filter: grayscale(0%);
   animation-play-state: paused; /* Allows user to inspect logos by hovering */
 }
 

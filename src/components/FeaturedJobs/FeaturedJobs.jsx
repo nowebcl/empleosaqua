@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Building2, Clock, ChevronRight, Bookmark, Star, Target } from 'lucide-react';
+import { MapPin, Building2, Clock, ChevronRight, Bookmark, Star, Target, GraduationCap } from 'lucide-react';
 import './FeaturedJobs.css';
 
 const mockJobs = [
@@ -28,8 +28,8 @@ const FeaturedJobs = () => {
     <section id="buscar" className="jobs-section w-full">
       <div className="section-header-flex">
         <div>
-          <h2 className="text-3xl lg:text-4xl mb-2 flex items-center gap-3"><Target className="text-cyan-600" size={32} /> Encuentra tu próximo desafío</h2>
-          <p className="text-muted">Las mejores ofertas publicadas en tiempo real.</p>
+          <h2 className="text-3xl lg:text-4xl mb-2 font-bold flex items-center gap-3">🚀 ENCUENTRA TU DESAFÍO:</h2>
+          <p className="text-muted text-black">Las mejores ofertas publicadas en tiempo real.</p>
         </div>
         
         {/* Filters / Tabs */}
@@ -66,19 +66,19 @@ const FeaturedJobs = () => {
               <div className="job-badges-small">
                 {job.isNew && <span className="badge badge-new text-xs">Nuevo</span>}
                 {job.inclusivo && <span className="badge badge-inclusive text-xs">Inclusiva</span>}
-                {job.practica && <span className="badge badge-inclusive text-xs" style={{ background: '#e0f2fe', color: '#0284c7' }}>Práctica</span>}
+                {job.practica && <span className="badge badge-inclusive text-xs flex items-center gap-1" style={{ background: '#e0f2fe', color: '#0284c7' }}><GraduationCap size={12} /> Práctica</span>}
               </div>
-              <button className="save-btn-small">
-                {job.isFeatured ? <Star size={18} fill="#F59E0B" color="#F59E0B" className="featured-star" /> : <Bookmark size={18} />}
+              <button className="save-btn-small" title="Guardar como favorita">
+                <Bookmark size={18} fill={job.isFeatured ? "#F59E0B" : "none"} color={job.isFeatured ? "#F59E0B" : "currentColor"} />
               </button>
             </div>
             
             <h3 className="job-title-small" title={job.title}>{job.title}</h3>
             
             <div className="job-meta-small">
-              <span className="meta-item-small"><Building2 size={14} /> {job.company}</span>
-              <span className="meta-item-small"><MapPin size={14} /> {job.location}</span>
-              <span className="meta-item-small"><Clock size={14} /> {job.type}</span>
+              <span className="meta-item-small"><Building2 size={14} style={{ color: '#3b82f6' }} /> <span className="text-black">{job.company}</span></span>
+              <span className="meta-item-small"><MapPin size={14} style={{ color: '#ef4444' }} /> <span className="text-black">{job.location}</span></span>
+              <span className="meta-item-small"><Clock size={14} style={{ color: '#10b981' }} /> <span className="text-black">{job.type}</span></span>
             </div>
             
             <div className="job-card-footer-small">
@@ -91,8 +91,8 @@ const FeaturedJobs = () => {
         ))}
       </div>
 
-      <div className="text-center mt-10">
-        <button className="btn btn-outline">Ver Todas las Ofertas</button>
+      <div className="text-center mt-16 mb-8">
+        <button className="btn btn-outline" style={{ color: '#000', borderColor: '#000' }}>Ver Todas las Ofertas</button>
       </div>
     </section>
   );

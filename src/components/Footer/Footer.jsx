@@ -14,9 +14,9 @@ const Footer = () => {
               <img src="/logo.png" alt="EmpleosAqua Logo" className="logo-icon-footer-img" />
             </div>
             <div className="social-links flex gap-4">
-              <a href="#" className="social-icon"><Linkedin size={20}/></a>
-              <a href="#" className="social-icon"><Facebook size={20}/></a>
-              <a href="#" className="social-icon"><Instagram size={20}/></a>
+              <a href="https://www.linkedin.com/company/empleosaqua/" target="_blank" rel="noreferrer" className="social-icon"><Linkedin size={20}/></a>
+              <a href="https://www.facebook.com/Empleosaqua" target="_blank" rel="noreferrer" className="social-icon"><Facebook size={20}/></a>
+              <a href="https://www.instagram.com/empleosaqua/" target="_blank" rel="noreferrer" className="social-icon"><Instagram size={20}/></a>
             </div>
           </div>
 
@@ -45,19 +45,18 @@ const Footer = () => {
           {/* Column 4: Contact & Info */}
           <div className="footer-col">
             <h4 className="footer-title">Contáctanos</h4>
-            <div className="footer-contact text-sm text-muted">
+            <div className="footer-contact text-xs text-black">
               <div className="contact-item flex items-center gap-2 mb-3">
                 <Mail size={16}/> 
-                <span>
-                  empleosaqua<br/>
-                  b2bmg.cl
+                <span className="break-all">
+                  empleosaqua@b2bmg.cl
                 </span>
               </div>
-              <div className="contact-item flex items-center gap-2 mb-3">
+              <div className="contact-item flex items-center gap-2 mb-3 whitespace-nowrap">
                 <Phone size={16}/> (56-65) 247 0107
               </div>
               <div className="contact-item flex items-center gap-2">
-                <MapPin size={16}/> Puerto Montt, Región de Los Lagos.
+                <MapPin size={16} className="shrink-0"/> <span>Puerto Montt, Región de Los Lagos.</span>
               </div>
             </div>
           </div>
@@ -65,8 +64,8 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p className="text-sm text-muted">© {new Date().getFullYear()} EmpleosAqua. Una plataforma de B2B Media Group. Todos los derechos reservados.</p>
-          <div className="legal-links text-sm flex gap-4 text-muted mt-4 md:mt-0">
+          <p className="text-xs text-black">© {new Date().getFullYear()} EmpleosAqua. Una plataforma de B2B Media Group. Todos los derechos reservados.</p>
+          <div className="legal-links text-xs flex gap-4 text-black mt-4 md:mt-0">
             <a href="#">Términos y Condiciones</a>
             <a href="#">Política de Privacidad</a>
           </div>

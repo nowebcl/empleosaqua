@@ -1,7 +1,7 @@
 .footer-section {
   background: #f8fafc;
   border-top: 1px solid var(--color-border);
-  padding: 6rem 0 2rem;
+  padding: 3rem 0 1rem;
   position: relative;
   z-index: 10;
 }
@@ -9,8 +9,8 @@
 .footer-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
-  margin-bottom: 4rem;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 640px) {
@@ -37,7 +37,7 @@
 }
 
 .logo-icon-footer-img {
-  height: 80px;
+  height: 110px;
   width: auto;
   border-radius: var(--radius-sm);
   object-fit: contain;
@@ -84,8 +84,8 @@
 }
 
 .footer-links a {
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
+  color: #000000;
+  font-size: 0.85rem;
   transition: color var(--transition-fast);
   display: inline-block;
 }

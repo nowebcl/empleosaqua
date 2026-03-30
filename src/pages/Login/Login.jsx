@@ -14,12 +14,16 @@ const Login = () => {
 
   const content = {
     postulante: {
+      leftTitle: 'Las mejores oportunidades laborales están aquí.',
+      leftText: 'Accede a las vacantes de las empresas más importantes del rubro acuícola y otros sectores productivos del sur de Chile. Crea tu perfil y postula.',
       title: 'Bienvenido de vuelta',
       subtitle: 'Accede para gestionar tus postulaciones y perfil laboral.',
       registerText: '¿No tienes cuenta?',
       registerLinkAction: 'Regístrate aquí',
     },
     empresa: {
+      leftTitle: 'El talento acuícola se encuentra aquí.',
+      leftText: 'La plataforma líder que conecta a los mejores candidatos con las empresas más importantes del rubro acuícola y otros sectores productivos del sur de Chile.',
       title: 'Portal de Empresas',
       subtitle: 'Ingresa para publicar y gestionar tus ofertas laborales.',
       registerText: '¿Nueva empresa?',
@@ -61,16 +65,20 @@ const Login = () => {
           <Link to="/">
             <img src="/logo.png" alt="EmpleosAqua" className="login-brand-logo" />
           </Link>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="login-left-title">El talento acuícola se encuentra aquí.</h1>
-            <p className="login-left-text">
-              La plataforma digital líder que conecta a los mejores profesionales con las empresas más importantes del rubro marítimo y acuicultor en Chile.
-            </p>
-          </motion.div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`left-${role}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+            >
+              <h1 className="login-left-title">{content[role].leftTitle}</h1>
+              <p className="login-left-text">
+                {content[role].leftText}
+              </p>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 

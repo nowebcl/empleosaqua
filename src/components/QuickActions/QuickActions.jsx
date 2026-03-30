@@ -4,7 +4,7 @@ import { FileText, Search, Star, Heart, Anchor, FilePlus, DollarSign, Image } fr
 import './QuickActions.css';
 
 const actionsPostulante = [
-  { id: 1, title: 'Crear Currículo', icon: <FileText size={20} />, color: '#0EA5E9' },
+  { id: 1, title: 'Crear Currículum', icon: <FileText size={20} />, color: '#0EA5E9' },
   { id: 2, title: 'Todas las ofertas', icon: <Search size={20} />, color: '#0EA5E9' },
   { id: 3, title: 'Ofertas destacadas', icon: <Star size={20} />, color: '#0EA5E9' },
   { id: 4, title: 'Ofertas inclusivas', icon: <Heart size={20} />, color: '#0EA5E9' },
