@@ -26,13 +26,15 @@ const Header = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="header-nav desktop-only">
+        <nav className="header-nav desktop-only flex-1 justify-center">
           <Link to="/nosotros" className="nav-link">Nosotros</Link>
           <Link to="/info-laboral" className="nav-link">Info Laboral</Link>
-          <Link to="/publicar-oferta" className="nav-link">Publicar Oferta</Link>
+          <div className="divider hidden lg:block mx-1"></div>
+          <Link to="/publicar-oferta" className="nav-link font-medium">Publicar Oferta</Link>
           <Link to="/tarifas" className="nav-link">Tarifas</Link>
-          <Link to="/espacios-publicitarios" className="nav-link">Espacios Publicitarios</Link>
-          <Link to="/preguntas-frecuentes" className="nav-link">Preguntas Frecuentes</Link>
+          <Link to="/espacios-publicitarios" className="nav-link">Publicidad</Link>
+          <div className="divider hidden lg:block mx-1"></div>
+          <Link to="/preguntas-frecuentes" className="nav-link">FAQ</Link>
           <Link to="/contacto" className="nav-link">Contacto</Link>
         </nav>
 
@@ -66,8 +68,8 @@ const Header = () => {
             <Link to="/info-laboral" className="mobile-link">Info Laboral</Link>
             <Link to="/publicar-oferta" className="mobile-link">Publicar Oferta</Link>
             <Link to="/tarifas" className="mobile-link">Tarifas</Link>
-            <Link to="/espacios-publicitarios" className="mobile-link">Espacios Publicitarios</Link>
-            <Link to="/preguntas-frecuentes" className="mobile-link">Preguntas Frecuentes</Link>
+            <Link to="/espacios-publicitarios" className="mobile-link">Publicidad</Link>
+            <Link to="/preguntas-frecuentes" className="mobile-link">FAQ</Link>
             <Link to="/contacto" className="mobile-link">Contacto</Link>
           </nav>
           <div className="mobile-actions">
