@@ -43,8 +43,8 @@ const Hero = () => {
       {/* Background image/video overlay */}
       <div className="hero-bg-overlay"></div>
 
-      <div className="relative z-10 w-full flex items-center justify-center px-4 py-12">
-        <div className="hero-content w-full max-w-[900px] flex flex-col items-center justify-center text-center mx-auto">
+      <div className="hero-container px-4 py-12">
+        <div className="hero-content w-full max-w-[900px]">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
