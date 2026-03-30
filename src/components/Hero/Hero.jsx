@@ -20,7 +20,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="hero-section">
+    <section className="hero-section w-full relative">
       {/* Background carousel */}
       <div className="hero-carousel-container absolute inset-0 w-full h-full overflow-hidden">
         <AnimatePresence initial={false}>
@@ -43,8 +43,8 @@ const Hero = () => {
       {/* Background image/video overlay */}
       <div className="hero-bg-overlay"></div>
 
-      <div className="container hero-container relative z-10 w-full flex items-center justify-center">
-        <div className="hero-content w-full flex flex-col items-center justify-center text-center mx-auto max-w-[850px]">
+      <div className="absolute inset-0 z-10 w-full flex items-center justify-center pointer-events-none px-4">
+        <div className="hero-content w-full flex flex-col items-center justify-center text-center max-w-[900px] pointer-events-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,8 +60,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.4 }}
             className="hero-title w-full text-center"
           >
-            Conectamos tu empresa<br/>
-            con el <span className="text-gradient drop-shadow-lg">talento que necesitas</span>
+            Conectamos tu empresa con el<br/>
+            <span className="text-gradient drop-shadow-lg">talento que necesitas</span>
           </motion.h1>
 
           <motion.p 
