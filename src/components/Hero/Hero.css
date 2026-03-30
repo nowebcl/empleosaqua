@@ -1,9 +1,8 @@
 .hero-section {
   position: relative;
-  padding: 8.5rem 0 4.5rem; /* More compact top/bottom padding */
-  min-height: auto; /* Allow it to be more compact instead of forced 100vh */
-  display: flex;
-  align-items: center;
+  padding: 8.5rem 0 4.5rem;
+  min-height: auto;
+  display: block;
   overflow: hidden;
   background: var(--color-background-dark);
 }
@@ -24,7 +23,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.85) 100%);
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.5) 100%);
   z-index: 1;
 }
 
