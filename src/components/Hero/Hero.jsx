@@ -49,7 +49,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="badge badge-new mb-4 shimmer inline-flex mx-auto"
+            className="badge badge-new mb-4 inline-flex mx-auto"
           >
             <span>La nueva generación de empleo acuícola</span>
           </motion.div>
@@ -61,7 +61,7 @@ const Hero = () => {
             className="hero-title w-full text-center"
           >
             Conectamos tu empresa con el<br/>
-            <span className="text-gradient drop-shadow-lg">talento que necesitas</span>
+            <span className="text-gradient">talento que necesitas</span>
           </motion.h1>
 
           <motion.p 
@@ -77,7 +77,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="hero-search-bar glass-panel mt-8 mx-auto justify-center search-bar-centered"
+            className="hero-search-bar mt-8 mx-auto justify-center"
           >
             <div className="search-input-group">
               <Briefcase size={20} className="search-icon" />
