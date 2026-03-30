@@ -15,7 +15,7 @@ const Hero = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
+    }, 6000); // 6 segundos de intervalo para disfrutar la animación lenta
     return () => clearInterval(timer);
   }, []);
 
@@ -27,11 +27,14 @@ const Hero = () => {
           <motion.img
             key={currentImage}
             src={heroImages[currentImage]}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }}
-            className="hero-video-bg w-full h-full object-cover absolute inset-0"
+            initial={{ opacity: 0, scale: 1 }}
+            animate={{ opacity: 1, scale: 1.1 }}
+            exit={{ opacity: 0, scale: 1.15 }}
+            transition={{ 
+              opacity: { duration: 1.5 },
+              scale: { duration: 8, ease: "linear" } 
+            }}
+            className="hero-video-bg w-full h-full object-cover absolute inset-0 origin-center"
             alt="Hero background"
           />
         </AnimatePresence>
@@ -40,8 +43,8 @@ const Hero = () => {
       {/* Background image/video overlay */}
       <div className="hero-bg-overlay"></div>
 
-      <div className="container hero-container relative z-10">
-        <div className="hero-content mx-auto text-center" style={{ maxWidth: '800px', width: '100%' }}>
+      <div className="container hero-container relative z-10 w-full flex items-center justify-center">
+        <div className="hero-content w-full flex flex-col items-center justify-center text-center mx-auto max-w-[850px]">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -52,13 +55,13 @@ const Hero = () => {
           </motion.div>
 
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="hero-title"
+            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.4 }}
+            className="hero-title w-full text-center"
           >
             Conectamos tu empresa<br/>
-            con el <span className="text-gradient">talento que necesitas</span>
+            con el <span className="text-gradient drop-shadow-lg">talento que necesitas</span>
           </motion.h1>
 
           <motion.p 
