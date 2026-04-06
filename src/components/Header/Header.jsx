@@ -28,11 +28,17 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="header-nav desktop-only flex-1 justify-center">
           <Link to="/publicar-oferta" className="nav-link font-medium">Publicar Oferta</Link>
+          <div className="divider"></div>
           <Link to="/tarifas" className="nav-link">Tarifas</Link>
+          <div className="divider"></div>
           <Link to="/espacios-publicitarios" className="nav-link">Espacios Publicitarios</Link>
+          <div className="divider"></div>
           <Link to="/nosotros" className="nav-link">Nosotros</Link>
+          <div className="divider"></div>
           <Link to="/info-laboral" className="nav-link">Info Laboral</Link>
+          <div className="divider"></div>
           <Link to="/preguntas-frecuentes" className="nav-link">Preguntas Frecuentes</Link>
+          <div className="divider"></div>
           <Link to="/contacto" className="nav-link">Contacto</Link>
         </nav>
 
