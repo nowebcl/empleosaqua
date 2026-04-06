@@ -116,59 +116,67 @@
   pointer-events: none;
 }
 
-.assistant-img {
-  width: 280px;
+/* Horizontal Refined styles matching image */
+.assistant-img-ref {
+  width: 260px;
+  max-width: 100%;
   height: auto;
-  filter: drop-shadow(0 20px 25px rgba(0,0,0,0.15));
-  transition: transform 0.3s ease;
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1));
 }
 
-.assistant-img:hover {
-  transform: scale(1.02);
-}
-
-.speech-bubble {
+.speech-bubble-ref {
   background: #f97316;
   color: white;
-  padding: 1rem 1.5rem;
+  padding: 1.25rem;
   border-radius: 1.5rem;
-  width: auto;
-  max-width: 250px;
+  width: 220px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.3;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.25);
   position: relative;
-  z-index: 20;
 }
 
-.speech-arrow {
+.speech-arrow-ref {
   position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  right: -14px;
+  transform: translateY(-50%);
   width: 0;
   height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 15px solid #f97316;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid #f97316;
 }
 
-.btn-contact-floating {
+.btn-contact-ref {
   background: #6366f1;
   color: white !important;
-  padding: 0.85rem 2.5rem;
-  border-radius: 50px;
+  padding: 0.7rem 1.8rem;
+  border-radius: 12px;
   font-weight: 800;
-  font-size: 1rem;
-  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
   transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
 }
 
-.btn-contact-floating:hover {
+.btn-contact-ref:hover {
   background: #4f46e5;
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.5);
+  transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+  .flex-row.items-center {
+    flex-direction: column !important;
+  }
+  .speech-arrow-ref {
+    display: none;
+  }
 }
 
 .youtube-video-frame {

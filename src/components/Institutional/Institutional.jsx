@@ -45,23 +45,24 @@ const Institutional = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-white rounded-[2.5rem] p-8 lg:p-12 shadow-2xl border border-slate-100 overflow-hidden relative">
           <div className="guide-bg-decoration"></div>
           
-          {/* Left Column: Assistant & Speech Bubble */}
-          <div className="flex flex-col items-center justify-center relative z-10 px-4">
-            <div className="relative mb-6">
-              <div className="speech-bubble animate-bounce-subtle">
+          {/* Left Column: Assistant & Speech Bubble (Strict Horizontal) */}
+          <div className="flex flex-row items-center justify-center gap-4 relative z-10">
+            <div className="flex flex-col items-center gap-4">
+              <div className="speech-bubble-ref mb-2 animate-bounce-subtle">
                 <p>Revisa el video de nuestra página para facilitar tu navegación</p>
-                <div className="speech-arrow"></div>
+                <div className="speech-arrow-ref"></div>
               </div>
+              <Link to="/contacto" className="btn-contact-ref no-underline">
+                CONTÁCTANOS
+              </Link>
             </div>
-            <div className="assistant-wrapper flex flex-col items-center">
+            
+            <div className="assistant-wrapper-ref">
               <img 
                 src="/asistente.png" 
                 alt="Asistente Virtual" 
-                className="assistant-img"
+                className="assistant-img-ref"
               />
-              <Link to="/contacto" className="btn-contact-floating no-underline mt-4">
-                CONTÁCTANOS
-              </Link>
             </div>
           </div>
 
