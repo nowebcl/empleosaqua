@@ -44,7 +44,7 @@ const LoginPostulante = () => {
             <p className="login-left-text">
               Accede a las vacantes de las empresas más importantes del rubro acuícola y otros sectores productivos del sur de Chile.
             </p>
-            <p className="login-left-text mt-4 font-semibold italic text-blue-100">
+            <p className="login-left-text mt-2 font-semibold italic text-blue-100">
               Crea tu perfil y postula.
             </p>
           </motion.div>
