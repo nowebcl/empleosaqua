@@ -32,7 +32,12 @@ const Institutional = () => {
 
           {/* Right Part: Video */}
           <div className="video-column-flex">
-            <div className="youtube-video-frame">
+            <div className="youtube-video-frame group cursor-pointer">
+              <div className="video-overlay-click">
+                <div className="play-button-ref">
+                  <MonitorPlay size={40} fill="white" className="ml-1" />
+                </div>
+              </div>
               <iframe 
                 width="100%" 
                 height="100%" 
@@ -53,7 +58,6 @@ const Institutional = () => {
               </div>
             </div>
           </div>
-
         </div>
       </section>
 

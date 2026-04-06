@@ -220,6 +220,41 @@
   height: 100%;
 }
 
+.video-overlay-click {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+  pointer-events: none; /* Allow interaction with iframe if needed, or handle click in JS */
+}
+
+.youtube-video-frame:hover .video-overlay-click {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.play-button-ref {
+  width: 90px;
+  height: 90px;
+  background: #f97316;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.6);
+  border: 4px solid white;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.youtube-video-frame:hover .play-button-ref {
+  transform: scale(1.1);
+  background: #ea580c;
+  box-shadow: 0 0 50px rgba(249, 115, 22, 0.8);
+}
+
 .video-footer-tag {
   position: absolute;
   top: 0.75rem;
