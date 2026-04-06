@@ -4,42 +4,8 @@ import { Target, MonitorPlay, FileCheck, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Institutional = () => {
-  const animatedText = "Promocionar tus servicios en nuestro portal laboral.".split(" ");
-
   return (
     <>
-      {/* Commercial Banner */}
-      <section id="tarifas" className="commercial-banner container mx-auto my-4">
-        <div className="banner-content glass-panel banner-animated-bg py-8">
-          <div className="banner-bg-shimmer"></div>
-          <div className="banner-info text-center w-full flex flex-col items-center">
-            <button className="btn btn-outline bg-white text-cyan-600 hover:bg-cyan-50 font-bold border-none px-8 py-3 rounded-full shadow-lg mb-6">Espacio Publicitario</button>
-            <h2 className="text-2xl lg:text-3xl font-bold mb-4 flex flex-wrap justify-center gap-2" style={{ maxWidth: '800px', lineHeight: '1.4' }}>
-              {animatedText.map((word, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </h2>
-            <motion.p 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.5, delay: animatedText.length * 0.1 }}
-              className="text-muted mb-4 text-lg" style={{ maxWidth: '700px' }}
-            >
-              ¡Date a conocer en el sector acuícola y otros rubros productivos de la región de Los Lagos!
-            </motion.p>
-          </div>
-        </div>
-      </section>
-
       {/* Horizontal Guide: All in one row */}
       <section className="section-guide-horizontal container mx-auto mb-16 px-4">
         <div className="guide-row-container shadow-2xl glass-panel">
