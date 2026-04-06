@@ -25,7 +25,7 @@ const Home = () => {
         <div className="w-full max-w-[1550px] mx-auto flex items-start justify-center relative px-2">
           
           {/* Publicidad Lateral Izquierda (Sticky) */}
-          <div className="hidden xl:block sticky top-32 w-[160px] shrink-0 mr-6 mt-8">
+          <div className="hidden lg:block sticky-sidebar-ad left-sidebar">
             <AdBanner 
               src="https://tpc.googlesyndication.com/simgad/4141843103343703535" 
               href="https://www.aqua-forum.cl/" 
@@ -60,7 +60,7 @@ const Home = () => {
           </div>
 
           {/* Publicidad Lateral Derecha (Sticky) */}
-          <div className="hidden xl:block sticky top-32 w-[160px] shrink-0 ml-6 mt-8">
+          <div className="hidden lg:block sticky-sidebar-ad right-sidebar">
             <AdBanner 
               src="https://tpc.googlesyndication.com/simgad/18162141951724842782" 
               href="https://www.aqua-forum.cl/" 
