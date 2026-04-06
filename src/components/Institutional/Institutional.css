@@ -117,141 +117,86 @@
 }
 
 .assistant-img {
-  width: 220px;
+  width: 280px;
   height: auto;
-  transform: translateY(10px);
-  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 20px 25px rgba(0,0,0,0.15));
+  transition: transform 0.3s ease;
+}
+
+.assistant-img:hover {
+  transform: scale(1.02);
 }
 
 .speech-bubble {
-  background: #f97316; /* Professional Orange like in user image */
+  background: #f97316;
   color: white;
-  padding: 1.25rem 1.5rem;
-  border-radius: 1.5rem 1.5rem 1.5rem 0;
-  width: 200px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.2);
+  padding: 1rem 1.5rem;
+  border-radius: 1.5rem;
+  width: auto;
+  max-width: 250px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+  position: relative;
   z-index: 20;
 }
 
 .speech-arrow {
   position: absolute;
-  bottom: -10px;
-  left: 0;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 0px solid transparent;
+  border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-top: 15px solid #f97316;
 }
 
 .btn-contact-floating {
-  background: #6366f1; /* Indigo/Purple like in user image */
-  color: white;
-  padding: 0.75rem 2rem;
-  border-radius: 2rem;
+  background: #6366f1;
+  color: white !important;
+  padding: 0.85rem 2.5rem;
+  border-radius: 50px;
   font-weight: 800;
   font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-top: 1rem;
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
+  transition: all 0.3s ease;
 }
 
 .btn-contact-floating:hover {
   background: #4f46e5;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 20px rgba(99, 102, 241, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.5);
 }
 
-.video-mockup-frame {
+.youtube-video-frame {
   width: 100%;
   aspect-ratio: 16/9;
-  background: #000;
   border-radius: 1.5rem;
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  background: #000;
   border: 4px solid #fff;
+  overflow: hidden;
 }
 
-.video-thumbnail {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.7;
-  transition: transform 0.8s ease;
-}
-
-.video-mockup-frame:hover .video-thumbnail {
-  transform: scale(1.05);
-}
-
-.video-overlay-gradient {
+.video-glow {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 40%, rgba(0,0,0,0.8) 100%);
-  z-index: 1;
+  box-shadow: inset 0 0 100px rgba(0, 95, 153, 0.3);
+  pointer-events: none;
+  z-index: 2;
 }
 
-.play-button-outer {
+.video-footer-tag {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  background: #f97316; /* Matching bubble color */
-  border-radius: 1rem; /* Rounded square as in user image */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 5;
-  box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5);
-  animation: pulsePlay 3s infinite;
-  transition: all 0.3s ease;
-}
-
-.video-mockup-frame:hover .play-button-outer {
-  transform: translate(-50%, -50%) scale(1.1);
-  background: #ea580c;
-}
-
-@keyframes pulsePlay {
-  0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.7); }
-  70% { box-shadow: 0 0 0 15px rgba(249, 115, 22, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
-}
-
-.video-footer-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 1.5rem;
-  z-index: 10;
-}
-
-@keyframes bounce-subtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-/* Responsive adjustments */
-@media (max-width: 1023px) {
-  .guide-section .grid {
-    padding: 3rem 2rem;
-  }
-  .speech-bubble {
-    width: 100%;
-    max-width: 320px;
-    border-radius: 1.5rem;
-  }
-  .speech-arrow {
-    display: none;
-  }
 }

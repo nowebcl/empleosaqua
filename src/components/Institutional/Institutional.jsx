@@ -46,48 +46,45 @@ const Institutional = () => {
           <div className="guide-bg-decoration"></div>
           
           {/* Left Column: Assistant & Speech Bubble */}
-          <div className="flex flex-col md:flex-row items-center gap-6 relative z-10">
-            <div className="relative group">
-              <div className="speech-bubble mb-4 md:mb-0 md:absolute md:-top-24 md:-left-4 animate-bounce-subtle">
+          <div className="flex flex-col items-center justify-center relative z-10 px-4">
+            <div className="relative mb-6">
+              <div className="speech-bubble animate-bounce-subtle">
                 <p>Revisa el video de nuestra página para facilitar tu navegación</p>
                 <div className="speech-arrow"></div>
               </div>
-              <Link to="/contacto" className="btn-contact-floating no-underline hidden md:flex">
-                CONTÁCTANOS
-              </Link>
             </div>
-            <div className="assistant-wrapper">
+            <div className="assistant-wrapper flex flex-col items-center">
               <img 
                 src="/asistente.png" 
                 alt="Asistente Virtual" 
                 className="assistant-img"
               />
-              <Link to="/contacto" className="btn-contact-floating no-underline md:hidden mt-4 w-full justify-center">
+              <Link to="/contacto" className="btn-contact-floating no-underline mt-4">
                 CONTÁCTANOS
               </Link>
             </div>
           </div>
 
-          {/* Right Column: Video Container */}
+          {/* Right Column: YouTube Video */}
           <div className="video-container-wrapper relative z-10">
-            <div className="video-mockup-frame group">
-              <div className="video-overlay-gradient"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=1000" 
-                alt="Video Thumbnail" 
-                className="video-thumbnail"
-              />
-              <div className="play-button-outer">
-                <div className="play-button-inner">
-                  <MonitorPlay size={48} className="text-white ml-1" />
-                </div>
-              </div>
-              <div className="video-footer-info">
+            <div className="youtube-video-frame group shadow-2xl">
+              <div className="video-glow"></div>
+              <iframe 
+                width="100%" 
+                height="100%" 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="Tutorial EmpleosAqua" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+                className="rounded-[1.5rem]"
+              ></iframe>
+              <div className="video-footer-tag">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
-                    <img src="/logo.png" alt="Icon" className="w-5 h-auto brightness-0 invert" />
+                  <div className="w-6 h-6 rounded-full bg-[#005f99] flex items-center justify-center">
+                    <img src="/logo.png" alt="Logo" className="w-4 h-auto brightness-0 invert" />
                   </div>
-                  <span className="text-white font-medium text-sm">Videotutorial: Cómo navegar en EmpleosAqua</span>
+                  <span className="text-white text-xs font-bold uppercase tracking-wider">Tutorial de Navegación</span>
                 </div>
               </div>
             </div>
