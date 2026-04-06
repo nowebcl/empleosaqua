@@ -116,191 +116,136 @@
   pointer-events: none;
 }
 
-/* SECTION GUIDE HORIZONTAL - EVERYTHING IN ONE LINE */
-.section-guide-horizontal {
+/* PREMIUM MINIMALIST GUIDE SECTION */
+.section-premium-guide {
+  margin-top: 4rem;
+}
+
+.premium-guide-wrapper {
+  background: #ffffff;
+  display: flex;
+  flex-direction: row;
+  border-radius: 3rem;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.premium-assistant-side {
+  flex: 0 0 45%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 3rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   position: relative;
-  z-index: 10;
+  overflow: hidden;
 }
 
-.guide-row-container {
-  background: white;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 3rem;
-  border-radius: 2rem;
-  gap: 3rem;
-  width: 100%;
+.premium-speech-bubble {
+  flex: 1;
+  padding-right: 2rem;
+  z-index: 2;
 }
 
-.assistant-column-flex {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.5rem;
-  flex: 0 0 auto;
-}
-
-.bubble-group-flex {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.assistant-img-container {
-  display: flex;
-  align-items: center;
-}
-
-.assistant-img-ref {
-  height: 250px;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
-}
-
-.speech-bubble-ref {
-  background: #f97316;
+.premium-bubble-tag {
+  display: inline-block;
+  background: #005f99;
   color: white;
-  padding: 1rem 1.25rem;
-  border-radius: 1.25rem;
-  width: 180px;
-  font-weight: 700;
-  font-size: 0.85rem;
-  line-height: 1.3;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 5px 15px rgba(249, 115, 22, 0.2);
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
 }
 
-.speech-arrow-ref {
-  position: absolute;
-  top: 50%;
-  right: -10px;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid #f97316;
-}
-
-.btn-contact-ref {
-  background: #6366f1;
-  color: white !important;
-  padding: 0.5rem 1.5rem;
-  border-radius: 8px;
+.premium-speech-bubble h3 {
+  font-size: 2rem;
+  color: #0f172a;
   font-weight: 800;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
-/* HIGH-END VIDEO WIDGET */
-.youtube-video-widget {
+.premium-speech-bubble p {
+  color: #64748b;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.premium-contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #f97316;
+  color: white !important;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+  transition: all 0.3s ease;
+}
+
+.premium-contact-button:hover {
+  background: #ea580c;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(249, 115, 22, 0.4);
+}
+
+.premium-assistant-img-box {
+  flex: 0 0 180px;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.premium-assistant-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+}
+
+.premium-video-side {
+  flex: 1;
+  background: #000;
+  position: relative;
+}
+
+.premium-video-frame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.premium-iframe {
   width: 100%;
   aspect-ratio: 16/9;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  position: relative;
-  background: #000;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
-  border: 1px solid rgba(255,255,255,0.1);
-  cursor: pointer;
-}
-
-.video-thumbnail-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.youtube-video-widget:hover .video-thumbnail-overlay {
-  transform: scale(1.02);
-}
-
-.widget-thumbnail-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.6);
-  transition: filter 0.3s ease;
-}
-
-.youtube-video-widget:hover .widget-thumbnail-img {
-  filter: brightness(0.7);
-}
-
-.widget-glass-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 95, 153, 0.4) 0%, transparent 50%);
-}
-
-.widget-play-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 15;
-}
-
-.play-button-premium {
-  width: 85px;
-  height: 85px;
-  background: #f97316;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 4px solid white;
-  box-shadow: 0 0 40px rgba(249, 115, 22, 0.6);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.youtube-video-widget:hover .play-button-premium {
-  transform: scale(1.15);
-  box-shadow: 0 0 60px rgba(249, 115, 22, 0.8);
-}
-
-.widget-footer-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 1.5rem;
-  z-index: 12;
-  text-align: left;
-}
-
-.video-iframe-element {
-  width: 100%;
-  height: 100%;
   border: none;
 }
 
-/* Hide overlay when iframe starts (CSS trick: requires a bit of JS or keeping it static) */
-.youtube-video-widget.active .video-thumbnail-overlay {
-  opacity: 0;
-  pointer-events: none;
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .premium-assistant-side {
+    flex: 0 0 50%;
+  }
 }
 
-@media (max-width: 1100px) {
-  .guide-row-container {
-    flex-direction: column;
-    padding: 2.5rem;
-    gap: 2rem;
+@media (max-width: 991px) {
+  .premium-guide-wrapper {
+    flex-direction: column-reverse;
+    border-radius: 2rem;
   }
-  .video-column-flex {
+  .premium-assistant-side {
     width: 100%;
-    min-width: 0;
+    padding: 2.5rem;
   }
-  .speech-arrow-ref {
+  .premium-video-side {
+    width: 100%;
+  }
+  .premium-assistant-img-box {
     display: none;
   }
 }
