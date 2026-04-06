@@ -16,6 +16,15 @@ const mockJobs = [
 
 const FeaturedJobs = () => {
   const [activeTab, setActiveTab] = useState('recientes');
+  const [savedJobs, setSavedJobs] = useState([]);
+
+  const toggleSaveJob = (jobId) => {
+    setSavedJobs(prev => 
+      prev.includes(jobId) 
+        ? prev.filter(id => id !== jobId) 
+        : [...prev, jobId]
+    );
+  };
 
   const filteredJobs = mockJobs.filter(job => {
     if (activeTab === 'destacadas') return job.isFeatured;
@@ -71,8 +80,17 @@ const FeaturedJobs = () => {
                 {job.inclusivo && <span className="badge badge-inclusive text-xs">Inclusiva</span>}
                 {job.practica && <span className="badge badge-inclusive text-xs flex items-center gap-1" style={{ background: '#e0f2fe', color: '#0284c7' }}><GraduationCap size={12} /> Práctica</span>}
               </div>
-              <button className="save-btn-small" title="Guardar como favorita">
-                <Bookmark size={18} fill={job.isFeatured ? "#F59E0B" : "none"} color={job.isFeatured ? "#F59E0B" : "currentColor"} />
+              <button 
+                className={`save-btn-small ${savedJobs.includes(job.id) ? 'is-saved' : ''}`} 
+                onClick={() => toggleSaveJob(job.id)}
+                title={savedJobs.includes(job.id) ? "Quitar de favoritos" : "Guardar como favorita"}
+              >
+                <Bookmark 
+                  size={18} 
+                  fill={savedJobs.includes(job.id) ? "#F59E0B" : "none"} 
+                  color={savedJobs.includes(job.id) ? "#F59E0B" : "currentColor"} 
+                  className="transition-all duration-300"
+                />
               </button>
             </div>
             
