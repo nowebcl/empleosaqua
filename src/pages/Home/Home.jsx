@@ -17,17 +17,6 @@ const Home = () => {
 
   return (
     <div className="app-container">
-      {/* Top Banner (Super Banner) como en Aqua.cl */}
-      <div className="w-full bg-[#0a0a0a] py-4 flex justify-center items-center border-b border-gray-800">
-        <div className="w-full max-w-[970px] px-2 md:px-4">
-          <AdBanner 
-            src="https://tpc.googlesyndication.com/simgad/8863766421333283423" 
-            href="#" 
-            alt="Top Banner publicitario" 
-          />
-        </div>
-      </div>
-
       <Header />
       <main className="w-full relative">
         <Hero />
