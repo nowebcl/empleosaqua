@@ -32,7 +32,7 @@
   background-image: url('/login-bg.png');
   background-size: 150% 150%;
   background-position: center;
-  animation: waveBg 25s ease-in-out infinite;
+  animation: waveBg 12s ease-in-out infinite;
 }
 
 @keyframes waveBg {
@@ -66,7 +66,6 @@
 .login-brand-logo {
   height: 48px;
   width: auto;
-  filter: brightness(0) invert(1);
   margin-bottom: 2rem;
 }
 

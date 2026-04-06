@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
-  const [role, setRole] = useState('postulante');
+  const role = 'postulante';
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -39,18 +39,10 @@ const Login = () => {
     setTimeout(() => {
       setIsLoading(false);
       // Mock validation
-      if (role === 'postulante') {
-        if (email.toLowerCase() === 'user' && password === 'pass123') {
-          navigate('/dashboard/postulante');
-        } else {
-          setErrorMsg('Credenciales incorrectas para usuario Postulante. (Pista: usa "user" / "pass123")');
-        }
-      } else if (role === 'empresa') {
-        if (email.toLowerCase() === 'empresa' && password === 'passs123') {
-          navigate('/dashboard/empresa');
-        } else {
-          setErrorMsg('Credenciales incorrectas para perfil Empresa. (Pista: usa "empresa" / "passs123")');
-        }
+      if (email.toLowerCase() === 'user' && password === 'pass123') {
+        navigate('/dashboard/postulante');
+      } else {
+        setErrorMsg('Credenciales incorrectas. (Pista: usa "user" / "pass123")');
       }
     }, 1200);
   };
@@ -89,33 +81,9 @@ const Login = () => {
         </Link>
 
         <div className="login-form-wrapper">
-          <div className="login-header">
+          <div className="login-header mb-6">
             <h2>Ingresar</h2>
-            <p>Selecciona tu tipo de cuenta para continuar</p>
-          </div>
-
-          {/* Premium Animated Pill Switcher */}
-          <div className="role-switcher">
-            <motion.div
-              className="role-selector-pill"
-              initial={false}
-              animate={{
-                x: role === 'postulante' ? '0%' : '100%'
-              }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            />
-            <button
-              className={`role-btn ${role === 'postulante' ? 'active' : ''}`}
-              onClick={() => { setRole('postulante'); setErrorMsg(''); }}
-            >
-              <UserCircle size={18} /> Postulante
-            </button>
-            <button
-              className={`role-btn ${role === 'empresa' ? 'active' : ''}`}
-              onClick={() => { setRole('empresa'); setErrorMsg(''); }}
-            >
-              <Building2 size={18} /> Empresa
-            </button>
+            <p>Accede con tu cuenta de Postulante para continuar</p>
           </div>
 
           <AnimatePresence mode="wait">
