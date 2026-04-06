@@ -4,9 +4,28 @@
   z-index: 10;
 }
 
-.section-title-small {
-  margin-top: 1.5rem;
-  color: var(--color-text-muted);
+.section-title-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1.75rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.badge-postulante {
+  background: white;
+  color: #005f99;
+  border: 1.5px solid #005f99;
+}
+
+.badge-empresa {
+  background: #005f99;
+  color: white;
+  border: 1.5px solid #005f99;
 }
 
 .quicks-grid-5 {

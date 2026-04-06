@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Search, Star, Heart, GraduationCap, FilePlus, DollarSign, Image } from 'lucide-react';
+import { FileText, Search, Star, Heart, GraduationCap, FilePlus, DollarSign, Image, UserCircle, Building2 } from 'lucide-react';
 import './QuickActions.css';
 
 const actionsPostulante = [
@@ -21,8 +21,13 @@ const QuickActions = () => {
   return (
     <section className="quicks-section container mx-auto">
       {/* Postulantes Section */}
-      <div className="quicks-postulantes mb-8">
-        <h3 className="section-title-small mb-4 text-center text-black uppercase tracking-wider text-sm font-semibold">Postulantes</h3>
+      <div className="quicks-postulantes mb-12">
+        <div className="flex justify-center mb-6">
+          <h3 className="section-title-badge badge-postulante">
+            <UserCircle size={18} />
+            <span>Postulantes</span>
+          </h3>
+        </div>
         <div className="quicks-grid-5">
           {actionsPostulante.map((action, index) => (
             <motion.div 
@@ -46,8 +51,13 @@ const QuickActions = () => {
       </div>
 
       {/* Empresas Section */}
-      <div className="quicks-empresas">
-        <h3 className="section-title-small mb-4 text-center text-black uppercase tracking-wider text-sm font-semibold">Empresas</h3>
+      <div className="quicks-empresas mt-4">
+        <div className="flex justify-center mb-6">
+          <h3 className="section-title-badge badge-empresa">
+            <Building2 size={18} />
+            <span>Empresas</span>
+          </h3>
+        </div>
         <div className="quicks-grid-3">
           {actionsEmpresa.map((action, index) => (
             <motion.div 
