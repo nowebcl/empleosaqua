@@ -13,7 +13,7 @@ const Institutional = () => {
           {/* Main Content Side: Assistant with Speech Bubble */}
           <div className="premium-assistant-side">
             <div className="premium-speech-bubble">
-              <span className="premium-bubble-tag">AYUDA AQUA</span>
+              <span className="premium-bubble-tag">AYUDA EMPLEOS AQUA</span>
               <h3>¿Cómo navegar en el portal?</h3>
               <p>Revisa nuestro videotutorial rápido para facilitar tu navegación.</p>
               <Link to="/contacto" className="premium-contact-button no-underline">
