@@ -1,6 +1,6 @@
 .footer-section {
-  background: #0096d2; /* Modern Corporate Celeste */
-  padding: 3rem 0 2rem;
+  background: #005f99; /* Precise Brand Deep Blue */
+  padding: 4rem 0 2rem;
   position: relative;
   z-index: 10;
   color: #ffffff;
@@ -10,7 +10,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 @media (min-width: 640px) {
@@ -33,14 +33,15 @@
 .footer-logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 .logo-icon-footer-img {
   height: 120px;
   width: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1); /* Make logo white for the celeste bg */
+  /* Since the logo already has white text on blue, we try to make it look niftier on the blue bg */
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
 }
 
 .social-icon {
