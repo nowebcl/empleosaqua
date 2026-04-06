@@ -58,7 +58,7 @@ const Institutional = () => {
             </div>
             <div className="assistant-wrapper">
               <img 
-                src="/assistant_woman_aqua_1775504733259.png" 
+                src="/asistente.png" 
                 alt="Asistente Virtual" 
                 className="assistant-img"
               />
