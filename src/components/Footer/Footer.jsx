@@ -45,18 +45,18 @@ const Footer = () => {
           {/* Column 4: Contact & Info */}
           <div className="footer-col">
             <h4 className="footer-title">Contáctanos</h4>
-            <div className="footer-contact text-xs text-black">
+            <div className="footer-contact">
               <div className="contact-item flex items-center gap-2 mb-3 whitespace-nowrap">
-                <Mail size={16}/> 
+                <Mail size={18}/> 
                 <span>
                   empleosaqua@b2bmg.cl
                 </span>
               </div>
               <div className="contact-item flex items-center gap-2 mb-3 whitespace-nowrap">
-                <Phone size={16}/> (56-65) 247 0107
+                <Phone size={18}/> (56-65) 247 0107
               </div>
               <div className="contact-item flex items-center gap-2">
-                <MapPin size={16} className="shrink-0"/> <span>Puerto Montt, Región de Los Lagos.</span>
+                <MapPin size={18} className="shrink-0"/> <span>Puerto Montt, Región de Los Lagos.</span>
               </div>
             </div>
           </div>
@@ -64,8 +64,8 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p className="text-xs text-black">© {new Date().getFullYear()} EmpleosAqua. Una plataforma de B2B Media Group. Todos los derechos reservados.</p>
-          <div className="legal-links text-xs flex gap-4 text-black mt-4 md:mt-0">
+          <p className="copyright-text">© {new Date().getFullYear()} EmpleosAqua. Una plataforma de B2B Media Group. Todos los derechos reservados.</p>
+          <div className="legal-links flex gap-6 mt-4 md:mt-0">
             <a href="#">Términos y Condiciones</a>
             <a href="#">Política de Privacidad</a>
           </div>
