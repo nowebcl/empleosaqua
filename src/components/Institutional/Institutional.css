@@ -200,70 +200,94 @@
   box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
 }
 
-.video-column-flex {
-  flex: 1 1 auto;
-  min-width: 400px;
-}
-
-.youtube-video-frame {
+/* HIGH-END VIDEO WIDGET */
+.youtube-video-widget {
   width: 100%;
   aspect-ratio: 16/9;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-  border: 1px solid #eee;
+  background: #000;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
 }
 
-.video-iframe {
-  width: 100%;
-  height: 100%;
-}
-
-.video-overlay-click {
+.video-thumbnail-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 10;
-  transition: all 0.3s ease;
-  pointer-events: none; /* Allow interaction with iframe if needed, or handle click in JS */
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.youtube-video-frame:hover .video-overlay-click {
-  background: rgba(0, 0, 0, 0.2);
+.youtube-video-widget:hover .video-thumbnail-overlay {
+  transform: scale(1.02);
 }
 
-.play-button-ref {
-  width: 90px;
-  height: 90px;
+.widget-thumbnail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+  transition: filter 0.3s ease;
+}
+
+.youtube-video-widget:hover .widget-thumbnail-img {
+  filter: brightness(0.7);
+}
+
+.widget-glass-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 95, 153, 0.4) 0%, transparent 50%);
+}
+
+.widget-play-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+}
+
+.play-button-premium {
+  width: 85px;
+  height: 85px;
   background: #f97316;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 30px rgba(249, 115, 22, 0.6);
   border: 4px solid white;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 40px rgba(249, 115, 22, 0.6);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.youtube-video-frame:hover .play-button-ref {
-  transform: scale(1.1);
-  background: #ea580c;
-  box-shadow: 0 0 50px rgba(249, 115, 22, 0.8);
+.youtube-video-widget:hover .play-button-premium {
+  transform: scale(1.15);
+  box-shadow: 0 0 60px rgba(249, 115, 22, 0.8);
 }
 
-.video-footer-tag {
+.widget-footer-info {
   position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(4px);
-  padding: 0.25rem 0.75rem;
-  border-radius: 30px;
-  z-index: 5;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  z-index: 12;
+  text-align: left;
+}
+
+.video-iframe-element {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Hide overlay when iframe starts (CSS trick: requires a bit of JS or keeping it static) */
+.youtube-video-widget.active .video-thumbnail-overlay {
+  opacity: 0;
+  pointer-events: none;
 }
 
 @media (max-width: 1100px) {

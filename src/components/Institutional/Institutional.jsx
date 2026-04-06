@@ -32,30 +32,36 @@ const Institutional = () => {
 
           {/* Right Part: Video */}
           <div className="video-column-flex">
-            <div className="youtube-video-frame group cursor-pointer">
-              <div className="video-overlay-click">
-                <div className="play-button-ref">
-                  <MonitorPlay size={40} fill="white" className="ml-1" />
+            <div className="youtube-video-widget group">
+              {/* Custom Thumbnail Overlay (High-end feel) */}
+              <div className="video-thumbnail-overlay">
+                <img 
+                  src="https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=1200" 
+                  alt="Tutorial Preview" 
+                  className="widget-thumbnail-img"
+                />
+                <div className="widget-glass-overlay"></div>
+                <div className="widget-play-container">
+                  <div className="play-button-premium">
+                    <MonitorPlay size={44} fill="white" className="ml-1" />
+                  </div>
+                </div>
+                <div className="widget-footer-info">
+                  <span className="text-white font-bold text-sm tracking-wide">VIDEO: CÓMO NAVEGAR EN EL PORTAL</span>
                 </div>
               </div>
+
+              {/* Real Iframe behind */}
               <iframe 
                 width="100%" 
                 height="100%" 
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                src="https://www.youtube.com/embed/eKhv-F2EwTU" 
                 title="Tutorial EmpleosAqua" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
-                className="video-iframe"
+                className="video-iframe-element"
               ></iframe>
-              <div className="video-footer-tag">
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-[#005f99] flex items-center justify-center">
-                    <img src="/logo.png" alt="Logo" className="w-3 h-auto brightness-0 invert" />
-                  </div>
-                  <span className="text-white text-[10px] font-bold uppercase tracking-wider">Centro de ayuda</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
