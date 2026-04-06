@@ -40,15 +40,14 @@ const Institutional = () => {
         </div>
       </section>
 
-      {/* Guide Section: Assistant + Video */}
-      <section className="guide-section container mx-auto my-12 px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-white rounded-[2.5rem] p-8 lg:p-12 shadow-2xl border border-slate-100 overflow-hidden relative">
-          <div className="guide-bg-decoration"></div>
+      {/* Horizontal Guide: All in one row */}
+      <section className="section-guide-horizontal container mx-auto mb-16 px-4">
+        <div className="guide-row-container shadow-2xl glass-panel">
           
-          {/* Left Column: Assistant & Speech Bubble (Strict Horizontal) */}
-          <div className="flex flex-row items-center justify-center gap-4 relative z-10">
-            <div className="flex flex-col items-center gap-4">
-              <div className="speech-bubble-ref mb-2 animate-bounce-subtle">
+          {/* Left Part: Speech + Assistant */}
+          <div className="assistant-column-flex">
+            <div className="bubble-group-flex">
+              <div className="speech-bubble-ref mb-3">
                 <p>Revisa el video de nuestra página para facilitar tu navegación</p>
                 <div className="speech-arrow-ref"></div>
               </div>
@@ -56,8 +55,7 @@ const Institutional = () => {
                 CONTÁCTANOS
               </Link>
             </div>
-            
-            <div className="assistant-wrapper-ref">
+            <div className="assistant-img-container">
               <img 
                 src="/asistente.png" 
                 alt="Asistente Virtual" 
@@ -66,10 +64,9 @@ const Institutional = () => {
             </div>
           </div>
 
-          {/* Right Column: YouTube Video */}
-          <div className="video-container-wrapper relative z-10">
-            <div className="youtube-video-frame group shadow-2xl">
-              <div className="video-glow"></div>
+          {/* Right Part: Video */}
+          <div className="video-column-flex">
+            <div className="youtube-video-frame">
               <iframe 
                 width="100%" 
                 height="100%" 
@@ -78,18 +75,19 @@ const Institutional = () => {
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
-                className="rounded-[1.5rem]"
+                className="video-iframe"
               ></iframe>
               <div className="video-footer-tag">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-[#005f99] flex items-center justify-center">
-                    <img src="/logo.png" alt="Logo" className="w-4 h-auto brightness-0 invert" />
+                  <div className="w-5 h-5 rounded-full bg-[#005f99] flex items-center justify-center">
+                    <img src="/logo.png" alt="Logo" className="w-3 h-auto brightness-0 invert" />
                   </div>
-                  <span className="text-white text-xs font-bold uppercase tracking-wider">Tutorial de Navegación</span>
+                  <span className="text-white text-[10px] font-bold uppercase tracking-wider">Centro de ayuda</span>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
