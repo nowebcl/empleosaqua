@@ -20,8 +20,8 @@
   --color-surface-light: #ffffff;
   --color-surface-accent: rgba(77, 222, 255, 0.1);
   
-  --color-text: #1e293b; /* Dark slate */
-  --color-text-muted: #64748b; /* Medium slate */
+  --color-text: #000000; /* Strict Black */
+  --color-text-muted: #000000; /* Strict Black as requested */
   
   --color-border: rgba(0, 0, 0, 0.08);
   --color-border-glow: rgba(77, 222, 255, 0.5);

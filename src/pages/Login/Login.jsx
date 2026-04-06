@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowLeft, AlertCircle, Mail, Lock, UserCircle, Building2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
@@ -81,23 +81,16 @@ const Login = () => {
         </Link>
 
         <div className="login-form-wrapper">
-          <div className="login-header mb-6">
-            <h2>Ingresar</h2>
-            <p>Accede con tu cuenta de Postulante para continuar</p>
+          <div className="login-header mb-8">
+            <h2>Portal Postulantes</h2>
+            <p>Accede para gestionar tus postulaciones y currículum</p>
           </div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={role}
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -10 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="text-center mb-6">
-                <h3 className="font-bold text-lg text-[#002c47]">{content[role].title}</h3>
-                <p className="text-sm text-slate-500 mt-1">{content[role].subtitle}</p>
-              </div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
 
               {/* Modern Google Button */}
               <button type="button" className="btn-google">
@@ -171,8 +164,7 @@ const Login = () => {
                 <a href="#registro" className="register-link">{content[role].registerLinkAction}</a>
               </div>
             </motion.div>
-          </AnimatePresence>
-        </div>
+          </div>
       </div>
     </div>
   );

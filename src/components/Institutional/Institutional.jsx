@@ -9,8 +9,8 @@ const Institutional = () => {
   return (
     <>
       {/* Commercial Banner */}
-      <section id="tarifas" className="commercial-banner container mx-auto my-8">
-        <div className="banner-content glass-panel banner-animated-bg">
+      <section id="tarifas" className="commercial-banner container mx-auto my-4">
+        <div className="banner-content glass-panel banner-animated-bg py-8">
           <div className="banner-bg-shimmer"></div>
           <div className="banner-info text-center w-full flex flex-col items-center">
             <button className="btn btn-outline bg-white text-cyan-600 hover:bg-cyan-50 font-bold border-none px-8 py-3 rounded-full shadow-lg mb-6">Espacio Publicitario</button>
@@ -41,9 +41,9 @@ const Institutional = () => {
       </section>
 
       {/* Trust Block */}
-      <section className="trust-section overflow-hidden">
+      <section className="trust-section overflow-hidden py-12">
         <div className="container mx-auto">
-          <p className="text-center text-3xl text-black font-bold tracking-widest mb-10">NUESTRAS MARCAS</p>
+          <p className="text-center text-4xl lg:text-5xl text-black font-extrabold tracking-widest mb-12">NUESTRAS MARCAS</p>
           <div className="trust-marquee-container">
             <div className="trust-logos-track">
               {/* Set 1 */}
@@ -51,14 +51,14 @@ const Institutional = () => {
               <img src="/Logotipo Aqua.jpg" alt="AQUA Acuicultura+Pesca" className="trust-logo-img" />
               <img src="/Logotipo AquaForum Los Lagos.png" alt="AquaForum Los Lagos" className="trust-logo-img" />
               <img src="/Logotipo AquaForum Patagonia.png" alt="AquaForum Patagonia" className="trust-logo-img" />
-              <img src="/Logotipo AquaForum Aysén.png" alt="AquaForum Aysén" className="trust-logo-img" style={{ height: '110px' }} />
+              <img src="/Logotipo AquaForum Aysén.png" alt="AquaForum Aysén" className="trust-logo-img" style={{ height: '140px', maxWidth: '280px' }} />
 
               {/* Set 2 (Duplicate for infinite loop) */}
               <img src="/Logotipo B2B (1).jpg" alt="B2B Media Group" className="trust-logo-img" />
               <img src="/Logotipo Aqua.jpg" alt="AQUA Acuicultura+Pesca" className="trust-logo-img" />
               <img src="/Logotipo AquaForum Los Lagos.png" alt="AquaForum Los Lagos" className="trust-logo-img" />
               <img src="/Logotipo AquaForum Patagonia.png" alt="AquaForum Patagonia" className="trust-logo-img" />
-              <img src="/Logotipo AquaForum Aysén.png" alt="AquaForum Aysén" className="trust-logo-img" style={{ height: '110px' }} />
+              <img src="/Logotipo AquaForum Aysén.png" alt="AquaForum Aysén" className="trust-logo-img" style={{ height: '140px', maxWidth: '280px' }} />
             </div>
           </div>
         </div>

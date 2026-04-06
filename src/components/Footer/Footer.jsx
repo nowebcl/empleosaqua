@@ -46,9 +46,9 @@ const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-title">Contáctanos</h4>
             <div className="footer-contact text-xs text-black">
-              <div className="contact-item flex items-center gap-2 mb-3">
+              <div className="contact-item flex items-center gap-2 mb-3 whitespace-nowrap">
                 <Mail size={16}/> 
-                <span className="break-all">
+                <span>
                   empleosaqua@b2bmg.cl
                 </span>
               </div>

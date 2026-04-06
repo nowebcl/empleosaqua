@@ -1,7 +1,7 @@
 .footer-section {
   background: #f8fafc;
   border-top: 1px solid var(--color-border);
-  padding: 3rem 0 1rem;
+  padding: 1.5rem 0 1rem;
   position: relative;
   z-index: 10;
 }
@@ -37,7 +37,7 @@
 }
 
 .logo-icon-footer-img {
-  height: 110px;
+  height: 140px;
   width: auto;
   border-radius: var(--radius-sm);
   object-fit: contain;
@@ -85,7 +85,7 @@
 
 .footer-links a {
   color: #000000;
-  font-size: 0.85rem;
+  font-size: 0.75rem; /* Textos más pequeños */
   transition: color var(--transition-fast);
   display: inline-block;
 }

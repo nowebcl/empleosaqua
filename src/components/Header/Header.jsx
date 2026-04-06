@@ -44,11 +44,11 @@ const Header = () => {
 
         {/* Action Buttons - Enmarcado en un contenedor resaltado */}
         <div className="header-actions desktop-only bg-black/10 backdrop-blur-sm p-1.5 rounded-full border border-white/20 shadow-inner">
-          <Link to="/login" className="btn btn-outline btn-sm no-underline flex items-center gap-2 rounded-full border-none bg-white text-black hover:bg-gray-100">
+          <Link to="/login/postulante" className="btn btn-outline btn-sm no-underline flex items-center gap-2 rounded-full border-none bg-white text-black hover:bg-gray-100">
             <UserCircle size={18} />
             <span className="font-bold">Postulantes</span>
           </Link>
-          <Link to="/dashboard/empresa" className="btn btn-primary btn-sm btn-glow no-underline flex items-center gap-2 rounded-full border-none shadow-md bg-[#005f99] hover:bg-[#004a77] text-white">
+          <Link to="/login/empresa" className="btn btn-primary btn-sm btn-glow no-underline flex items-center gap-2 rounded-full border-none shadow-md bg-[#005f99] hover:bg-[#004a77] text-white">
             <Building2 size={18} />
             <span className="font-bold">Empresas</span>
           </Link>
@@ -77,10 +77,10 @@ const Header = () => {
             <Link to="/contacto" className="mobile-link text-black font-semibold">Contacto</Link>
           </nav>
           <div className="mobile-actions bg-gray-100 p-2 rounded-xl">
-            <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="btn btn-outline w-full mb-3 text-center justify-center no-underline border-none bg-white text-black shadow-sm font-bold">
+            <Link to="/login/postulante" onClick={() => setMobileMenuOpen(false)} className="btn btn-outline w-full mb-3 text-center justify-center no-underline border-none bg-white text-black shadow-sm font-bold">
               Postulantes
             </Link>
-            <Link to="/dashboard/empresa" onClick={() => setMobileMenuOpen(false)} className="btn btn-primary w-full text-center justify-center no-underline border-none shadow-md font-bold">
+            <Link to="/login/empresa" onClick={() => setMobileMenuOpen(false)} className="btn btn-primary w-full text-center justify-center no-underline border-none shadow-md font-bold">
               Empresas
             </Link>
           </div>

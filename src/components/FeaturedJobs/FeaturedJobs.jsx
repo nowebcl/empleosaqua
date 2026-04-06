@@ -28,26 +28,26 @@ const FeaturedJobs = () => {
     <section id="buscar" className="jobs-section w-full">
       <div className="section-header-flex">
         <div>
-          <h2 className="text-3xl lg:text-4xl mb-2 font-bold flex items-center gap-3">🚀 ENCUENTRA TU DESAFÍO:</h2>
-          <p className="text-muted text-black">Las mejores ofertas publicadas en tiempo real.</p>
+          <h2 className="text-3xl lg:text-4xl mb-2 font-bold flex items-center gap-3 text-black">🚀 ENCUENTRA TU DESAFÍO:</h2>
+          <p className="text-black font-medium">Las mejores ofertas publicadas en tiempo real.</p>
         </div>
         
         {/* Filters / Tabs */}
-        <div className="jobs-tabs glass-panel">
+        <div className="jobs-tabs bg-[#005f99] text-white rounded-xl shadow-md p-2 flex gap-2 overflow-x-auto">
           <button 
-            className={`tab-btn ${activeTab === 'recientes' ? 'active' : ''}`}
+            className={`tab-btn px-4 py-2 rounded-lg font-medium transition-colors ${activeTab === 'recientes' ? 'bg-white text-[#005f99] shadow-sm' : 'hover:bg-white/10 text-white'}`}
             onClick={() => setActiveTab('recientes')}
           >Más recientes</button>
           <button 
-            className={`tab-btn ${activeTab === 'destacadas' ? 'active' : ''}`}
+            className={`tab-btn px-4 py-2 rounded-lg font-medium transition-colors ${activeTab === 'destacadas' ? 'bg-white text-[#005f99] shadow-sm' : 'hover:bg-white/10 text-white'}`}
             onClick={() => setActiveTab('destacadas')}
           >Destacadas</button>
           <button 
-            className={`tab-btn tab-btn-pink ${activeTab === 'inclusivas' ? 'active' : ''}`}
+            className={`tab-btn px-4 py-2 rounded-lg font-medium transition-colors ${activeTab === 'inclusivas' ? 'bg-[#ec4899] text-white shadow-sm' : 'hover:bg-white/10 text-white'}`}
             onClick={() => setActiveTab('inclusivas')}
           >Inclusivas</button>
           <button 
-            className={`tab-btn tab-btn-blue ${activeTab === 'practicas' ? 'active' : ''}`}
+            className={`tab-btn px-4 py-2 rounded-lg font-medium transition-colors ${activeTab === 'practicas' ? 'bg-[#8b5cf6] text-white shadow-sm' : 'hover:bg-white/10 text-white'}`}
             onClick={() => setActiveTab('practicas')}
           >Prácticas</button>
         </div>
@@ -60,9 +60,12 @@ const FeaturedJobs = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
-            className={`job-card-small glass-panel ${job.isFeatured ? 'featured-job-card' : ''}`}
+            className={`job-card-small glass-panel overflow-hidden relative ${job.isFeatured ? 'featured-job-card' : ''}`}
           >
-            <div className="job-card-header-small">
+            {/* Top orange line gradient for featured/all jobs */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-orange-600"></div>
+            
+            <div className="job-card-header-small mt-2">
               <div className="job-badges-small">
                 {job.isNew && <span className="badge badge-new text-xs">Nuevo</span>}
                 {job.inclusivo && <span className="badge badge-inclusive text-xs">Inclusiva</span>}
@@ -91,8 +94,8 @@ const FeaturedJobs = () => {
         ))}
       </div>
 
-      <div className="text-center mt-16 mb-8">
-        <button className="btn btn-outline" style={{ color: '#000', borderColor: '#000' }}>Ver Todas las Ofertas</button>
+      <div style={{ textAlign: 'center', marginTop: '60px', marginBottom: '40px', width: '100%', paddingTop: '20px' }}>
+        <button className="btn btn-outline shadow-md" style={{ color: '#000', borderColor: '#000', borderWidth: '2px', padding: '12px 32px', fontWeight: 'bold', borderRadius: '50px', backgroundColor: '#fff' }}>Ver Todas las Ofertas</button>
       </div>
     </section>
   );
