@@ -49,18 +49,18 @@ const Institutional = () => {
           <div className="trust-marquee-container">
             <div className="trust-logos-track">
               {/* Set 1 */}
-              <img src="/Logotipo B2B (1).jpg" alt="B2B Media Group" className="trust-logo-img" />
-              <img src="/Logotipo Aqua.jpg" alt="AQUA Acuicultura+Pesca" className="trust-logo-img" />
-              <img src="/Logotipo AquaForum Los Lagos.png" alt="AquaForum Los Lagos" className="trust-logo-img" />
-              <img src="/Logotipo AquaForum Patagonia.png" alt="AquaForum Patagonia" className="trust-logo-img" />
-              <img src="/Logotipo AquaForum Aysén.png" alt="AquaForum Aysén" className="trust-logo-img" style={{ height: '140px', maxWidth: '280px' }} />
+              <div className="logo-wrapper"><img src="/Logotipo B2B (1).jpg" alt="B2B Media Group" className="trust-logo-img" /></div>
+              <div className="logo-wrapper"><img src="/Logotipo Aqua.jpg" alt="AQUA" className="trust-logo-img" /></div>
+              <div className="logo-wrapper"><img src="/Logotipo AquaForum Los Lagos.png" alt="AquaForum Los Lagos" className="trust-logo-img" /></div>
+              <div className="logo-wrapper"><img src="/Logotipo AquaForum Patagonia.png" alt="AquaForum Patagonia" className="trust-logo-img" /></div>
+              <div className="logo-wrapper"><img src="/Logotipo AquaForum Aysén.png" alt="AquaForum Aysén" className="trust-logo-img" /></div>
 
               {/* Set 2 (Duplicate for infinite loop) */}
-              <img src="/Logotipo B2B (1).jpg" alt="B2B Media Group" className="trust-logo-img" />
-              <img src="/Logotipo Aqua.jpg" alt="AQUA Acuicultura+Pesca" className="trust-logo-img" />
-              <img src="/Logotipo AquaForum Los Lagos.png" alt="AquaForum Los Lagos" className="trust-logo-img" />
-              <img src="/Logotipo AquaForum Patagonia.png" alt="AquaForum Patagonia" className="trust-logo-img" />
-              <img src="/Logotipo AquaForum Aysén.png" alt="AquaForum Aysén" className="trust-logo-img" style={{ height: '140px', maxWidth: '280px' }} />
+              <div className="logo-wrapper"><img src="/Logotipo B2B (1).jpg" alt="B2B Media Group" className="trust-logo-img" /></div>
+              <div className="logo-wrapper"><img src="/Logotipo Aqua.jpg" alt="AQUA" className="trust-logo-img" /></div>
+              <div className="logo-wrapper"><img src="/Logotipo AquaForum Los Lagos.png" alt="AquaForum Los Lagos" className="trust-logo-img" /></div>
+              <div className="logo-wrapper"><img src="/Logotipo AquaForum Patagonia.png" alt="AquaForum Patagonia" className="trust-logo-img" /></div>
+              <div className="logo-wrapper"><img src="/Logotipo AquaForum Aysén.png" alt="AquaForum Aysén" className="trust-logo-img" /></div>
             </div>
           </div>
         </div>
