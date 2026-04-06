@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, MapPin, Briefcase } from 'lucide-react';
+import { Search, MapPin, Briefcase, UserCircle, Building2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './Hero.css';
 
 import img1 from '../../assets/hero1.png';
@@ -72,6 +73,22 @@ const Hero = () => {
           >
             Plataforma líder orientada a perfiles operativos, técnicos y profesionales vinculados a la salmonicultura, pesca, logística, transporte marítimo y servicios industriales.
           </motion.p>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="hero-actions-center flex justify-center gap-4 mb-8"
+          >
+            <Link to="/login/postulante" className="hero-btn-action btn-postulante flex items-center gap-2">
+              <UserCircle size={20} />
+              <span>Postulantes</span>
+            </Link>
+            <Link to="/login/empresa" className="hero-btn-action btn-empresa flex items-center gap-2">
+              <Building2 size={20} />
+              <span>Empresas</span>
+            </Link>
+          </motion.div>
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

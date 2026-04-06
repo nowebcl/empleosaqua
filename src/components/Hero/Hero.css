@@ -371,3 +371,58 @@
   from { transform: translate(-50%, -50%) rotate(360deg); }
   to { transform: translate(-50%, -50%) rotate(0deg); }
 }
+
+.hero-actions-center {
+  margin-top: 1rem;
+}
+
+.hero-btn-action {
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-postulante {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.btn-postulante:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-empresa {
+  background: #005f99;
+  color: #fff;
+  border: 2px solid #005f99;
+}
+
+.btn-empresa:hover {
+  background: #004a77;
+  border-color: #004a77;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 95, 153, 0.4);
+}
+
+@media (max-width: 640px) {
+  .hero-actions-center {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    gap: 1rem;
+  }
+  .hero-btn-action {
+    justify-content: center;
+    width: 100%;
+  }
+}
