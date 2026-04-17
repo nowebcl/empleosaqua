@@ -451,61 +451,108 @@ const PostulanteDashboard = () => {
               </div>
             </div>
 
-            {/* Section 6: Documentos */}
-            <div className="profile-section border-2 border-blue-50">
-              <div className="section-header py-6 bg-blue-50/30 flex justify-between items-center">
+            {/* Section 6: Documentos - RE-DESIGNED TO BE MORE "PRO" */}
+            <div className="profile-section border-0 shadow-2xl shadow-blue-900/5">
+              <div className="section-header py-8 bg-gradient-to-r from-blue-50/50 to-white flex justify-between items-center border-b border-gray-100">
                 <div>
-                  <h2 className="section-title text-blue-900">Gestión de Documentos y CV</h2>
-                  <p className="text-[10px] text-blue-500 font-bold uppercase tracking-widest mt-1">Completa tu perfil para destacar</p>
+                  <h2 className="section-title text-2xl text-blue-900 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-600/20">
+                      <FileText size={20} />
+                    </div>
+                    Gestión de Currículum y Documentos
+                  </h2>
+                  <p className="text-xs text-gray-400 font-medium mt-1 ml-13">Mantén tu información actualizada para atraer mejores empresas</p>
                 </div>
                 <div className="flex gap-2">
-                  <button className="btn btn-primary flex items-center gap-2 bg-blue-600 hover:bg-blue-700 shadow-lg px-6">
-                    <Download size={16} /> DESCARGAR PDF
+                  <button className="btn btn-primary flex items-center gap-2 bg-blue-600 hover:bg-blue-700 shadow-lg px-6 rounded-full text-xs font-bold">
+                    <Download size={14} /> PDF
                   </button>
-                  <button className="btn btn-outline flex items-center gap-2 border-blue-600 text-blue-600 hover:bg-blue-50">
-                    <Download size={16} /> Word
+                  <button className="btn btn-outline flex items-center gap-2 border-gray-200 text-gray-600 hover:bg-gray-50 rounded-full text-xs font-bold">
+                    <Download size={14} /> WORD
                   </button>
                 </div>
               </div>
-              <div className="section-content p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                  {[
-                    { id: 'cv', label: 'Mi CV (Principal)', icon: FileText },
-                    { id: 'extra1', label: 'Certificados', icon: Award },
-                    { id: 'extra2', label: 'Cursos/Capacitaciones', icon: Shield },
-                    { id: 'extra3', label: 'Otros Documentos', icon: Check }
-                  ].map((doc) => (
-                    <div key={doc.id} className="border-2 border-dashed border-gray-100 p-6 rounded-2xl hover:border-blue-200 transition-colors bg-gray-50/50 flex flex-col items-center text-center group">
-                      <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-blue-500 mb-3 group-hover:scale-110 transition-transform">
-                        <doc.icon size={20} />
+
+              <div className="section-content p-8 bg-white">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+                  {/* MAIN CV CARD - LARGER AND MORE "PRO" */}
+                  <div className="lg:col-span-1 flex flex-col gap-4">
+                    <div className="relative group">
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-1000 group-hover:duration-200"></div>
+                      <div className="relative border border-blue-100 p-8 rounded-3xl bg-white shadow-sm flex flex-col items-center text-center transition-all hover:shadow-xl hover:-translate-y-1">
+                        <div className="w-20 h-20 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
+                          <FileText size={40} />
+                        </div>
+                        <h4 className="text-lg font-bold text-gray-800 mb-1">Currículum Principal</h4>
+                        <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-6">Documento Requerido (*)</p>
+                        
+                        {files.cv ? (
+                          <div className="w-full bg-blue-50/50 p-4 rounded-2xl border border-blue-100 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-[10px] font-bold">PDF</div>
+                            <span className="text-[11px] text-blue-900 font-bold truncate flex-1">{files.cv}</span>
+                            <button onClick={() => removeFile('cv')} className="text-red-400 hover:text-red-600 transition-colors p-1"><Trash2 size={16} /></button>
+                          </div>
+                        ) : (
+                          <div className="w-full space-y-3">
+                            <input type="file" className="hidden" id="file-cv" onChange={(e) => handleFileChange('cv', e)} />
+                            <label htmlFor="file-cv" className="block w-full py-4 bg-blue-600 text-white rounded-2xl text-[11px] font-black uppercase tracking-wider cursor-pointer hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/30">
+                              Subir mi CV
+                            </label>
+                            <p className="text-[10px] text-gray-400">Archivos permitidos: PDF, DOC, DOCX</p>
+                          </div>
+                        )}
                       </div>
-                      <span className="text-xs font-bold text-gray-700 mb-4">{doc.label}</span>
-                      
-                      {files[doc.id] ? (
-                        <div className="flex items-center gap-4 w-full bg-white p-2 rounded-lg border border-blue-50 shadow-sm">
-                          <span className="text-[10px] text-blue-600 font-bold truncate flex-1">{files[doc.id]}</span>
-                          <button 
-                            onClick={() => removeFile(doc.id)}
-                            className="text-red-400 hover:text-red-600 p-1 transition-colors"
-                          >
-                            <Trash2 size={14} />
-                          </button>
-                        </div>
-                      ) : (
-                        <div className="flex flex-col items-center gap-2">
-                          <input 
-                            type="file" 
-                            className="hidden" 
-                            id={`file-${doc.id}`} 
-                            onChange={(e) => handleFileChange(doc.id, e)}
-                          />
-                          <label htmlFor={`file-${doc.id}`} className="text-[10px] font-black text-blue-500 border-2 border-blue-500 px-4 py-1.5 rounded-full cursor-pointer hover:bg-blue-500 hover:text-white transition-all uppercase tracking-tighter">
-                            Seleccionar Archivo
-                          </label>
-                        </div>
-                      )}
                     </div>
-                  ))}
+
+                    <div className="p-6 rounded-3xl bg-gray-50/50 border border-gray-100 flex flex-col items-center text-center">
+                      <h5 className="text-[11px] font-bold text-gray-500 mb-3">¿NO TIENES UN CURRÍCULUM?</h5>
+                      <button className="w-full py-3 border-2 border-blue-600 text-blue-600 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-50 transition-all flex items-center justify-center gap-2">
+                        <Edit2 size={14} /> Crear CV Online
+                      </button>
+                      <p className="text-[9px] text-gray-400 mt-3 leading-relaxed">Usa nuestra herramienta inteligente para generar un perfil profesional en minutos.</p>
+                    </div>
+                  </div>
+
+                  {/* SECONDARY DOCUMENTS GRID */}
+                  <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {[
+                      { id: 'extra1', label: 'Certificados de Título', subtitle: 'Acredita tu formación', icon: Award },
+                      { id: 'extra2', label: 'Capacitaciones', subtitle: 'Cursos y normativas', icon: Shield },
+                      { id: 'extra3', label: 'Antecedentes', subtitle: 'Certificado oficial', icon: Check }
+                    ].map((doc) => (
+                      <div key={doc.id} className="p-6 rounded-3xl border border-gray-100 bg-white hover:border-blue-200 hover:shadow-lg transition-all flex flex-col gap-4 group">
+                        <div className="flex items-center gap-4">
+                          <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-blue-50 group-hover:text-blue-500 transition-colors">
+                            <doc.icon size={20} />
+                          </div>
+                          <div>
+                            <h5 className="text-xs font-bold text-gray-800 uppercase tracking-tight">{doc.label}</h5>
+                            <p className="text-[10px] text-gray-400">{doc.subtitle}</p>
+                          </div>
+                        </div>
+
+                        {files[doc.id] ? (
+                          <div className="flex items-center gap-3 bg-blue-50/30 p-2 rounded-xl border border-blue-100">
+                            <span className="text-[10px] text-blue-700 font-bold truncate flex-1">{files[doc.id]}</span>
+                            <button onClick={() => removeFile(doc.id)} className="text-red-400 hover:text-red-600 transition-colors p-1"><X size={16} /></button>
+                          </div>
+                        ) : (
+                          <div className="mt-auto">
+                            <input type="file" className="hidden" id={`file-${doc.id}`} onChange={(e) => handleFileChange(doc.id, e)} />
+                            <label htmlFor={`file-${doc.id}`} className="block w-full py-2 bg-gray-50 text-gray-500 rounded-xl text-[10px] font-bold text-center cursor-pointer hover:bg-blue-50 hover:text-blue-600 transition-all">
+                              AGREGAR
+                            </label>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                    
+                    {/* Placeholder for more */}
+                    <div className="p-6 rounded-3xl border-2 border-dashed border-gray-100 flex flex-col items-center justify-center text-center opacity-40 hover:opacity-100 transition-opacity cursor-pointer">
+                      <Plus size={24} className="text-gray-300 mb-2" />
+                      <span className="text-[10px] font-bold text-gray-400 uppercase">Añadir Otro</span>
+                    </div>
+                  </div>
                 </div>
                 
                 <div className="bg-blue-900 rounded-2xl p-6 text-white flex justify-between items-center shadow-xl">
