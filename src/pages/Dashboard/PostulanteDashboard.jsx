@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { 
   TrendingUp, FileText, Briefcase, Bookmark, MessageSquare, 
   MapPin, Phone, Mail, Calendar, DollarSign, Target, Plus, 
@@ -34,6 +34,27 @@ const PostulanteDashboard = () => {
     extra2: null,
     extra3: null
   });
+
+  // Advanced Mouse Tracking for "Genial" Effects
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth springs for tilt
+  const springConfig = { damping: 20, stiffness: 150 };
+  const rotateX = useSpring(useTransform(mouseY, [0, 1], [15, -15]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [0, 1], [-15, 15]), springConfig);
+  
+  // Parallax layers
+  const driftX = useSpring(useTransform(mouseX, [0, 1], [-20, 20]), springConfig);
+  const driftY = useSpring(useTransform(mouseY, [0, 1], [-20, 20]), springConfig);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
 
   const handleFileChange = (slot, e) => {
     const file = e.target.files[0];
@@ -451,157 +472,295 @@ const PostulanteDashboard = () => {
               </div>
             </div>
 
-            {/* Section 6: Documentos - RE-DESIGNED TO BE MORE "PRO" */}
-            <div className="profile-section border-0 shadow-2xl shadow-blue-900/5">
-              <div className="section-content p-8 bg-white">
-                {/* SUCCESS TIPS BAR - NEW INTEGRATION */}
-                <div className="mb-10 p-5 rounded-3xl bg-gradient-to-br from-blue-900 to-blue-700 text-white flex flex-col md:flex-row gap-6 items-center shadow-xl relative overflow-hidden group">
-                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-10 -mt-10 blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
-                   <div className="flex-1">
-                     <h4 className="font-bold text-sm mb-2 flex items-center gap-2">
-                       <Award size={18} className="text-cyan-400" />
-                       ¿Cómo destacar como postulante?
-                     </h4>
-                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                       <div className="flex items-start gap-2 text-[10px] text-blue-100/80">
-                         <Check size={12} className="mt-0.5 text-cyan-400 flex-shrink-0" />
-                         <span>Sé específico en cargo y funciones</span>
-                       </div>
-                       <div className="flex items-start gap-2 text-[10px] text-blue-100/80">
-                         <Check size={12} className="mt-0.5 text-cyan-400 flex-shrink-0" />
-                         <span>Incluye logros concretos</span>
-                       </div>
-                       <div className="flex items-start gap-2 text-[10px] text-blue-100/80">
-                         <Check size={12} className="mt-0.5 text-cyan-400 flex-shrink-0" />
-                         <span>Agrega habilidades técnicas</span>
-                       </div>
-                       <div className="flex items-start gap-2 text-[10px] text-blue-100/80">
-                         <Check size={12} className="mt-0.5 text-cyan-400 flex-shrink-0" />
-                         <span>Mantén información actualizada</span>
-                       </div>
+            {/* Section 6: Documentos - ULTRA-ANIMATED "GENIAL" EDITION */}
+            <motion.div 
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              onMouseMove={handleMouseMove}
+              className="profile-section border-0 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] relative overflow-hidden group/section bg-white rounded-[50px] mb-20"
+            >
+              {/* Organic Animated Background Blobs */}
+              <motion.div 
+                style={{ x: driftX, y: driftY }}
+                className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[120px] pointer-events-none"
+              />
+              <motion.div 
+                style={{ x: useSpring(useTransform(mouseX, [0, 1], [30, -30])), y: useSpring(useTransform(mouseY, [0, 1], [30, -30])) }}
+                className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-cyan-50/30 rounded-full blur-[120px] pointer-events-none"
+              />
+
+              <div className="section-content p-12 relative z-10">
+                {/* SUCCESS TIPS BAR - ULTRA PREMIUM */}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  whileHover={{ y: -8 }}
+                  className="mb-14 p-10 rounded-[45px] bg-[#0f172a] text-white flex flex-col md:flex-row gap-10 items-center shadow-3xl relative overflow-hidden group/tips"
+                >
+                   {/* Magnetic pulse element */}
+                   <motion.div 
+                     animate={{ 
+                       scale: [1, 1.2, 1],
+                       opacity: [0.05, 0.1, 0.05]
+                     }}
+                     transition={{ duration: 8, repeat: Infinity }}
+                     className="absolute inset-0 bg-blue-500 rounded-full blur-[100px] -z-0"
+                   />
+
+                   <div className="flex-1 relative z-10">
+                     <h4 className="font-black text-[10px] uppercase tracking-[0.5em] text-blue-400 mb-8 border-b border-white/5 pb-4">Guía de Éxito Profesional</h4>
+                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-6">
+                       {[
+                         "Sé específico en cargo y funciones",
+                         "Incluye logros cuantificables",
+                         "Habilidades técnicas del sector",
+                         "Actualización constante"
+                       ].map((tip, i) => (
+                         <motion.div 
+                           key={i}
+                           initial={{ opacity: 0, x: -30 }}
+                           whileInView={{ opacity: 1, x: 0 }}
+                           transition={{ delay: 0.4 + (i * 0.15) }}
+                           className="flex items-center gap-5 text-[13px] font-bold text-gray-300 group/item cursor-default"
+                         >
+                           <motion.div 
+                             whileHover={{ scale: 1.3, rotate: 180, backgroundColor: "#2563eb", color: "#fff" }}
+                             className="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-blue-400 text-[11px] font-black border border-white/5 transition-all duration-500"
+                           >
+                             {i+1}
+                           </motion.div>
+                           <span className="group-hover/item:text-white group-hover/item:translate-x-2 transition-all duration-500">{tip}</span>
+                         </motion.div>
+                       ))}
                      </div>
                    </div>
-                   <div className="h-full border-l border-white/10 hidden md:block"></div>
-                   <div className="text-center md:text-left">
-                     <p className="text-[9px] font-bold text-blue-200 uppercase tracking-widest mb-1">Tu perfil es tu carta de presentación</p>
-                     <p className="text-[10px] text-white/70">Un perfil completo aumenta 3x tus chances.</p>
+                   
+                   <div className="h-32 border-l border-white/10 hidden md:block"></div>
+                   
+                   <div className="text-center md:text-left relative z-10 p-6">
+                     <motion.div 
+                       animate={{ 
+                         scale: [1, 1.15, 1],
+                       }} 
+                       transition={{ duration: 3, repeat: Infinity }}
+                       className="text-6xl font-black text-white mb-2 leading-none"
+                     >
+                       3x
+                     </motion.div>
+                     <p className="text-[11px] text-blue-400 font-black uppercase tracking-[0.3em]">Visibilidad IA</p>
                    </div>
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
-                  {/* MAIN CV CARD - EVEN MORE "PRO" */}
-                  <div className="lg:col-span-1 flex flex-col gap-4">
-                    <div className="relative group">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-[35px] blur-sm opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                      <div className="relative border border-blue-50 p-10 rounded-[30px] bg-white shadow-lg flex flex-col items-center text-center transition-all hover:shadow-2xl hover:-translate-y-2">
-                        <div className="w-24 h-24 rounded-3xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6 group-hover:rotate-3 transition-transform">
-                          <FileText size={48} />
-                        </div>
-                        <h4 className="text-xl font-black text-gray-900 mb-1 tracking-tight">Mi Currículum</h4>
-                        <p className="text-[10px] text-blue-500 font-black uppercase tracking-[0.2em] mb-8">Nivel Profesional</p>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-14">
+                  {/* MAIN CV CARD - 3D PARALLAX DEPTH */}
+                  <div style={{ perspective: 1500 }}>
+                    <motion.div 
+                      style={{ rotateX, rotateY }}
+                      className="relative h-full group/cv border border-gray-50 p-14 rounded-[60px] bg-white shadow-2xl flex flex-col items-center text-center transition-all duration-1000 hover:shadow-blue-900/15"
+                    >
+                        <motion.div 
+                          animate={{ 
+                            y: [0, -15, 0],
+                            rotateZ: [0, 8, 0]
+                          }}
+                          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                          className="w-32 h-32 rounded-[40px] bg-blue-600 shadow-[0_30px_60px_-10px_rgba(37,99,235,0.5)] flex items-center justify-center text-white mb-12 relative overflow-hidden"
+                        >
+                          <motion.div 
+                             animate={{ x: [-100, 200] }}
+                             transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                          />
+                          <FileText size={64} strokeWidth={1} />
+                        </motion.div>
                         
-                        {files.cv ? (
-                          <div className="w-full bg-gradient-to-br from-blue-50 to-white p-5 rounded-2xl border border-blue-100 flex items-center gap-4 shadow-inner">
-                            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white text-[10px] font-black shadow-lg shadow-blue-600/30">PDF</div>
-                            <div className="flex-1 text-left overflow-hidden">
-                              <span className="text-[11px] text-blue-900 font-black block truncate">{files.cv}</span>
-                              <span className="text-[9px] text-gray-400">Listo para postular</span>
-                            </div>
-                            <button onClick={() => removeFile('cv')} className="text-red-400 hover:text-red-600 transition-colors p-2 bg-white rounded-lg shadow-sm"><Trash2 size={16} /></button>
-                          </div>
-                        ) : (
-                          <div className="w-full space-y-4">
-                            <input type="file" className="hidden" id="file-cv" onChange={(e) => handleFileChange('cv', e)} />
-                            <label htmlFor="file-cv" className="block w-full py-5 bg-blue-600 text-white rounded-2xl text-[12px] font-black uppercase tracking-widest cursor-pointer hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/40 text-center active:scale-95">
-                              Cargar Currículum
-                            </label>
-                            <div className="flex items-center justify-center gap-1.5 pt-2">
-                              <Shield size={12} className="text-green-500" />
-                              <span className="text-[9px] text-gray-400 font-bold uppercase tracking-tighter">Conexión Segura & Encriptada</span>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* CREAR CV CARD - INTEGRATING THE GUIDE HELP */}
-                    <div className="p-8 rounded-[30px] bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow">
-                      <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-blue-600 mb-4 border border-blue-50">
-                        <Edit2 size={24} />
-                      </div>
-                      <h5 className="text-xs font-black text-gray-800 uppercase tracking-widest mb-3">Diseñador de CV</h5>
-                      <p className="text-[10px] text-gray-500 mb-6 leading-relaxed">¿No tienes un archivo? Nuestra inteligencia te ayuda a redactar un perfil basado en los requerimientos del <strong>Sector Acuícola</strong>.</p>
-                      <button className="w-full py-3 bg-white border-2 border-blue-900 text-blue-900 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-900 hover:text-white transition-all transform active:scale-95 shadow-sm">
-                        Comenzar a Crear
-                      </button>
-                    </div>
+                        <h4 className="text-4xl font-black text-[#0f172a] mb-3 tracking-tighter">Mi CV</h4>
+                        <p className="text-[12px] text-blue-500 font-black uppercase tracking-[0.4em] mb-14 opacity-50">Master Version</p>
+                        
+                        <AnimatePresence mode="wait">
+                          {files.cv ? (
+                            <motion.div 
+                              key="uploaded"
+                              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              exit={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+                              className="w-full bg-[#f8fafc] p-8 rounded-[35px] border border-blue-50 flex items-center gap-6 shadow-inner group/file"
+                            >
+                              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-blue-600 text-sm font-black shadow-sm group-hover/file:bg-blue-600 group-hover/file:text-white group-hover/file:rotate-6 transition-all duration-500">PDF</div>
+                              <div className="flex-1 text-left">
+                                <span className="text-xs text-[#0f172a] font-black block truncate mb-1">{files.cv}</span>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]" />
+                                  <span className="text-[11px] text-green-600 font-extrabold uppercase tracking-tighter">Verificado</span>
+                                </div>
+                              </div>
+                              <button 
+                                onClick={() => removeFile('cv')} 
+                                className="text-gray-300 hover:text-red-500 transition-all p-4 hover:bg-red-50 rounded-2xl"
+                              >
+                                <Trash2 size={24} />
+                              </button>
+                            </motion.div>
+                          ) : (
+                            <motion.div key="upload" className="w-full">
+                              <input type="file" className="hidden" id="file-cv" onChange={(e) => handleFileChange('cv', e)} />
+                              <motion.label 
+                                htmlFor="file-cv" 
+                                whileHover={{ scale: 1.05, backgroundColor: "#2563eb" }}
+                                whileTap={{ scale: 0.95 }}
+                                className="block w-full py-7 bg-[#0f172a] text-white rounded-[35px] text-[14px] font-black uppercase tracking-[0.25em] cursor-pointer shadow-3xl shadow-blue-900/40 text-center transition-all duration-500"
+                              >
+                                Cargar Ahora
+                              </motion.label>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                    </motion.div>
                   </div>
 
-                  {/* SECONDARY DOCUMENTS GRID */}
-                  <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {[
-                      { id: 'extra1', label: 'Títulos & Certificados', subtitle: 'Validación académica oficial', icon: Award },
-                      { id: 'extra2', label: 'Cursos & Licencias', subtitle: 'Capacitaciones técnicas', icon: Shield },
-                      { id: 'extra3', label: 'Antecedentes', subtitle: 'Documentación legal', icon: Check }
-                    ].map((doc) => (
-                      <div key={doc.id} className="p-8 rounded-[30px] border border-gray-100 bg-white hover:border-blue-300 hover:shadow-2xl transition-all flex flex-col gap-6 group relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-blue-50/20 rounded-bl-[40px] group-hover:w-full group-hover:h-full group-hover:rounded-none transition-all duration-500 -z-0"></div>
-                        <div className="relative z-10 flex items-center gap-5">
-                          <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-blue-600 group-hover:text-white transition-all transform group-hover:rotate-6 shadow-sm">
-                            <doc.icon size={26} />
-                          </div>
-                          <div>
-                            <h5 className="text-sm font-black text-gray-900 uppercase tracking-tight">{doc.label}</h5>
-                            <p className="text-[11px] text-gray-400 font-medium">{doc.subtitle}</p>
-                          </div>
+                  {/* GENERADOR PRO CARD - THE "GENIAL" BRAIN */}
+                  <div style={{ perspective: 1500 }}>
+                    <motion.div 
+                      style={{ rotateX, rotateY }}
+                      className="p-14 h-full rounded-[60px] bg-gradient-to-br from-blue-700 to-[#1e293b] text-white flex flex-col items-center justify-center text-center shadow-4xl shadow-blue-900/50 group relative overflow-hidden"
+                    >
+                      {/* Animated Glow Element */}
+                      <motion.div 
+                        animate={{ 
+                          scale: [1, 1.5, 1],
+                          opacity: [0.3, 0.6, 0.3]
+                        }}
+                        transition={{ duration: 10, repeat: Infinity }}
+                        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#22d3ee_0%,transparent_70%)] opacity-30 pointer-events-none"
+                      />
+                      
+                      <motion.div
+                        animate={{ 
+                          scale: [1, 1.1, 1],
+                          y: [0, -20, 0]
+                        }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                        className="relative z-10"
+                      >
+                        <div className="w-32 h-32 rounded-[45px] bg-white/10 backdrop-blur-2xl border border-white/20 flex items-center justify-center mb-12 shadow-3xl">
+                          <motion.div
+                            animate={{ rotateY: [0, 360] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                          >
+                            <Edit2 size={64} className="text-cyan-400" />
+                          </motion.div>
                         </div>
+                      </motion.div>
 
-                        {files[doc.id] ? (
-                          <div className="relative z-10 flex items-center gap-4 bg-blue-50 p-4 rounded-2xl border border-blue-100 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-300">
-                            <CheckCircle size={14} className="text-blue-600" />
-                            <span className="text-[10px] text-blue-900 font-black truncate flex-1">{files[doc.id]}</span>
-                            <button onClick={() => removeFile(doc.id)} className="text-red-400 hover:text-red-600 transition-colors p-2 bg-white rounded-lg"><X size={18} /></button>
-                          </div>
-                        ) : (
-                          <div className="relative z-10 mt-auto">
-                            <input type="file" className="hidden" id={`file-${doc.id}`} onChange={(e) => handleFileChange(doc.id, e)} />
-                            <label htmlFor={`file-${doc.id}`} className="block w-full py-4 bg-gray-50 text-gray-400 rounded-2xl text-[10px] font-black text-center cursor-pointer hover:bg-blue-600 hover:text-white transition-all uppercase tracking-widest border border-gray-100 group-hover:border-transparent">
-                              Subir Documento
-                            </label>
-                          </div>
-                        )}
-                      </div>
+                      <h5 className="text-[13px] font-black uppercase tracking-[0.5em] mb-6 relative z-10 text-cyan-400">Genial AI Builder</h5>
+                      <p className="text-[14px] text-blue-100/80 mb-14 leading-relaxed relative z-10 px-6 font-bold tracking-tight">
+                        Nuestro motor inteligente redactará tu perfil profesional en base a estándares <span className="text-white border-b-2 border-cyan-400">Acuícolas Globales</span>.
+                      </p>
+                      
+                      <motion.button 
+                        whileHover={{ 
+                          scale: 1.05,
+                          y: -5,
+                          boxShadow: "0 25px 50px rgba(34, 211, 238, 0.5)"
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-full py-7 bg-white text-[#0f172a] rounded-[35px] text-[13px] font-black uppercase tracking-[0.3em] shadow-2xl transition-all duration-700 relative z-10"
+                      >
+                        Comenzar Flujo AI
+                      </motion.button>
+                    </motion.div>
+                  </div>
+
+                  {/* SECONDARY DOCUMENTS - HIGH END LIST */}
+                  <div className="flex flex-col gap-6 justify-between">
+                    {[
+                      { id: 'extra1', label: 'Títulos & Grados', icon: Award },
+                      { id: 'extra2', label: 'Capacitaciones OS8', icon: Shield },
+                      { id: 'extra3', label: 'Antecedentes Penales', icon: Check }
+                    ].map((doc, idx) => (
+                      <motion.div 
+                        key={doc.id}
+                        initial={{ opacity: 0, x: 50, rotateX: 45 }}
+                        whileInView={{ opacity: 1, x: 0, rotateX: 0 }}
+                        transition={{ delay: 0.3 + (0.15 * idx), type: "spring", stiffness: 100 }}
+                        whileHover={{ x: -15, scale: 1.05, z: 20 }}
+                        className="p-7 rounded-[40px] border border-gray-100 bg-white shadow-2xl hover:shadow-blue-900/10 hover:border-blue-200 transition-all flex items-center gap-7 group cursor-pointer relative"
+                      >
+                        <div className="w-16 h-16 rounded-3xl bg-[#f8fafc] flex items-center justify-center text-gray-400 group-hover:bg-blue-600 group-hover:text-white group-hover:rotate-12 transition-all duration-700 shadow-sm border border-gray-50">
+                          <doc.icon size={32} />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="text-[12px] font-black text-[#0f172a] uppercase tracking-widest mb-1.5">{doc.label}</h5>
+                          {files[doc.id] ? (
+                            <motion.span 
+                              initial={{ opacity: 0 }} 
+                              animate={{ opacity: 1 }}
+                              className="text-[12px] text-blue-600 font-extrabold truncate block max-w-[160px]"
+                            >
+                              {files[doc.id]}
+                            </motion.span>
+                          ) : (
+                            <span className="text-[11px] text-gray-300 font-extrabold tracking-tighter italic">Ready for upload</span>
+                          )}
+                        </div>
+                        <input type="file" className="hidden" id={`file-${doc.id}`} onChange={(e) => handleFileChange(doc.id, e)} />
+                        <label htmlFor={`file-${doc.id}`} className="w-12 h-12 flex items-center justify-center cursor-pointer text-gray-200 hover:text-blue-600 transition-colors">
+                          <Plus size={32} />
+                        </label>
+                      </motion.div>
                     ))}
-                    
-                    {/* Placeholder for more */}
-                    <div className="p-8 rounded-[30px] border-4 border-dotted border-gray-100 flex flex-col items-center justify-center text-center opacity-30 hover:opacity-100 transition-opacity cursor-pointer group hover:border-blue-400 bg-gray-50/30">
-                      <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-gray-300 group-hover:text-blue-400 mb-3 transition-colors">
-                        <Plus size={32} />
-                      </div>
-                      <span className="text-[11px] font-black text-gray-400 uppercase tracking-widest group-hover:text-blue-500 transition-colors">Digitalizar Otro</span>
-                    </div>
                   </div>
                 </div>
                 
-                <div className="bg-blue-900 rounded-2xl p-6 text-white flex justify-between items-center shadow-xl">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
-                      <TrendingUp size={24} className="text-cyan-400" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold">Índice de completitud</h4>
-                      <p className="text-xs text-white/60">¡Casi listo! Solo faltan las referencias para llegar al 100%.</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-3xl font-black text-cyan-400">85%</div>
-                    <div className="w-32 h-1.5 bg-white/10 rounded-full mt-2 overflow-hidden">
-                      <div className="w-[85%] h-full bg-gradient-to-r from-cyan-400 to-blue-400"></div>
-                    </div>
-                  </div>
-                </div>
+                {/* COMPLETION ANALYTICS - ULTRA ANIMATED */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  className="mt-20 border-t border-gray-100 pt-20 flex flex-col md:flex-row justify-between items-center relative overflow-hidden group/analytics"
+                >
+                   <div className="flex items-center gap-10 relative z-10 mb-10 md:mb-0">
+                      <motion.div 
+                        animate={{ 
+                          rotate: 360,
+                        }}
+                        transition={{ 
+                          rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                        }}
+                        className="w-20 h-20 bg-blue-600 rounded-[28px] flex items-center justify-center shadow-2xl relative"
+                      >
+                        <TrendingUp size={40} className="text-white relative z-10" />
+                      </motion.div>
+                      <div>
+                        <h4 className="font-black text-[11px] uppercase tracking-[0.6em] text-blue-400 mb-4">Elite Ranking Potential</h4>
+                        <p className="text-[18px] text-[#0f172a] font-black leading-tight">Tu perfil está al <span className="text-blue-600 text-2xl font-black">85%</span>.<br/><span className="text-[12px] text-gray-400 font-bold uppercase tracking-widest">Un paso de la certificación máxima.</span></p>
+                      </div>
+                   </div>
+
+                   <div className="flex flex-col items-end gap-5 w-full md:w-auto relative z-10 px-4">
+                      <div className="flex items-baseline gap-3">
+                        <span className="text-6xl font-black text-[#0f172a] tracking-tighter">85</span>
+                        <span className="text-2xl font-black text-blue-500 tracking-widest">%</span>
+                      </div>
+                      <div className="w-full md:w-80 h-4 bg-gray-100 rounded-full overflow-hidden border border-gray-200 p-[2px] shadow-inner">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: '85%' }}
+                          transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
+                          className="h-full bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-600 bg-[length:200%_100%] rounded-full relative" 
+                        >
+                           <motion.div
+                             animate={{ x: ['100%', '-100%'] }}
+                             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
+                           />
+                        </motion.div>
+                      </div>
+                   </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Placeholder Sections */}
             <div id="guardadas" className="profile-section mb-10 scroll-mt-24">
