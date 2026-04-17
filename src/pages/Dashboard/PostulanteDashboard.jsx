@@ -13,6 +13,7 @@ import './ProfileSections.css';
 const SIDEBAR_ITEMS = [
   { label: 'Mi Resumen', path: '#resumen', icon: TrendingUp },
   { label: 'Mi Perfil & CV', path: '#perfil', icon: FileText },
+  { label: 'Test y habilidades', path: '#habilidades', icon: Target },
   { label: 'Mis Postulaciones', path: '#postulaciones', icon: Briefcase },
   { label: 'Ofertas Guardadas', path: '#guardadas', icon: Bookmark },
   { label: 'Mensajes', path: '#mensajes', icon: MessageSquare },
@@ -95,52 +96,152 @@ const PostulanteDashboard = () => {
               <p className="text-gray-600">Aquí puedes gestionar tus postulaciones y mantener tu perfil profesional actualizado.</p>
             </div>
 
-            {/* Section: Mis Postulaciones */}
-            <div id="postulaciones" className="profile-section mb-10 scroll-mt-24">
-              <div className="section-header flex justify-between items-center">
+            {/* Section: Habilidades & Competencias - THE "GENIAL" SKILLS HUB */}
+            <div id="habilidades" className="mb-20 scroll-mt-24">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+              >
+                {/* Technical Skills Card */}
+                <motion.div 
+                  whileHover={{ y: -10 }}
+                  className="p-10 rounded-[50px] bg-white shadow-3xl border border-gray-50 relative overflow-hidden group/skills"
+                >
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-center mb-10">
+                      <div>
+                        <h4 className="text-2xl font-black text-[#0f172a] mb-1">Habilidades Técnicas</h4>
+                        <p className="text-[11px] text-blue-500 font-black uppercase tracking-[0.3em] opacity-60">Hard Skills Architecture</p>
+                      </div>
+                      <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
+                        <Award size={24} />
+                      </div>
+                    </div>
+
+                    <div className="space-y-8">
+                      {[
+                        { name: "Gestión de Biomasa", level: 90 },
+                        { name: "Sistemas de Recirculación (RAS)", level: 75 },
+                        { name: "Análisis de Datos Acuícolas", level: 85 },
+                        { name: "Protocolos de Seguridad Marítima", level: 95 }
+                      ].map((skill, i) => (
+                        <div key={i} className="space-y-3">
+                          <div className="flex justify-between items-end">
+                            <span className="text-sm font-bold text-[#1e293b]">{skill.name}</span>
+                            <span className="text-[12px] font-black text-blue-600">{skill.level}%</span>
+                          </div>
+                          <div className="w-full h-2 bg-gray-50 rounded-full overflow-hidden p-[1px] border border-gray-100">
+                            <motion.div 
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${skill.level}%` }}
+                              transition={{ duration: 1.5, delay: i * 0.1, ease: "circOut" }}
+                              className="h-full bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Cognitive & Soft Skills */}
+                <div className="grid grid-cols-1 gap-12">
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    className="p-10 rounded-[50px] bg-[#0f172a] text-white shadow-4xl relative overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent pointer-events-none" />
+                    <div className="relative z-10">
+                      <h4 className="text-xl font-black mb-6 flex items-center gap-3">
+                        <div className="w-1 h-6 bg-blue-500 rounded-full" />
+                        Soft Skills
+                      </h4>
+                      <div className="flex flex-wrap gap-4">
+                        {["Liderazgo", "Resolución Crítica", "Trabajo en Altamar", "Inteligencia Emocional", "Adaptabilidad"].map((tag, i) => (
+                          <motion.span 
+                            key={tag}
+                            initial={{ opacity: 0, scale: 0 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: i * 0.1 }}
+                            whileHover={{ scale: 1.1, backgroundColor: "#2563eb", color: "#fff" }}
+                            className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-[11px] font-black uppercase tracking-widest cursor-default transition-colors duration-500"
+                          >
+                            {tag}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    whileHover={{ y: -5 }}
+                    className="p-10 rounded-[50px] bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-3xl flex items-center justify-between group cursor-pointer"
+                  >
+                    <div className="max-w-[60%]">
+                      <h4 className="text-2xl font-black mb-2">Test de Competencias</h4>
+                      <p className="text-[12px] opacity-80 font-medium italic">"Valida tus conocimientos técnicos y obtén el sello de certificación EmpleosAqua."</p>
+                    </div>
+                    <motion.div 
+                      whileHover={{ rotate: 15, scale: 1.1 }}
+                      className="w-20 h-20 bg-white/20 backdrop-blur-xl rounded-[30px] flex items-center justify-center border border-white/20"
+                    >
+                      <Plus size={40} />
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Section: Mis Postulaciones - HISTORICAL PERSISTENCE */}
+            <div id="postulaciones" className="profile-section mb-14 scroll-mt-24">
+              <div className="section-header flex justify-between items-center bg-gray-50/50 p-6 rounded-t-3xl border-b border-gray-100">
                 <h2 className="section-title">Mis Postulaciones</h2>
-                <span className="text-xs text-gray-400 font-medium">Histórico completo</span>
+                <span className="text-[10px] text-blue-500 font-bold uppercase tracking-widest">Histórico Completo</span>
               </div>
               <div className="section-content p-0">
                 <div className="overflow-x-auto">
                   <table className="dash-table w-full">
                     <thead>
                       <tr>
-                        <th className="px-6 py-4">Oferta de empleo</th>
-                        <th className="px-6 py-4">Empresa</th>
-                        <th className="px-6 py-4">Fecha</th>
-                        <th className="px-6 py-4">Estado de la postulación</th>
-                        <th className="px-6 py-4 text-center">Acción</th>
+                        <th className="px-8 py-5 text-left text-[11px] font-black uppercase tracking-widest text-gray-400">Oferta</th>
+                        <th className="px-8 py-5 text-left text-[11px] font-black uppercase tracking-widest text-gray-400">Empresa</th>
+                        <th className="px-8 py-5 text-left text-[11px] font-black uppercase tracking-widest text-gray-400">Fecha</th>
+                        <th className="px-8 py-5 text-left text-[11px] font-black uppercase tracking-widest text-gray-400">Estado / Gestión</th>
+                        <th className="px-8 py-5 text-center text-[11px] font-black uppercase tracking-widest text-gray-400">Acción</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="divide-y divide-gray-50">
                       <AnimatePresence>
                         {applications.map((app) => {
                           const status = getStatusBadge(app.status);
                           return (
                             <motion.tr 
                               key={app.id}
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0, x: -20 }}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, x: -30 }}
+                              className="group/row hover:bg-blue-50/30 transition-colors"
                             >
-                              <td className="px-6 py-4 font-bold text-blue-900">{app.role}</td>
-                              <td className="px-6 py-4">{app.company}</td>
-                              <td className="px-6 py-4">{app.date}</td>
-                              <td className="px-6 py-4">
-                                <span className={`badge-status ${status.color} block mb-1 w-fit`}>
+                              <td className="px-8 py-6 font-black text-[#0f172a] text-sm">{app.role}</td>
+                              <td className="px-8 py-6 text-sm text-gray-600 font-medium">{app.company}</td>
+                              <td className="px-8 py-6 text-[12px] text-gray-400 font-bold">{app.date}</td>
+                              <td className="px-8 py-6">
+                                <span className={`badge-status ${status.color} mb-2 inline-block shadow-sm`}>
                                   {status.label}
                                 </span>
-                                <span className="text-[10px] text-gray-400 font-medium italic">{app.message}</span>
+                                <p className="text-[10px] text-gray-400 font-bold italic block">{app.message}</p>
                               </td>
-                              <td className="px-6 py-4 text-center">
-                                <button 
+                              <td className="px-8 py-6 text-center">
+                                <motion.button 
+                                  whileHover={{ scale: 1.2, color: '#ef4444' }}
                                   onClick={() => removeApplication(app.id)}
-                                  className="text-gray-300 hover:text-red-500 transition-colors p-2"
+                                  className="text-gray-200 p-2"
                                   title="Eliminar del histórico"
                                 >
-                                  <X size={18} />
-                                </button>
+                                  <Trash2 size={20} />
+                                </motion.button>
                               </td>
                             </motion.tr>
                           );

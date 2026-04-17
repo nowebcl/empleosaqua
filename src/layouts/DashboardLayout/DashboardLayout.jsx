@@ -103,62 +103,64 @@ const DashboardLayout = ({ children, role, sidebarItems }) => {
                 <Link to="#favoritos" className="dash-nav-link">Mis Favoritos</Link>
                 <Link to="#ver-cv" className="dash-nav-link">Ver mi CV</Link>
                 <Link to="#test" className="dash-nav-link">Test y habilidades</Link>
-                <div className="flex items-center gap-2 ml-4">
-                  <div className="relative">
-                    <button 
-                      className="topbar-icon-btn minimal-bell"
-                      onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
-                    >
-                      <Bell size={18} />
-                    </button>
-                    
-                    <AnimatePresence>
-                      {isNotificationsOpen && (
-                        <motion.div 
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          className="notifications-popover"
+                    <div className="flex items-center gap-3">
+                      {/* Minimalist Notification Bell Emoji */}
+                      <div className="relative">
+                        <button 
+                          className="text-lg hover:scale-110 transition-transform cursor-pointer"
+                          onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
+                          title="Notificaciones"
                         >
-                          <p className="text-[11px] font-medium text-gray-500 text-center py-2">No tienes notificaciones</p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  <div className="user-dropdown-container relative border-l pl-4 border-gray-100">
-                    <button 
-                      className="user-dropdown-trigger"
-                      onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    >
-                      <span>Frainibel Sanchez</span>
-                      <ChevronDown size={14} className={`ml-1 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} />
-                    </button>
-
-                  <AnimatePresence>
-                    {isUserMenuOpen && (
-                      <motion.div 
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        className="user-menu-dropdown"
-                      >
-                        <div className="dropdown-header border-b border-gray-100 pb-2 mb-2">
-                          <p className="text-xs font-bold text-gray-400">CUENTA</p>
-                        </div>
-                        <button className="dropdown-item">
-                          <UserCircle size={16} />
-                          <span>Modificar perfil</span>
+                          🔔
                         </button>
-                        <button className="dropdown-item text-danger" onClick={handleLogout}>
-                          <LogOut size={16} />
-                          <span>Cerrar Sesión</span>
+                        
+                        <AnimatePresence>
+                          {isNotificationsOpen && (
+                            <motion.div 
+                              initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                              animate={{ opacity: 1, scale: 1, y: 0 }}
+                              exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                              className="absolute top-full right-0 mt-4 w-48 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 z-50"
+                            >
+                              <p className="text-[11px] font-black text-gray-400 uppercase tracking-widest text-center">No tienes notificaciones</p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+
+                      <div className="user-dropdown-container relative border-l pl-3 border-gray-100">
+                        <button 
+                          className="user-dropdown-trigger flex items-center gap-2 group"
+                          onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                        >
+                          <span className="font-bold text-[#0f172a] group-hover:text-blue-600 transition-colors">Frainibel Sanchez</span>
+                          <ChevronDown size={14} className={`text-gray-400 transition-transform duration-300 ${isUserMenuOpen ? 'rotate-180' : ''}`} />
                         </button>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                  </div>
-                </div>
+
+                        <AnimatePresence>
+                          {isUserMenuOpen && (
+                            <motion.div 
+                              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                              className="user-menu-dropdown"
+                            >
+                              <div className="dropdown-header border-b border-gray-100 pb-2 mb-2">
+                                <p className="text-[10px] font-black text-gray-300 uppercase tracking-[0.2em]">Opciones</p>
+                              </div>
+                              <button className="dropdown-item group">
+                                <UserCircle size={16} className="group-hover:text-blue-600" />
+                                <span>Modificar perfil</span>
+                              </button>
+                              <button className="dropdown-item text-danger group" onClick={handleLogout}>
+                                <LogOut size={16} className="group-hover:scale-110" />
+                                <span>Cerrar Sesión</span>
+                              </button>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    </div>
               </div>
             ) : (
               <>
