@@ -191,37 +191,29 @@ const PostulanteDashboard = () => {
                     </div>
 
                     {/* Mobility / Availability */}
-                    <div className="form-group-full border-t border-gray-50 pt-4 mt-2">
-                      <label className="form-label mb-4 text-gray-800 font-bold uppercase tracking-wider text-[10px]">Movilidad y Disponibilidad</label>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                        <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                          <span className="text-xs font-medium">¿Tengo disponibilidad?</span>
-                          <div className="flex gap-3">
-                            <label className="flex items-center gap-1 text-[11px]"><input type="radio" name="disp" defaultChecked /> Sí</label>
-                            <label className="flex items-center gap-1 text-[11px]"><input type="radio" name="disp" /> No</label>
+                    <div className="form-group-full border-t border-gray-100 pt-6 mt-4">
+                      <label className="form-label mb-4 text-primary font-bold text-[11px] tracking-widest">MOVILIDAD Y DISPONIBILIDAD</label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {[
+                          { id: 'disp', label: '¿Tengo disponibilidad?' },
+                          { id: 'res', label: 'Cambio de residencia' },
+                          { id: 'lic', label: 'Licencia de conducir' },
+                          { id: 'veh', label: 'Vehículo propio' }
+                        ].map((item, idx) => (
+                          <div key={item.id} className="availability-card p-3 rounded-xl border border-gray-100 bg-white shadow-sm flex flex-col gap-3">
+                            <span className="text-[10px] font-bold text-gray-500 uppercase leading-tight h-8 flex items-center">{item.label}</span>
+                            <div className="flex gap-2">
+                              <label className="availability-option flex-1">
+                                <input type="radio" name={item.id} defaultChecked={idx % 2 === 0} className="hidden-radio" />
+                                <span className="option-pill">Sí</span>
+                              </label>
+                              <label className="availability-option flex-1">
+                                <input type="radio" name={item.id} defaultChecked={idx % 2 !== 0} className="hidden-radio" />
+                                <span className="option-pill">No</span>
+                              </label>
+                            </div>
                           </div>
-                        </div>
-                        <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                          <span className="text-xs font-medium">Disponibilidad para cambio de residencia</span>
-                          <div className="flex gap-3">
-                            <label className="flex items-center gap-1 text-[11px]"><input type="radio" name="res" /> Sí</label>
-                            <label className="flex items-center gap-1 text-[11px]"><input type="radio" name="res" defaultChecked /> No</label>
-                          </div>
-                        </div>
-                        <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                          <span className="text-xs font-medium">Licencia de conducir</span>
-                          <div className="flex gap-3">
-                            <label className="flex items-center gap-1 text-[11px]"><input type="radio" name="lic" defaultChecked /> Sí</label>
-                            <label className="flex items-center gap-1 text-[11px]"><input type="radio" name="lic" /> No</label>
-                          </div>
-                        </div>
-                        <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                          <span className="text-xs font-medium">Vehículo propio</span>
-                          <div className="flex gap-3">
-                            <label className="flex items-center gap-1 text-[11px]"><input type="radio" name="veh" defaultChecked /> Sí</label>
-                            <label className="flex items-center gap-1 text-[11px]"><input type="radio" name="veh" /> No</label>
-                          </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
                   </div>
