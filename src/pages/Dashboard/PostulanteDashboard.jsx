@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Briefcase, FileText, Bookmark, MessageSquare, 
-  MapPin, Clock, ArrowRight, CheckCircle, TrendingUp,
-  User, Camera, Plus, Calendar, X, Edit2, Download, Trash2,
-  Linkedin, Facebook, Instagram, Twitter, HelpCircle
+  TrendingUp, FileText, Briefcase, Bookmark, MessageSquare, 
+  MapPin, Phone, Mail, Calendar, DollarSign, Target, Plus, 
+  Trash2, Download, CheckCircle, Info, Edit2, X, HelpCircle, 
+  Linkedin, Facebook, Instagram, Twitter, ExternalLink, Globe,
+  Shield, Check, User, Award, BookOpen
 } from 'lucide-react';
 import DashboardLayout from '../../layouts/DashboardLayout/DashboardLayout';
 import './ProfileSections.css';
@@ -26,7 +27,25 @@ const INITIAL_APPLICATIONS = [
 
 const PostulanteDashboard = () => {
   const [applications, setApplications] = useState(INITIAL_APPLICATIONS);
-  
+  const [activeTab, setActiveTab] = useState('profile');
+  const [files, setFiles] = useState({
+    cv: 'cv_frainibel_sanchez_2026.pdf',
+    extra1: null,
+    extra2: null,
+    extra3: null
+  });
+
+  const handleFileChange = (slot, e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFiles(prev => ({ ...prev, [slot]: file.name }));
+    }
+  };
+
+  const removeFile = (slot) => {
+    setFiles(prev => ({ ...prev, [slot]: null }));
+  };
+
   const removeApplication = (id) => {
     setApplications(applications.filter(app => app.id !== id));
   };
@@ -451,27 +470,37 @@ const PostulanteDashboard = () => {
               <div className="section-content p-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   {[
-                    { label: 'Currículum Vitae (*)', icon: FileText },
-                    { label: 'Certificado de Título', icon: Plus },
-                    { label: 'Certificado de Antecedentes', icon: Plus },
-                    { label: 'Documento Adicional 1', icon: Plus },
-                  ].map((doc, i) => (
-                    <div key={i} className="border-2 border-dashed border-gray-100 p-6 rounded-2xl hover:border-blue-200 transition-colors bg-gray-50/50 flex flex-col items-center text-center group">
+                    { id: 'cv', label: 'Mi CV (Principal)', icon: FileText },
+                    { id: 'extra1', label: 'Certificados', icon: Award },
+                    { id: 'extra2', label: 'Cursos/Capacitaciones', icon: Shield },
+                    { id: 'extra3', label: 'Otros Documentos', icon: Check }
+                  ].map((doc) => (
+                    <div key={doc.id} className="border-2 border-dashed border-gray-100 p-6 rounded-2xl hover:border-blue-200 transition-colors bg-gray-50/50 flex flex-col items-center text-center group">
                       <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-blue-500 mb-3 group-hover:scale-110 transition-transform">
                         <doc.icon size={20} />
                       </div>
                       <span className="text-xs font-bold text-gray-700 mb-4">{doc.label}</span>
                       
-                      {i === 0 ? (
-                        <div className="flex items-center gap-4 w-full">
-                          <span className="text-[10px] text-blue-600 font-medium truncate flex-1">cv_frainibel_sanchez_2026.pdf</span>
-                          <button className="text-red-400 hover:text-red-600 p-1"><X size={16} /></button>
+                      {files[doc.id] ? (
+                        <div className="flex items-center gap-4 w-full bg-white p-2 rounded-lg border border-blue-50 shadow-sm">
+                          <span className="text-[10px] text-blue-600 font-bold truncate flex-1">{files[doc.id]}</span>
+                          <button 
+                            onClick={() => removeFile(doc.id)}
+                            className="text-red-400 hover:text-red-600 p-1 transition-colors"
+                          >
+                            <Trash2 size={14} />
+                          </button>
                         </div>
                       ) : (
                         <div className="flex flex-col items-center gap-2">
-                          <input type="file" className="hidden" id={`file-${i}`} />
-                          <label htmlFor={`file-${i}`} className="text-[10px] font-black text-blue-500 border-2 border-blue-500 px-4 py-1.5 rounded-full cursor-pointer hover:bg-blue-500 hover:text-white transition-all">
-                            SELECCIONAR ARCHIVO
+                          <input 
+                            type="file" 
+                            className="hidden" 
+                            id={`file-${doc.id}`} 
+                            onChange={(e) => handleFileChange(doc.id, e)}
+                          />
+                          <label htmlFor={`file-${doc.id}`} className="text-[10px] font-black text-blue-500 border-2 border-blue-500 px-4 py-1.5 rounded-full cursor-pointer hover:bg-blue-500 hover:text-white transition-all uppercase tracking-tighter">
+                            Seleccionar Archivo
                           </label>
                         </div>
                       )}
@@ -524,34 +553,72 @@ const PostulanteDashboard = () => {
 
         {/* Right Help Sidebar */}
         <aside className="profile-help-sidebar desktop-only">
-          <div className="sticky top-24">
-            <div className="help-card bg-amber-50 border border-amber-100 rounded-2xl p-6 mb-6">
-              <div className="flex items-center gap-2 text-amber-700 mb-4">
-                <HelpCircle size={20} />
-                <h4 className="font-bold text-sm">Consejos para tu CV</h4>
+          <div className="profile-help-sidebar flex flex-col gap-6 sticky top-[90px] h-[calc(100vh-120px)] overflow-y-auto pr-2 custom-scrollbar">
+            <div className="help-card bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+              <div className="bg-gradient-to-r from-blue-900 to-blue-800 p-4 text-white">
+                <div className="flex items-center gap-2 mb-1">
+                  <BookOpen size={16} />
+                  <h4 className="font-bold text-xs uppercase tracking-wider">Acceso Postulante</h4>
+                </div>
+                <h3 className="text-sm font-bold">Plantilla de Perfil Laboral</h3>
               </div>
-              <ul className="text-xs text-amber-800/80 space-y-4">
-                <li className="flex gap-3">
-                  <span className="font-bold text-amber-500">01</span>
-                  <span><strong>Sé específico</strong> en tus funciones del cargo. Usa verbos de acción como "Lideré", "Coordiné", "Gestioné".</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="font-bold text-amber-500">02</span>
-                  <span><strong>Mantén tus datos actualizados</strong>. Las empresas priorizan los perfiles que han registrado actividad reciente.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="font-bold text-amber-500">03</span>
-                  <span><strong>Referencias locales</strong>: En el sector acuícola, las recomendaciones directas son muy valoradas.</span>
-                </li>
-              </ul>
+              
+              <div className="p-4 space-y-6">
+                <div>
+                  <p className="text-[11px] text-gray-600 leading-relaxed mb-3">
+                    Completar tu perfil de manera estratégica en <strong>EmpleosAqua</strong> es clave para aumentar tus oportunidades en sectores técnicos y acuícolas.
+                  </p>
+                  <div className="bg-blue-50 p-3 rounded-lg">
+                    <h5 className="text-[10px] font-bold text-blue-900 mb-2">💎 ¿POR QUÉ ES IMPORTANTE?</h5>
+                    <ul className="text-[10px] text-blue-800/80 space-y-1">
+                      <li>• Las empresas usan filtros y palabras clave.</li>
+                      <li>• Un perfil completo genera mayor confianza.</li>
+                      <li>• Mejora tu posicionamiento en búsquedas.</li>
+                      <li>• Aumenta probabilidades de contacto directo.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div>
+                  <h5 className="text-[10px] font-bold text-gray-800 mb-2">🚀 ¿CÓMO DESTACAR?</h5>
+                  <ul className="text-[10px] text-gray-600 space-y-2">
+                    <li className="flex gap-2"><span>✔</span> <span>Sé específico en cargo y funciones reales.</span></li>
+                    <li className="flex gap-2"><span>✔</span> <span>Incluye logros concretos, no solo tareas.</span></li>
+                    <li className="flex gap-2"><span>✔</span> <span>Agrega habilidades técnicas relevantes.</span></li>
+                    <li className="flex gap-2"><span>✔</span> <span>Mantén tu información actualizada.</span></li>
+                  </ul>
+                </div>
+
+                <div className="border-t border-gray-50 pt-4 space-y-4">
+                  <div>
+                    <h5 className="text-[10px] font-bold text-gray-400 mb-2 flex items-center gap-1">
+                      <div className="w-2 h-2 rounded-full bg-blue-500"></div> 1. DATOS PERSONALES
+                    </h5>
+                    <div className="space-y-2 text-[10px]">
+                      <p><strong>Nombres:</strong> Usa tu nombre real y completo.</p>
+                      <p><strong>Dirección:</strong> Clave en la industria. La cercanía a plantas es valorada.</p>
+                      <p><strong>Comuna/Ciudad:</strong> Ayuda a filtrar por zona.</p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h5 className="text-[10px] font-bold text-gray-400 mb-2 flex items-center gap-1">
+                      <div className="w-2 h-2 rounded-full bg-blue-500"></div> 2. EXPERIENCIA LABORAL
+                    </h5>
+                    <div className="space-y-2 text-[10px]">
+                      <p><strong>Empresa:</strong> Indica si fue del sector acuícola.</p>
+                      <p><strong>Desde/Hasta:</strong> Si sigues ahí, marca <strong>"Actual"</strong>.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="help-card bg-blue-50 border border-blue-100 rounded-2xl p-6">
-               <h4 className="font-bold text-blue-900 text-sm mb-2">Visibilidad del Perfil</h4>
-               <p className="text-[10px] text-blue-800/70 mb-4 leading-relaxed">Tu perfil es visible para todas las empresas de la plataforma AquaCorp.</p>
-               <button className="w-full py-2 bg-blue-900 text-white rounded-xl text-xs font-bold hover:bg-blue-800 transition-colors">
-                 Vista Previa Pública
-               </button>
+            <div className="help-card bg-amber-50 border border-amber-100 rounded-2xl p-4">
+               <h4 className="font-bold text-amber-900 text-[10px] mb-2">💡 ÚLTIMA RECOMENDACIÓN</h4>
+               <p className="text-[10px] text-amber-800/80 leading-relaxed">
+                 Usa verbos de acción: <em>Coordiné, supervisé, implementé, gestioné, optimicé.</em>
+               </p>
             </div>
           </div>
         </aside>
