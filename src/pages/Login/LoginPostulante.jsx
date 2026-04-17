@@ -18,10 +18,10 @@ const LoginPostulante = () => {
 
     setTimeout(() => {
       setIsLoading(false);
-      if (email.toLowerCase() === 'user' && password === 'pass123') {
+      if (email.toLowerCase() === 'usuario@aqua.cl' && password === 'password123') {
         navigate('/dashboard/postulante');
       } else {
-        setErrorMsg('Credenciales incorrectas. (Pista: usa "user" / "pass123")');
+        setErrorMsg('Credenciales incorrectas. (Pista: usa "usuario@aqua.cl" / "password123")');
       }
     }, 1200);
   };
@@ -40,7 +40,7 @@ const LoginPostulante = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <h1 className="login-left-title">Las mejores oportunidades laborales están aquí.</h1>
+            <h1 className="login-left-title">Las mejores oportunidades laborales están aquí</h1>
             <p className="login-left-text">
               Accede a las vacantes de las empresas más importantes del rubro acuícola y otros sectores productivos del sur de Chile.
             </p>
@@ -94,7 +94,7 @@ const LoginPostulante = () => {
                   <input 
                     type="text" 
                     className="form-input" 
-                    placeholder="user" 
+                    placeholder="usuario@aqua.cl" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required 

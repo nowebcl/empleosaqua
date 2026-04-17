@@ -18,10 +18,10 @@ const LoginEmpresa = () => {
 
     setTimeout(() => {
       setIsLoading(false);
-      if (email.toLowerCase() === 'empresa' && password === 'passs123') {
+      if (email.toLowerCase() === 'empresa@aqua.cl' && password === 'password123') {
         navigate('/dashboard/empresa');
       } else {
-        setErrorMsg('Credenciales incorrectas. (Pista: usa "empresa" / "passs123")');
+        setErrorMsg('Credenciales incorrectas. (Pista: usa "empresa@aqua.cl" / "password123")');
       }
     }, 1200);
   };
@@ -40,7 +40,7 @@ const LoginEmpresa = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <h1 className="login-left-title">El talento acuícola se encuentra aquí.</h1>
+            <h1 className="login-left-title">El talento acuícola se encuentra aquí</h1>
             <p className="login-left-text">
               La plataforma líder que conecta a los mejores candidatos con las empresas más importantes del rubro acuícola y otros sectores productivos del sur de Chile.
             </p>
@@ -92,7 +92,7 @@ const LoginEmpresa = () => {
                   <input 
                     type="text" 
                     className="form-input" 
-                    placeholder="empresa" 
+                    placeholder="empresa@aqua.cl" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required 

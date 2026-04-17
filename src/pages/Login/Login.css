@@ -264,22 +264,25 @@
   align-items: center;
 }
 
-.form-icon {
+.login-right-panel .form-icon {
   position: absolute;
-  left: 1rem;
+  left: 18px !important;
   color: #94a3b8;
   transition: color 0.2s ease;
+  z-index: 10;
+  pointer-events: none;
 }
 
-.form-input {
+.login-right-panel .form-input {
   width: 100%;
-  padding: 0.875rem 1rem 0.875rem 2.75rem;
+  padding: 14px 16px 14px 56px !important;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  border-radius: 12px;
   color: #0f172a;
-  font-size: 0.95rem;
+  font-size: 15px;
   transition: all 0.2s ease;
+  box-sizing: border-box !important;
 }
 
 .form-input::placeholder {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
@@ -10,8 +11,13 @@ const Footer = () => {
           
           {/* Column 1: Brand */}
           <div className="footer-col brand-col">
-            <div className="footer-logo mb-6">
+            <div className="footer-logo mb-4">
               <img src="/logo.png" alt="EmpleosAqua Logo" className="logo-icon-footer-img" />
+            </div>
+            <div className="b2b-logo mb-6">
+               {/* Simulating the B2B logo from image */}
+               <div className="text-white font-black text-4xl leading-none">B2B</div>
+               <div className="text-white text-xs tracking-[0.2em] font-bold">MEDIA GROUP</div>
             </div>
             <div className="social-links flex gap-4">
               <a href="https://www.linkedin.com/company/empleosaqua/" target="_blank" rel="noreferrer" className="social-icon"><Linkedin size={20}/></a>
@@ -24,11 +30,11 @@ const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-title">Soy Postulante</h4>
             <ul className="footer-links">
-              <li><a href="#">Buscar Empleos</a></li>
-              <li><a href="#">Crear Currículum</a></li>
-              <li><a href="#">Ofertas Destacadas</a></li>
-              <li><a href="#">Ofertas Inclusivas</a></li>
-              <li><a href="#">Prácticas Profesionales</a></li>
+              <li><Link to="/#buscar">Buscar Empleos</Link></li>
+              <li><Link to="/login/postulante">Crear Currículum</Link></li>
+              <li><Link to="/#buscar">Ofertas Destacadas</Link></li>
+              <li><Link to="/#buscar">Ofertas Inclusivas</Link></li>
+              <li><Link to="/#buscar">Prácticas Profesionales</Link></li>
             </ul>
           </div>
 
@@ -36,9 +42,9 @@ const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-title">Soy Empresa</h4>
             <ul className="footer-links">
-              <li><a href="#">Publicar Oferta</a></li>
-              <li><a href="#">Planes y tarifas</a></li>
-              <li><a href="#">Espacios Publicitarios</a></li>
+              <li><Link to="/login/empresa">Publicar Oferta</Link></li>
+              <li><Link to="/tarifas">Tarifas</Link></li>
+              <li><Link to="/espacios-publicitarios">Espacios Publicitarios</Link></li>
             </ul>
           </div>
 

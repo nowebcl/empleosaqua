@@ -61,8 +61,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="hero-title w-full text-center"
           >
-            Conectamos tu empresa con el<br/>
-            <span className="text-gradient">talento que necesitas</span>
+            Unimos talento con<br/>
+            <span className="text-gradient">oportunidades laborales</span>
           </motion.h1>
 
           <motion.p 
@@ -71,7 +71,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="hero-subtitle mb-6 mx-auto"
           >
-            Plataforma líder orientada a perfiles operativos, técnicos y profesionales vinculados a la salmonicultura, pesca, logística, transporte marítimo y servicios industriales.
+            Plataforma laboral orientada a perfiles operativos, técnicos y profesionales vinculados a la salmonicultura, pesca, logística, transporte marítimo y servicios industriales.
           </motion.p>
 
           <motion.div 

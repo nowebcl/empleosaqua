@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, UserCircle, Building2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,7 +18,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
+    <header className={`header ${isScrolled ? 'header-scrolled' : ''} ${!isHomePage ? 'header-page' : ''}`}>
       <div className="container header-container">
         
         <div className="header-logo">
@@ -26,10 +28,10 @@ const Header = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="header-nav desktop-only flex-1 justify-center">
-          <Link to="/publicar-oferta" className="nav-link font-medium">Publicar Oferta</Link>
+          <nav className="header-nav desktop-only flex-1 justify-center">
+          <Link to="/login/empresa" className="nav-link font-medium">Publicar Oferta</Link>
           <div className="divider"></div>
-          <Link to="/tarifas" className="nav-link">Tarifas</Link>
+          <Link to="/tarifas" className="nav-link font-medium">Tarifas</Link>
           <div className="divider"></div>
           <Link to="/espacios-publicitarios" className="nav-link">Espacios Publicitarios</Link>
           <div className="divider"></div>
@@ -44,9 +46,9 @@ const Header = () => {
 
         {/* Action Buttons - Enmarcado en un contenedor resaltado */}
         <div className="header-actions desktop-only bg-black/10 backdrop-blur-sm p-1.5 rounded-full border border-white/20 shadow-inner">
-          <Link to="/login/postulante" className="btn btn-outline btn-sm no-underline flex items-center gap-2 rounded-full border-none bg-white text-black hover:bg-gray-100">
+          <Link to="/login/postulante" className="btn btn-outline btn-sm btn-postulante no-underline flex items-center gap-2 rounded-full border-none font-bold">
             <UserCircle size={18} />
-            <span className="font-bold">Postulantes</span>
+            <span>Postulantes</span>
           </Link>
           <Link to="/login/empresa" className="btn btn-primary btn-sm btn-glow no-underline flex items-center gap-2 rounded-full border-none shadow-md bg-[#005f99] hover:bg-[#004a77] text-white">
             <Building2 size={18} />
@@ -68,7 +70,7 @@ const Header = () => {
       {mobileMenuOpen && (
         <div className="mobile-menu">
           <nav className="mobile-nav">
-            <Link to="/publicar-oferta" className="mobile-link text-black font-semibold">Publicar Oferta</Link>
+            <Link to="/login/empresa" className="mobile-link text-black font-semibold">Publicar Oferta</Link>
             <Link to="/tarifas" className="mobile-link text-black font-semibold">Tarifas</Link>
             <Link to="/espacios-publicitarios" className="mobile-link text-black font-semibold">Espacios Publicitarios</Link>
             <Link to="/nosotros" className="mobile-link text-black font-semibold">Nosotros</Link>

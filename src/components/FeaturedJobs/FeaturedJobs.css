@@ -19,18 +19,30 @@
 }
 
 .jobs-tabs {
-  display: inline-flex;
-  padding: 0.25rem;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.35rem !important;
   border-radius: var(--radius-lg);
-  background: var(--color-primary); /* Changed to blue */
+  background: var(--color-primary);
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+  gap: 0.5rem;
+}
+
+.jobs-tabs::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
 }
 
 .tab-btn {
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1rem;
   border-radius: var(--radius-md);
-  font-weight: 500;
-  color: #e0f2fe; /* Light text for dark tabs bg */
+  font-weight: 600;
+  color: #e0f2fe;
   transition: all var(--transition-fast);
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  font-size: 0.85rem;
 }
 
 .tab-btn:hover {
@@ -39,7 +51,7 @@
 
 .tab-btn.active {
   background: #ffffff;
-  color: var(--color-primary);
+  color: var(--color-primary) !important;
   box-shadow: var(--shadow-sm);
 }
 

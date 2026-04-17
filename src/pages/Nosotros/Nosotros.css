@@ -1,0 +1,76 @@
+.nosotros-structured {
+  padding-top: 160px; /* Increased header spacing */
+  min-height: 100vh;
+  background-color: #fcfdfe;
+}
+
+.nosotros-structured h1 {
+  font-family: var(--font-heading);
+  letter-spacing: -1.5px;
+  color: #005B94;
+  font-size: 3rem; /* Larger, more authoritative heading */
+  font-weight: 800;
+}
+
+.section-item {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  padding: 2.5rem; /* More breathable padding */
+  border-radius: 28px; /* Softer, more modern corners */
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04); /* Ultra-soft premium shadow */
+}
+
+.section-item:hover {
+  transform: translateY(-5px); /* Lift instead of horizontal shift */
+  border-color: rgba(0, 91, 148, 0.15);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08); /* Sophisticated hover shadow */
+}
+
+.nosotros-structured h2 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.5px;
+  color: #111827;
+  font-size: 1.35rem; /* ~22px */
+  font-weight: 700;
+}
+
+.nosotros-structured p {
+  color: #4b5563; /* Gray-600 for better readability */
+  line-height: 1.85;
+  font-size: 1.125rem;
+  text-align: justify;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nosotros-structured {
+    padding-top: 100px;
+    padding-bottom: 60px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .nosotros-structured h1 {
+    font-size: 2.25rem;
+  }
+  
+  .section-item {
+    padding: 1.5rem;
+    gap: 1rem;
+    border-radius: 20px;
+  }
+
+  .nosotros-structured p {
+    font-size: 1rem;
+  }
+
+  .section-item:hover {
+    transform: none;
+  }
+}
+
+.footer-spacer {
+  background-color: #fcfdfe;
+}

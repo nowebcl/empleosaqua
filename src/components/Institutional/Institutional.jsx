@@ -14,10 +14,10 @@ const Institutional = () => {
           <div className="premium-assistant-side">
             <div className="premium-speech-bubble">
               <span className="premium-bubble-tag">AYUDA EMPLEOS AQUA</span>
-              <h3>¿Cómo navegar en el portal?</h3>
-              <p>Revisa nuestro videotutorial rápido para facilitar tu navegación.</p>
-              <Link to="/contacto" className="premium-contact-button no-underline">
-                Contáctanos <ArrowUpRight size={16} />
+              <h3>¡Conócenos un poco más!</h3>
+              <p>Conoce nuestra historia y el propósito que nos impulsa a conectar el mejor talento acuícola.</p>
+              <Link to="/nosotros" className="premium-contact-button no-underline">
+                EmpleosAqua <ArrowUpRight size={16} />
               </Link>
             </div>
             <div className="premium-assistant-img-box">
@@ -29,7 +29,7 @@ const Institutional = () => {
           <div className="premium-video-side">
             <div className="premium-video-frame">
               <iframe 
-                src="https://www.youtube.com/embed/eKhv-F2EwTU?showinfo=0&rel=0&modestbranding=1" 
+                src="https://www.youtube.com/embed/qclO-bLBu-k?showinfo=0&rel=0&modestbranding=1" 
                 title="Tutorial Video" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -49,18 +49,18 @@ const Institutional = () => {
           <div className="trust-marquee-container">
             <div className="trust-logos-track">
               {/* Set 1 */}
-              <div className="logo-wrapper"><img src="/Logotipo B2B (1).jpg" alt="B2B Media Group" className="trust-logo-img" /></div>
+              <div className="logo-wrapper"><img src="/Logotipo B2B (1).jpg" alt="B2B Media Group" className="trust-logo-img logo-b2b" /></div>
               <div className="logo-wrapper"><img src="/Logotipo Aqua.jpg" alt="AQUA" className="trust-logo-img" /></div>
               <div className="logo-wrapper"><img src="/Logotipo AquaForum Los Lagos.png" alt="AquaForum Los Lagos" className="trust-logo-img" /></div>
               <div className="logo-wrapper"><img src="/Logotipo AquaForum Patagonia.png" alt="AquaForum Patagonia" className="trust-logo-img" /></div>
-              <div className="logo-wrapper"><img src="/Logotipo AquaForum Aysén.png" alt="AquaForum Aysén" className="trust-logo-img" /></div>
+              <div className="logo-wrapper"><img src="/Logotipo AquaForum Aysén.png" alt="AquaForum Aysén" className="trust-logo-img logo-aysen" /></div>
 
               {/* Set 2 (Duplicate for infinite loop) */}
-              <div className="logo-wrapper"><img src="/Logotipo B2B (1).jpg" alt="B2B Media Group" className="trust-logo-img" /></div>
+              <div className="logo-wrapper"><img src="/Logotipo B2B (1).jpg" alt="B2B Media Group" className="trust-logo-img logo-b2b" /></div>
               <div className="logo-wrapper"><img src="/Logotipo Aqua.jpg" alt="AQUA" className="trust-logo-img" /></div>
               <div className="logo-wrapper"><img src="/Logotipo AquaForum Los Lagos.png" alt="AquaForum Los Lagos" className="trust-logo-img" /></div>
               <div className="logo-wrapper"><img src="/Logotipo AquaForum Patagonia.png" alt="AquaForum Patagonia" className="trust-logo-img" /></div>
-              <div className="logo-wrapper"><img src="/Logotipo AquaForum Aysén.png" alt="AquaForum Aysén" className="trust-logo-img" /></div>
+              <div className="logo-wrapper"><img src="/Logotipo AquaForum Aysén.png" alt="AquaForum Aysén" className="trust-logo-img logo-aysen" /></div>
             </div>
           </div>
         </div>

@@ -104,6 +104,15 @@
   transform: scale(1.05);
 }
 
+.logo-aysen {
+  transform: scale(1.5);
+}
+
+.logo-b2b {
+  max-height: 55%;
+}
+
+
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -246,10 +255,14 @@
   .premium-guide-wrapper {
     flex-direction: column-reverse;
     border-radius: 2rem;
+    margin: 0 1rem; /* Prevent touching edges on mobile */
   }
   .premium-assistant-side {
     width: 100%;
-    padding: 2.5rem;
+    padding: 2.5rem 1.5rem;
+  }
+  .premium-speech-bubble h3 {
+    font-size: 1.5rem;
   }
   .premium-video-side {
     width: 100%;

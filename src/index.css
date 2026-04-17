@@ -63,6 +63,12 @@
   padding: 0;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: clip;
+  position: relative;
+}
+
 body {
   font-family: var(--font-primary);
   background-color: var(--color-background);
@@ -70,8 +76,15 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: clip;
-  position: relative;
+}
+
+/* Base Responsive Typography */
+@media (max-width: 768px) {
+  .text-6xl { font-size: 3rem; }
+  .text-5xl { font-size: 2.5rem; }
+  .text-4xl { font-size: 2rem; }
+  .text-3xl { font-size: 1.75rem; }
+  h2 { font-size: 1.75rem; }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -331,4 +344,74 @@ img {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary); 
+}
+
+/* REFINED SIDE FEATURES - PREMIUM SIDE ADS */
+.premium-side-ad {
+  position: sticky;
+  top: 120px;
+  width: 200px;
+  min-height: 1100px;
+  height: fit-content;
+  align-self: start;
+  z-index: 40;
+  transition: all 0.3s ease;
+  display: flex !important;
+  justify-content: center;
+}
+
+.premium-side-ad img {
+  width: 100%;
+  height: auto;
+  min-height: 1100px;
+  object-fit: contain;
+  object-position: top;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.side-ad-left { margin-right: 3rem; }
+.side-ad-right { margin-left: 3rem; }
+
+/* 3-COLUMN MOBILE LAYOUT (Side Banners Fixed on Mobile) */
+@media (max-width: 1600px) {
+  .premium-side-ad {
+    position: sticky !important;
+    top: 90px !important; /* Fixed position below mobile header */
+    width: 18% !important; /* Slightly larger width */
+    min-width: 60px !important;
+    max-width: 100px !important;
+    min-height: auto !important;
+    margin: 0.5rem 0 !important;
+    z-index: 45 !important;
+    align-self: flex-start;
+  }
+
+  .premium-side-ad img {
+    min-height: auto !important;
+    max-height: 450px !important;
+    border-radius: var(--radius-sm);
+    object-fit: cover; /* Ensuring impact even when thin */
+  }
+
+  .side-ad-left { margin-right: 0.75rem !important; }
+  .side-ad-right { margin-left: 0.75rem !important; }
+
+  .main-content-mobile-fix {
+    flex: 1 !important;
+    min-width: 0;
+  }
+}
+
+/* Hide/Show Helpers (Cleanup) */
+.show-on-mobile { display: none !important; }
+@media (max-width: 768px) {
+  .show-on-mobile { display: flex !important; }
+}
+
+/* Adjust top for smaller headers or as per scroll */
+@media (max-height: 800px) {
+  .sticky-side-feature {
+    top: 100px;
+  }
 }

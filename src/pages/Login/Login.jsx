@@ -14,7 +14,7 @@ const Login = () => {
 
   const content = {
     postulante: {
-      leftTitle: 'Las mejores oportunidades laborales están aquí.',
+      leftTitle: 'Las mejores oportunidades laborales están aquí',
       leftText: 'Accede a las vacantes de las empresas más importantes del rubro acuícola y otros sectores productivos del sur de Chile. Crea tu perfil y postula.',
       title: 'Bienvenido de vuelta',
       subtitle: 'Accede para gestionar tus postulaciones y perfil laboral.',
@@ -22,7 +22,7 @@ const Login = () => {
       registerLinkAction: 'Regístrate aquí',
     },
     empresa: {
-      leftTitle: 'El talento acuícola se encuentra aquí.',
+      leftTitle: 'El talento acuícola se encuentra aquí',
       leftText: 'La plataforma líder que conecta a los mejores candidatos con las empresas más importantes del rubro acuícola y otros sectores productivos del sur de Chile.',
       title: 'Portal de Empresas',
       subtitle: 'Ingresa para publicar y gestionar tus ofertas laborales.',

@@ -11,11 +11,57 @@
 
 .header-scrolled {
   padding: 1rem 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
+}
+
+.header-page {
+  background: #e0f2fe !important; /* Celeste / Light Blue */
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0, 91, 148, 0.1);
+}
+
+.header-page .nav-link,
+.header-scrolled .nav-link {
+  color: #000000;
+  text-shadow: none;
+}
+
+.header-page .divider,
+.header-scrolled .divider {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.header-page .mobile-toggle,
+.header-scrolled .mobile-toggle {
+  color: #000000;
+}
+
+/* Header Page / Scrolled State (Colored) */
+.header-page .btn-postulante,
+.header-scrolled .btn-postulante {
+  background-color: #ffffff !important;
+  color: #005B94 !important;
+  border: 1.5px solid #005B94 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.header-page .btn-postulante span,
+.header-scrolled .btn-postulante span,
+.header-page .btn-postulante svg,
+.header-scrolled .btn-postulante svg {
+  color: #005B94 !important;
+}
+
+/* Header Home Transparent State */
+.header:not(.header-scrolled):not(.header-page) .btn-postulante {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
 }
 
 .header-container {
@@ -33,16 +79,20 @@
 }
 
 .logo-icon-img {
-  height: 50px; /* Small for mobile */
-  width: auto;
+  height: 65px !important; /* Balanced mobile size */
+  width: auto !important;
+  min-width: 65px !important;
+  max-width: none !important;
   border-radius: var(--radius-sm);
   object-fit: contain;
-  transition: height var(--transition-fast);
+  transition: all var(--transition-fast);
+  display: block;
 }
 
 @media (min-width: 768px) {
   .logo-icon-img {
-    height: 70px; /* Slightly sleeker on desktop */
+    height: 100px !important; /* Premium balanced desktop size */
+    min-width: 100px !important;
   }
 }
 

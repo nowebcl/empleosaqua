@@ -7,6 +7,11 @@ import EmpresaDashboard from './pages/Dashboard/EmpresaDashboard';
 import LoginPostulante from './pages/Login/LoginPostulante';
 import LoginEmpresa from './pages/Login/LoginEmpresa';
 import GenericPage from './pages/GenericPage';
+import Nosotros from './pages/Nosotros/Nosotros';
+import Tarifas from './pages/Tarifas/Tarifas';
+import FAQ from './pages/FAQ/FAQ';
+import Contacto from './pages/Contacto/Contacto';
+import InfoLaboral from './pages/InfoLaboral/InfoLaboral';
 
 function App() {
   return (
@@ -19,13 +24,14 @@ function App() {
       <Route path="/dashboard/empresa" element={<EmpresaDashboard />} />
       
       {/* Rutas de Menu Independientes */}
-      <Route path="/nosotros" element={<GenericPage title="Nosotros" />} />
-      <Route path="/info-laboral" element={<GenericPage title="Información Laboral" />} />
+      <Route path="/nosotros" element={<Nosotros />} />
+      <Route path="/tarifas" element={<Tarifas />} />
+      <Route path="/info-laboral" element={<InfoLaboral />} />
       <Route path="/publicar-oferta" element={<GenericPage title="Publicar Oferta" />} />
-      <Route path="/tarifas" element={<GenericPage title="Tarifas" />} />
+      <Route path="/tarifas-static" element={<GenericPage title="Tarifas" />} /> {/* Legacy if needed */}
       <Route path="/espacios-publicitarios" element={<GenericPage title="Espacios Publicitarios" />} />
-      <Route path="/preguntas-frecuentes" element={<GenericPage title="Preguntas Frecuentes" />} />
-      <Route path="/contacto" element={<GenericPage title="Contacto" />} />
+      <Route path="/preguntas-frecuentes" element={<FAQ />} />
+      <Route path="/contacto" element={<Contacto />} />
     </Routes>
   );
 }

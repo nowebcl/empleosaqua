@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Building2, Clock, ChevronRight, Bookmark, Star, Target, GraduationCap } from 'lucide-react';
+import { MapPin, Building2, Clock, ChevronRight, Bookmark, Star, Target, GraduationCap, Heart } from 'lucide-react';
 import './FeaturedJobs.css';
 
 const mockJobs = [
@@ -77,7 +77,8 @@ const FeaturedJobs = () => {
             <div className="job-card-header-small mt-2">
               <div className="job-badges-small">
                 {job.isNew && <span className="badge badge-new text-xs">Nuevo</span>}
-                {job.inclusivo && <span className="badge badge-inclusive text-xs">Inclusiva</span>}
+                {job.isFeatured && <span className="badge badge-featured text-xs flex items-center gap-1"><Star size={12} fill="currentColor" /> Destacada</span>}
+                {job.inclusivo && <span className="badge badge-inclusive text-xs flex items-center gap-1"><Heart size={12} /> Inclusiva</span>}
                 {job.practica && <span className="badge badge-inclusive text-xs flex items-center gap-1" style={{ background: '#e0f2fe', color: '#0284c7' }}><GraduationCap size={12} /> Práctica</span>}
               </div>
               <button 
