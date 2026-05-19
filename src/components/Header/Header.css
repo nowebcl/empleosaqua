@@ -281,3 +281,15 @@
     display: block;
   }
 }
+
+.user-menu-dropdown-surface { position: absolute; top: calc(100% + 0.5rem); right: 0; width: 220px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); padding: 0.5rem 0; z-index: 50; border: 1px solid rgba(0,0,0,0.05); } 
+.user-menu-surface-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; color: #334155; text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.2s; background: none; border: none; width: 100%; text-align: left; cursor: pointer; } 
+.user-menu-surface-item:hover { background-color: #f8fafc; color: var(--color-primary); } 
+.user-menu-surface-item.danger:hover { background-color: #fef2f2; color: #ef4444; } 
+.user-menu-header { padding: 0.5rem 1rem; border-bottom: 1px solid #f1f5f9; margin-bottom: 0.25rem; } 
+.user-menu-name { font-weight: 700; color: #0f172a; font-size: 0.875rem; } 
+.user-menu-role { font-size: 0.75rem; color: #64748b; } 
+.user-menu-trigger { display: flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white; padding: 0.5rem 1rem; border-radius: 99px; cursor: pointer; transition: all 0.2s; font-weight: 500; backdrop-filter: blur(4px); } 
+.user-menu-trigger:hover { background: rgba(255, 255, 255, 0.2); } 
+.header-scrolled .user-menu-trigger, .header-page .user-menu-trigger { background: transparent; color: #0f172a; border-color: #e2e8f0; } 
+.header-scrolled .user-menu-trigger:hover, .header-page .user-menu-trigger:hover { background: #f8fafc; color: var(--color-primary); }

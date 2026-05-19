@@ -42,7 +42,7 @@ const Nosotros = () => {
           >
             {/* Main Header */}
             <header className="text-center mb-24">
-              <h1 className="text-4xl font-bold text-[#005B94] tracking-tight">Quienes somos</h1>
+              <h1 className="text-4xl font-bold text-[#005B94] tracking-tight">Quiénes somos</h1>
               <div className="mt-4 w-16 h-1 bg-[#005B94] mx-auto rounded-full opacity-30"></div>
             </header>
 

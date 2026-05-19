@@ -1,0 +1,162 @@
+.register-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.register-modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.register-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.register-modal-close:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.register-modal-header {
+  margin-bottom: 2rem;
+}
+
+.register-modal-header h2 {
+  font-size: 1.25rem;
+  color: #334155;
+  font-weight: 600;
+  margin: 0;
+}
+
+.register-modal-header .text-primary {
+  color: var(--color-primary);
+}
+
+.register-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group-modal label {
+  font-size: 0.85rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.form-group-modal input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #0f172a;
+  background-color: #f8fafc;
+  transition: all 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group-modal input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 91, 148, 0.1);
+  background-color: white;
+}
+
+.register-terms {
+  font-size: 0.8rem;
+  color: #334155;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+.register-terms a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.register-terms a:hover {
+  text-decoration: underline;
+}
+
+.register-checkbox {
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.register-checkbox label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.register-checkbox input[type="checkbox"] {
+  margin-top: 0.2rem;
+  accent-color: var(--color-primary);
+}
+
+.btn-register-submit {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.875rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1rem;
+}
+
+.btn-register-submit:hover {
+  background: #004b7a;
+}

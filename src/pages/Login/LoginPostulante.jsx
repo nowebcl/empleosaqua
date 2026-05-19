@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, AlertCircle, Mail, Lock } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import RegisterModal from './RegisterModal';
 import './Login.css';
 
 const LoginPostulante = () => {
@@ -9,6 +10,7 @@ const LoginPostulante = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -19,7 +21,9 @@ const LoginPostulante = () => {
     setTimeout(() => {
       setIsLoading(false);
       if (email.toLowerCase() === 'usuario@aqua.cl' && password === 'password123') {
-        navigate('/dashboard/postulante');
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userRole', 'postulante');
+        navigate('/');
       } else {
         setErrorMsg('Credenciales incorrectas. (Pista: usa "usuario@aqua.cl" / "password123")');
       }
@@ -131,11 +135,23 @@ const LoginPostulante = () => {
 
             <div className="login-footer mt-5">
               <span>¿No tienes cuenta?</span>
-              <a href="#registro" className="register-link">Regístrate aquí</a>
+              <button 
+                type="button" 
+                onClick={() => setIsRegisterOpen(true)} 
+                className="register-link"
+                style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 'inherit', fontFamily: 'inherit' }}
+              >
+                Regístrate aquí
+              </button>
             </div>
           </motion.div>
         </div>
       </div>
+
+      <RegisterModal 
+        isOpen={isRegisterOpen} 
+        onClose={() => setIsRegisterOpen(false)} 
+      />
     </div>
   );
 };

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, AlertCircle, Mail, Lock, UserCircle, Building2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import RegisterModal from './RegisterModal';
 import './Login.css';
 
 const Login = () => {
@@ -10,6 +12,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const navigate = useNavigate();
 
   const content = {
@@ -40,7 +43,9 @@ const Login = () => {
       setIsLoading(false);
       // Mock validation
       if (email.toLowerCase() === 'user' && password === 'pass123') {
-        navigate('/dashboard/postulante');
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userRole', 'postulante');
+        navigate('/');
       } else {
         setErrorMsg('Credenciales incorrectas. (Pista: usa "user" / "pass123")');
       }
@@ -161,11 +166,23 @@ const Login = () => {
 
               <div className="login-footer mt-5">
                 <span>{content[role].registerText}</span>
-                <a href="#registro" className="register-link">{content[role].registerLinkAction}</a>
+                <button 
+                  type="button" 
+                  onClick={() => setIsRegisterOpen(true)} 
+                  className="register-link"
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 'inherit', fontFamily: 'inherit' }}
+                >
+                  {content[role].registerLinkAction}
+                </button>
               </div>
             </motion.div>
           </div>
       </div>
+
+      <RegisterModal 
+        isOpen={isRegisterOpen} 
+        onClose={() => setIsRegisterOpen(false)} 
+      />
     </div>
   );
 };

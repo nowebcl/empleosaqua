@@ -32,11 +32,11 @@ const DashboardLayout = ({ children, role, sidebarItems }) => {
 
       {/* Sidebar */}
       <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-        <div className="sidebar-header">
+        <div className="sidebar-brand-container">
           <Link to="/" className="sidebar-logo-link">
-            <img src="/logo.png" alt="EmpleosAqua" className="sidebar-logo" />
+            <img src="/logo.png" alt="EmpleosAqua" className="sidebar-logo-centered" />
           </Link>
-          <button className="mobile-close-btn" onClick={() => setIsSidebarOpen(false)}>
+          <button className="mobile-close-btn-abs" onClick={() => setIsSidebarOpen(false)}>
             <X size={20} />
           </button>
         </div>
@@ -47,7 +47,7 @@ const DashboardLayout = ({ children, role, sidebarItems }) => {
           </div>
           <div className="user-details">
             <h4 className="user-name">{role === 'postulante' ? 'Frainibel Sanchez' : 'AquaCorp Ltda.'}</h4>
-            <span className="user-role-badge">{role === 'postulante' ? 'Candidato' : 'Empresa'}</span>
+            {role === 'empresa' && <span className="user-role-badge">Empresa</span>}
           </div>
         </div>
 
@@ -74,10 +74,6 @@ const DashboardLayout = ({ children, role, sidebarItems }) => {
         </nav>
 
         <div className="sidebar-footer">
-          <button className="nav-item">
-            <Settings size={18} className="nav-icon" />
-            <span>Configuración</span>
-          </button>
           <button className="nav-item text-danger" onClick={handleLogout}>
             <LogOut size={18} className="nav-icon" />
             <span>Cerrar Sesión</span>
@@ -98,18 +94,16 @@ const DashboardLayout = ({ children, role, sidebarItems }) => {
           
           <div className="topbar-right">
             {role === 'postulante' ? (
-              <div className="dashboard-top-nav desktop-only">
-                <Link to="#postulaciones" className="dash-nav-link">Mis Postulaciones</Link>
-                <Link to="#favoritos" className="dash-nav-link">Mis Favoritos</Link>
-                <Link to="#ver-cv" className="dash-nav-link">Ver mi CV</Link>
-                <Link to="#test" className="dash-nav-link">Test y habilidades</Link>
+              <div className="dashboard-top-nav desktop-only" style={{ display: 'flex', gap: '32px', height: '100%', alignItems: 'center' }}>
+                {/* Menú superior eliminado según solicitud */}
+                
                 <div className="flex items-center gap-2 ml-4">
                   <div className="relative">
                     <button 
                       className="topbar-icon-btn minimal-bell"
                       onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
                     >
-                      <Bell size={18} />
+                      <Bell size={18} fill="currentColor" />
                     </button>
                     
                     <AnimatePresence>
@@ -144,7 +138,6 @@ const DashboardLayout = ({ children, role, sidebarItems }) => {
                         className="user-menu-dropdown"
                       >
                         <div className="dropdown-header border-b border-gray-100 pb-2 mb-2">
-                          <p className="text-xs font-bold text-gray-400">CUENTA</p>
                         </div>
                         <button className="dropdown-item">
                           <UserCircle size={16} />
@@ -163,7 +156,7 @@ const DashboardLayout = ({ children, role, sidebarItems }) => {
             ) : (
               <>
                 <button className="topbar-icon-btn notification-btn">
-                  <Bell size={20} />
+                  <Bell size={20} fill="currentColor" />
                   <span className="notification-badge">3</span>
                 </button>
                 <div className="topbar-user-menu desktop-only">
@@ -173,7 +166,7 @@ const DashboardLayout = ({ children, role, sidebarItems }) => {
             )}
             
             <button className="topbar-icon-btn mobile-only">
-              <Bell size={20} />
+              <Bell size={20} fill="currentColor" />
             </button>
           </div>
         </header>

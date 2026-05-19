@@ -43,8 +43,8 @@ const Footer = () => {
             <h4 className="footer-title">Soy Empresa</h4>
             <ul className="footer-links">
               <li><Link to="/login/empresa">Publicar Oferta</Link></li>
-              <li><Link to="/tarifas">Tarifas</Link></li>
-              <li><Link to="/espacios-publicitarios">Espacios Publicitarios</Link></li>
+              <li><a href="/MediaKit%202026.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Tarifas</a></li>
+              <li><a href="/MediaKit%202026.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Espacios Publicitarios</a></li>
             </ul>
           </div>
 

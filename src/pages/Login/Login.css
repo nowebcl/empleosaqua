@@ -379,3 +379,162 @@
 .register-link:hover {
   text-decoration: underline;
 }
+
+/* Company Modal-Style Login Card */
+.login-modal-card-wrapper {
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+}
+
+.login-modal-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-modal-card-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.login-modal-card-close:hover {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.login-modal-card-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.75rem;
+}
+
+.login-modal-card-header h3 {
+  font-size: 1.25rem;
+  color: #3b4276;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.login-modal-card-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-modal-card-form .form-group {
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+
+.login-modal-card-form .form-input {
+  width: 100%;
+  padding: 10px 14px !important;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #0f172a;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-sizing: border-box !important;
+}
+
+.login-modal-card-form .form-input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.forgot-link-orange {
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+  color: #ea580c;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.forgot-link-orange:hover {
+  color: #c2410c;
+}
+
+.modal-card-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-modal-card-cancel {
+  background: #64748b;
+  color: white;
+  border: none;
+  padding: 0.65rem 2rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-modal-card-cancel:hover {
+  background: #475569;
+}
+
+.btn-modal-card-submit {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.65rem 2.25rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-modal-card-submit:hover {
+  background: #2563eb;
+}
+
+.login-modal-card-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.register-link-blue {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-weight: 700;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+.register-link-blue:hover {
+  color: #1d4ed8;
+}
+

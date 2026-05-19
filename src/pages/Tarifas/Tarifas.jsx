@@ -11,6 +11,28 @@ const Tarifas = () => {
       <main className="tarifas-literal">
         <div className="container mx-auto px-4 py-32">
           
+          {/* Media Kit Banner */}
+          <div className="mediakit-banner mb-12">
+            <div className="mediakit-content">
+              <span className="mediakit-badge">Publicidad 2026</span>
+              <h1 className="mediakit-title">Media Kit 2026</h1>
+              <p className="mediakit-text">
+                Descubre todas nuestras soluciones de branding, activaciones y espacios publicitarios premium para potenciar tu marca en el ecosistema acuícola.
+              </p>
+              <a 
+                href="/MediaKit%202026.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="mediakit-button no-underline inline-block"
+              >
+                Descargar Media Kit 2026
+              </a>
+            </div>
+            <div className="mediakit-visual">
+              <div className="visual-rect"></div>
+            </div>
+          </div>
+
           <div className="table-wrapper">
             <table className="literal-table">
               <thead>

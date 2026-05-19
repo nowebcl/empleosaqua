@@ -5,35 +5,60 @@ import {
   MapPin, Phone, Mail, Calendar, DollarSign, Target, Plus, 
   Trash2, Download, CheckCircle, Info, Edit2, X, HelpCircle, 
   Linkedin, Facebook, Instagram, Twitter, ExternalLink, Globe,
-  Shield, Check, User, Award, BookOpen
+  Shield, Check, User, Award, BookOpen, Layout, Zap, Bot, Sparkles, Cpu, Folder, Heart, Eye
 } from 'lucide-react';
 import DashboardLayout from '../../layouts/DashboardLayout/DashboardLayout';
 import './ProfileSections.css';
 
 const SIDEBAR_ITEMS = [
-  { label: 'Mi Resumen', path: '#resumen', icon: TrendingUp },
   { label: 'Mi Perfil & CV', path: '#perfil', icon: FileText },
   { label: 'Mis Postulaciones', path: '#postulaciones', icon: Briefcase },
+  { label: 'Mis Favoritos', path: '#favoritos', icon: Heart },
   { label: 'Ofertas Guardadas', path: '#guardadas', icon: Bookmark },
   { label: 'Mensajes', path: '#mensajes', icon: MessageSquare },
+  { label: 'Test y Habilidades', path: '#habilidades', icon: Award },
 ];
 
 const INITIAL_APPLICATIONS = [
-  { id: 1, role: 'Técnico Acuícola Junior', company: 'Salmones Mar Sur', date: '15 Mar 2026', status: 'postulado', message: 'Tu oferta ha sido exitosa' },
+  { id: 1, role: 'Técnico Acuícola Junior', company: 'Salmones Mar Sur', date: '15 Mar 2026', status: 'postulado', message: 'Tu postulación ha sido exitosa.' },
   { id: 2, role: 'Analista de Calidad', company: 'AquaFoods Global', date: '12 Mar 2026', status: 'vieron-cv', message: 'Vas por buen camino' },
-  { id: 3, role: 'Buzo Comercial', company: 'Servicios Submarinos Spa', date: '05 Mar 2026', status: 'en-proceso', message: 'Tu candidatura está siendo gestionada' },
   { id: 4, role: 'Operario de Planta', company: 'Seafood Express', date: '01 Mar 2026', status: 'cerrada', message: 'Vacante cerrada' },
 ];
 
 const PostulanteDashboard = () => {
   const [applications, setApplications] = useState(INITIAL_APPLICATIONS);
   const [activeTab, setActiveTab] = useState('profile');
+  const [currentHash, setCurrentHash] = useState(window.location.hash || '#perfil');
+
+  React.useEffect(() => {
+    const handleHash = () => setCurrentHash(window.location.hash || '#perfil');
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
   const [files, setFiles] = useState({
     cv: 'cv_frainibel_sanchez_2026.pdf',
     extra1: null,
     extra2: null,
     extra3: null
   });
+
+  const [hasDisability, setHasDisability] = useState(false);
+  const [selectedDisabilities, setSelectedDisabilities] = useState([]);
+
+  const disabilityOptions = [
+    'Física o movilidad reducida',
+    'Sensorial (visual y/o auditiva)',
+    'Psíquica o de salud mental',
+    'Intelectual',
+    'Múltiple',
+    'Prefiero no indicar'
+  ];
+
+  const toggleDisabilityType = (type) => {
+    setSelectedDisabilities(prev => 
+      prev.includes(type) ? prev.filter(t => t !== type) : [...prev, type]
+    );
+  };
 
   // Advanced Mouse Tracking for "Genial" Effects
   const mouseX = useMotionValue(0);
@@ -90,16 +115,17 @@ const PostulanteDashboard = () => {
           <div className="profile-container px-0 max-w-none">
             
             {/* Header / Welcome */}
-            <div id="resumen" className="mb-8 p-6 bg-white border border-gray-100 rounded-xl shadow-sm" style={{ scrollMarginTop: '90px' }}>
+            <div className="mb-8 p-6 bg-white border border-gray-100 rounded-xl shadow-sm relative">
               <h2 className="text-2xl font-bold text-gray-800 mb-2">Hola Frainibel, bienvenido a EmpleosAqua</h2>
-              <p className="text-gray-600">Aquí puedes gestionar tus postulaciones y mantener tu perfil profesional actualizado.</p>
+
+              <p className="text-gray-600 font-bold">Aquí puedes gestionar tus postulaciones y mantener tu perfil laboral actualizado.</p>
             </div>
 
-            {/* Section: Mis Postulaciones */}
-            <div id="postulaciones" className="profile-section mb-10 scroll-mt-24">
+            {currentHash === '#postulaciones' && (
+            <div id="postulaciones" className="profile-section mb-10">
+              {/* Section: Mis Postulaciones */}
               <div className="section-header flex justify-between items-center">
                 <h2 className="section-title">Mis Postulaciones</h2>
-                <span className="text-xs text-gray-400 font-medium">Histórico completo</span>
               </div>
               <div className="section-content p-0">
                 <div className="overflow-x-auto">
@@ -128,10 +154,15 @@ const PostulanteDashboard = () => {
                               <td className="px-6 py-4">{app.company}</td>
                               <td className="px-6 py-4">{app.date}</td>
                               <td className="px-6 py-4">
-                                <span className={`badge-status ${status.color} block mb-1 w-fit`}>
-                                  {status.label}
-                                </span>
-                                <span className="text-[10px] text-gray-400 font-medium italic">{app.message}</span>
+                                <div className="status-wrapper">
+                                  <span className={`badge-status ${status.color}`}>
+                                    {status.label}
+                                  </span>
+                                  <div className="status-tooltip">
+                                    <div className="tooltip-arrow"></div>
+                                    {app.message}
+                                  </div>
+                                </div>
                               </td>
                               <td className="px-6 py-4 text-center">
                                 <button 
@@ -151,14 +182,25 @@ const PostulanteDashboard = () => {
                 </div>
               </div>
             </div>
+            )}
 
+            {currentHash === '#perfil' && (
+            <div className="flex flex-col gap-8">
             {/* Section 1: Datos Personales */}
-            <div id="perfil" className="profile-section relative scroll-mt-24">
+            <div id="perfil" className="profile-section relative">
               <div className="section-header flex justify-between items-center">
                 <h2 className="section-title">Datos Personales</h2>
-                <button className="text-blue-500 flex items-center gap-1 text-xs font-bold hover:underline">
-                  <Edit2 size={12} /> Modificar perfil
-                </button>
+                <div className="flex items-center gap-3">
+                  <button className="bg-blue-600 text-white px-4 py-1.5 rounded-full flex items-center gap-2 text-[11px] font-bold hover:bg-blue-700 transition-all shadow-md active:scale-95">
+                    <Eye size={14} /> Ver CV (finalizado)
+                  </button>
+                  <button className="bg-white border-2 border-blue-600 text-blue-600 px-4 py-1.5 rounded-full flex items-center gap-2 text-[11px] font-bold hover:bg-blue-50 transition-all active:scale-95">
+                    <Download size={14} /> Descarga (Word y PDF)
+                  </button>
+                  <button className="text-gray-400 flex items-center gap-1 text-xs font-bold hover:text-blue-500 transition-colors ml-2">
+                    <Edit2 size={12} /> Modificar perfil
+                  </button>
+                </div>
               </div>
               <div className="section-content">
                 <div className="avatar-section">
@@ -166,57 +208,108 @@ const PostulanteDashboard = () => {
                     <div className="avatar-circle">
                       <User size={48} className="avatar-placeholder" />
                     </div>
-                    <button className="btn-avatar">Explorar</button>
+                    <button className="btn-avatar">Subir</button>
                   </div>
                   
-                  <div className="form-grid flex-1">
-                    <div className="form-group relative">
-                      <label className="form-label">Nombre Completo (*)</label>
-                      <input type="text" className="form-input pr-10" defaultValue="Frainibel Sanchez" />
-                      <Edit2 size={14} className="absolute right-3 top-9 text-gray-300 pointer-events-none" />
+                  <div className="flex-1 flex flex-col gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="form-group m-0">
+                        <label className="form-label">Nombres (*)</label>
+                        <input type="text" className="form-input" defaultValue="Frainibel" />
+                      </div>
+                      <div className="form-group m-0">
+                        <label className="form-label">Apellidos (*)</label>
+                        <input type="text" className="form-input" defaultValue="Sanchez" />
+                      </div>
+                    <div className="form-group m-0">
+                      <label className="form-label">RUT (*)</label>
+                      <input type="text" className="form-input bg-gray-100 text-gray-500 cursor-not-allowed border-gray-200" defaultValue="27.749.132-1" readOnly disabled />
                     </div>
-                    <div className="form-group relative">
-                      <label className="form-label">Sexo</label>
+                    
+                    <div className="form-group m-0">
+                      <label className="form-label">Email (*)</label>
+                      <input type="email" className="form-input bg-gray-100 text-gray-500 cursor-not-allowed border-gray-200" defaultValue="usuario@aqua.cl" readOnly disabled />
+                    </div>
+                    <div className="form-group m-0">
+                      <label className="form-label">Teléfono (*)</label>
+                      <div style={{ display: 'flex', height: '34px', alignItems: 'stretch' }}>
+                        <span 
+                          style={{ 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            padding: '0 12px', 
+                            background: '#f1f5f9', 
+                            color: '#64748b', 
+                            fontWeight: 'bold', 
+                            fontSize: '12px',
+                            border: '1px solid #e2e8f0', 
+                            borderRight: 'none', 
+                            borderTopLeftRadius: '6px', 
+                            borderBottomLeftRadius: '6px', 
+                            whiteSpace: 'nowrap',
+                            flexShrink: 0
+                          }}>
+                          +56&nbsp;9
+                        </span>
+                        <input 
+                          type="text" 
+                          className="form-input" 
+                          style={{ 
+                            borderTopLeftRadius: '0', 
+                            borderBottomLeftRadius: '0',
+                            flex: 1,
+                            margin: 0,
+                            height: '100%'
+                          }} 
+                          defaultValue="35017402" 
+                        />
+                      </div>
+                    </div>
+                    <div className="form-group m-0">
+                      <label className="form-label">Fecha de nacimiento (*)</label>
+                      <input type="text" className="form-input" placeholder="DD-MM-AAAA" defaultValue="15-08-1992" />
+                    </div>
+
+                    <div className="form-group m-0">
+                      <label className="form-label">Sexo (*)</label>
                       <select className="form-select">
                         <option>Femenino</option>
                         <option>Masculino</option>
                         <option>Otro</option>
                       </select>
                     </div>
-                    <div className="form-group relative">
-                      <label className="form-label">Estado civil</label>
-                      <select className="form-select">
+                    <div className="form-group m-0">
+                      <label className="form-label">Estado civil (*)</label>
+                      <select className="form-select" defaultValue="Soltero/a">
                         <option>Soltero/a</option>
                         <option>Casado/a</option>
+                        <option>Unión Libre</option>
+                        <option>Divorciado/a</option>
+                        <option>Pareja de Hecho</option>
+                        <option>Viudo/a</option>
                       </select>
                     </div>
-                    <div className="form-group">
-                      <label className="form-label">Ciudad (*) </label>
+                    <div className="form-group m-0">
+                      <label className="form-label">Nacionalidad (*)</label>
+                      <input type="text" className="form-input" defaultValue="Venezolana" />
+                    </div>
+
+                    <div className="form-group m-0">
+                      <label className="form-label">Dirección (*)</label>
+                      <input type="text" className="form-input" defaultValue="Av. Sol Marino 123" />
+                    </div>
+                    <div className="form-group m-0">
+                      <label className="form-label">Comuna (*)</label>
                       <input type="text" className="form-input" defaultValue="Puerto Montt" />
                     </div>
-                    <div className="form-group">
-                      <label className="form-label">Nacionalidad</label>
-                      <select className="form-select">
-                        <option>Chilena</option>
-                        <option>Venezolana</option>
-                        <option>Otras</option>
-                      </select>
+                    <div className="form-group m-0">
+                      <label className="form-label">Ciudad (*)</label>
+                      <input type="text" className="form-input" defaultValue="Puerto Montt" />
                     </div>
-                    <div className="form-group">
-                      <label className="form-label">Fecha de nacimiento</label>
-                      <input type="text" className="form-input" defaultValue="1992" placeholder="Año" />
                     </div>
-                    <div className="form-group">
-                      <label className="form-label">Teléfono Móvil (*)</label>
-                      <input type="text" className="form-input" defaultValue="935017402" />
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label">Cédula (*)</label>
-                      <input type="text" className="form-input" defaultValue="277491321" />
-                    </div>
-                    
+
                     {/* RRSS Selection */}
-                    <div className="form-group-full">
+                    <div className="form-group-full w-full">
                       <label className="form-label">Redes Sociales</label>
                       <div className="flex gap-4 items-center mt-2">
                         <select className="form-select w-40">
@@ -232,36 +325,76 @@ const PostulanteDashboard = () => {
 
                     {/* Mobility / Availability */}
                     <div className="form-group-full border-t border-gray-100 pt-6 mt-4">
-                      <label className="form-label mb-4 text-primary font-bold text-[11px] tracking-widest">MOVILIDAD Y DISPONIBILIDAD</label>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {[
-                          { id: 'disp', label: '¿Tengo disponibilidad?' },
-                          { id: 'res', label: 'Cambio de residencia' },
-                          { id: 'lic', label: 'Licencia de conducir' },
-                          { id: 'veh', label: 'Vehículo propio' }
+                          { id: 'res', label: '¿Tiene disposición para cambio de región?' },
+                          { id: 'lic', label: '¿Tiene licencia de conducir?' },
+                          { id: 'veh', label: '¿Tiene vehículo propio?' },
+                          { id: 'discapacidad', label: '¿Cuenta con alguna discapacidad?' }
                         ].map((item, idx) => (
                           <div key={item.id} className="availability-card p-3 rounded-xl border border-gray-100 bg-white shadow-sm flex flex-col gap-3">
-                            <span className="text-[10px] font-bold text-gray-500 uppercase leading-tight h-8 flex items-center">{item.label}</span>
+                            <span className="text-[10px] font-bold text-gray-500 leading-tight h-8 flex items-center">{item.label}</span>
+                            {item.id === 'discapacidad' && (
+                              <p className="text-[8px] text-gray-400 italic leading-tight -mt-2">
+                                Esta información es voluntaria y será utilizada únicamente para fines de inclusión laboral.
+                              </p>
+                            )}
                             <div className="flex gap-2">
                               <label className="availability-option flex-1">
-                                <input type="radio" name={item.id} defaultChecked={idx % 2 === 0} className="hidden-radio" />
-                                <span className="option-pill">Sí</span>
+                                <input 
+                                  type="radio" 
+                                  name={item.id} 
+                                  onChange={() => item.id === 'discapacidad' && setHasDisability(true)}
+                                  className="hidden-radio" 
+                                />
+                                <span className="option-pill font-bold">Sí</span>
                               </label>
                               <label className="availability-option flex-1">
-                                <input type="radio" name={item.id} defaultChecked={idx % 2 !== 0} className="hidden-radio" />
-                                <span className="option-pill">No</span>
+                                <input 
+                                  type="radio" 
+                                  name={item.id} 
+                                  defaultChecked={item.id !== 'res' && item.id !== 'veh'}
+                                  onChange={() => item.id === 'discapacidad' && setHasDisability(false)}
+                                  className="hidden-radio" 
+                                />
+                                <span className="option-pill font-bold">No</span>
                               </label>
                             </div>
+
+                            {item.id === 'lic' && (
+                              <div className="mt-2">
+                                <label className="text-[9px] font-bold text-gray-400 block mb-1">Tipo de licencia</label>
+                                <input type="text" className="form-input text-xs py-1.5" placeholder="Ej: B, A2, D..." />
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
+
+                      {hasDisability && (
+                        <div className="mt-6 p-6 bg-blue-50/50 rounded-2xl border border-blue-100">
+                          <p className="text-xs font-bold text-blue-900 mb-4">Si lo desea, indique el tipo de discapacidad:</p>
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                            {disabilityOptions.map((type) => (
+                              <label key={type} className="flex items-center gap-3 p-3 bg-white border border-gray-100 rounded-xl cursor-pointer hover:border-blue-300 transition-all shadow-sm">
+                                <input 
+                                  type="checkbox" 
+                                  className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500"
+                                  checked={selectedDisabilities.includes(type)}
+                                  onChange={() => toggleDisabilityType(type)}
+                                />
+                                <span className="text-[11px] font-medium text-gray-700">{type}</span>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
-                
-                <div className="section-footer">
-                  <button className="btn-save">Guardar cambios</button>
-                </div>
+              </div>
+              <div className="section-footer">
+                <button className="btn-save">Guardar cambios</button>
               </div>
             </div>
 
@@ -270,11 +403,8 @@ const PostulanteDashboard = () => {
               <div className="section-header flex justify-between items-center">
                 <h2 className="section-title">Experiencia Laboral</h2>
                 <div className="flex items-center gap-4">
-                  <button className="text-blue-500 flex items-center gap-1 text-xs font-bold hover:underline border-r pr-4 border-gray-200">
-                    <Plus size={12} /> Agregar cargo
-                  </button>
-                  <button className="text-gray-400 flex items-center gap-1 text-xs font-bold hover:underline">
-                    <Calendar size={12} /> Actualizar historial
+                  <button className="text-blue-500 flex items-center gap-1 text-xs font-bold hover:underline">
+                    <Plus size={12} /> Agregar experiencia
                   </button>
                 </div>
               </div>
@@ -290,12 +420,12 @@ const PostulanteDashboard = () => {
                   </div>
                   <div className="form-group">
                     <label className="form-label">Desde (*)</label>
-                    <select className="form-select"><option>Año</option><option>2026</option><option>2025</option></select>
+                    <input type="text" className="form-input" placeholder="Año" maxLength="4" />
                   </div>
                   <div className="form-group">
                     <label className="form-label">Hasta (*)</label>
                     <div className="flex items-center gap-4">
-                      <select className="form-select flex-1"><option>Año</option><option>2026</option></select>
+                      <input type="text" className="form-input flex-1" placeholder="Año" maxLength="4" />
                       <label className="flex items-center gap-1 text-[11px] whitespace-nowrap text-blue-600 font-bold">
                         <input type="checkbox" className="w-3 h-3" /> Actual
                       </label>
@@ -315,13 +445,7 @@ const PostulanteDashboard = () => {
                     <textarea className="form-textarea h-24" placeholder="Describe tus responsabilidades, logros y funciones clave..."></textarea>
                   </div>
                 </div>
-                
-                <div className="section-footer mb-8">
-                  <button className="btn-save">Guardar cambios</button>
-                </div>
-
-                <div className="history-list">
-                  <h3 className="text-[10px] font-black text-gray-300 uppercase tracking-widest mb-6 border-b pb-2">Experiencias Anteriores</h3>
+                <div className="history-list mt-10">
                   {[
                     { title: 'Diseñador Gráfico - Freelancer', company: 'Diseñador Independiente', period: '2018 - 2026', level: 'Senior (+5 años)', desc: 'Diseño de piezas gráficas para redes sociales, logotipos, manuales de marca y piezas publicitarias orientadas al rubro acuícola y agroindustrial.' },
                     { title: 'Diseñadora y Coordinadora - Bandia Estudio', company: 'AquaConsult Spa', period: '2017 - 2021', level: 'Semi Senior (2-5 años)', desc: 'Coordinación estratégica de diseño gráfico y comunicación para marcas locales e internacionales.' }
@@ -348,6 +472,9 @@ const PostulanteDashboard = () => {
                     </div>
                   ))}
                 </div>
+              </div>
+              <div className="section-footer">
+                <button className="btn-save">Guardar cambios</button>
               </div>
             </div>
 
@@ -378,21 +505,21 @@ const PostulanteDashboard = () => {
                     <input type="text" className="form-input" />
                   </div>
                   <div className="form-group">
+                    <label className="form-label">Carrera / Título</label>
+                    <input type="text" className="form-input" />
+                  </div>
+                  <div className="form-group">
                     <label className="form-label">Año de Egreso</label>
                     <div className="flex items-center gap-4">
-                      <select className="form-select flex-1"><option>Año</option></select>
+                      <input type="text" className="form-input flex-1" placeholder="Año" maxLength="4" />
                       <label className="flex items-center gap-1 text-[11px] whitespace-nowrap text-blue-600 font-bold">
                         <input type="checkbox" className="w-3 h-3" /> Actual
                       </label>
                     </div>
                   </div>
                 </div>
-                
-                <div className="section-footer mb-8">
-                  <button className="btn-save">Guardar cambios</button>
-                </div>
 
-                <div className="history-list">
+                <div className="history-list mt-8">
                   <div className="history-item group relative">
                     <div className="item-badge bg-blue-500"></div>
                     <div className="flex justify-between items-start">
@@ -409,12 +536,15 @@ const PostulanteDashboard = () => {
                   </div>
                 </div>
               </div>
+              <div className="section-footer">
+                <button className="btn-save">Guardar cambios</button>
+              </div>
             </div>
 
             {/* Section 4: Habilidades */}
             <div className="profile-section">
               <div className="section-header">
-                <h2 className="section-title">Habilidades y Tests</h2>
+                <h2 className="section-title">Conocimientos y Habilidades</h2>
               </div>
               <div className="section-content">
                 <div className="form-group">
@@ -433,6 +563,9 @@ const PostulanteDashboard = () => {
                     </span>
                   ))}
                 </div>
+              </div>
+              <div className="section-footer">
+                <button className="btn-save">Guardar cambios</button>
               </div>
             </div>
 
@@ -461,402 +594,175 @@ const PostulanteDashboard = () => {
                     <label className="form-label">Teléfono (*)</label>
                     <input type="text" className="form-input" />
                   </div>
-                  <div className="form-group-full">
-                    <label className="form-label">Observación / Recomendación (*)</label>
-                    <textarea className="form-textarea h-20" placeholder="Breve observación sobre el desempeño..."></textarea>
+                  <div className="form-group">
+                    <label className="form-label">Empresa (*)</label>
+                    <input type="text" className="form-input" />
                   </div>
                 </div>
-                <div className="section-footer">
-                  <button className="btn-save">Guardar cambios</button>
-                </div>
+              </div>
+              <div className="section-footer">
+                <button className="btn-save">Guardar cambios</button>
               </div>
             </div>
 
-            {/* Section 6: Documentos - ULTRA-ANIMATED "GENIAL" EDITION */}
-            <motion.div 
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              onMouseMove={handleMouseMove}
-              className="profile-section border-0 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] relative overflow-hidden group/section bg-white rounded-[50px] mb-20"
-            >
-              {/* Organic Animated Background Blobs */}
-              <motion.div 
-                style={{ x: driftX, y: driftY }}
-                className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[120px] pointer-events-none"
-              />
-              <motion.div 
-                style={{ x: useSpring(useTransform(mouseX, [0, 1], [30, -30])), y: useSpring(useTransform(mouseY, [0, 1], [30, -30])) }}
-                className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-cyan-50/30 rounded-full blur-[120px] pointer-events-none"
-              />
-
-              <div className="section-content p-12 relative z-10">
-                {/* SUCCESS TIPS BAR - ULTRA PREMIUM */}
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ y: -8 }}
-                  className="mb-14 p-10 rounded-[45px] bg-[#0f172a] text-white flex flex-col md:flex-row gap-10 items-center shadow-3xl relative overflow-hidden group/tips"
-                >
-                   {/* Magnetic pulse element */}
-                   <motion.div 
-                     animate={{ 
-                       scale: [1, 1.2, 1],
-                       opacity: [0.05, 0.1, 0.05]
-                     }}
-                     transition={{ duration: 8, repeat: Infinity }}
-                     className="absolute inset-0 bg-blue-500 rounded-full blur-[100px] -z-0"
-                   />
-
-                   <div className="flex-1 relative z-10">
-                     <h4 className="font-black text-[10px] uppercase tracking-[0.5em] text-blue-400 mb-8 border-b border-white/5 pb-4">Guía de Éxito Profesional</h4>
-                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-6">
-                       {[
-                         "Sé específico en cargo y funciones",
-                         "Incluye logros cuantificables",
-                         "Habilidades técnicas del sector",
-                         "Actualización constante"
-                       ].map((tip, i) => (
-                         <motion.div 
-                           key={i}
-                           initial={{ opacity: 0, x: -30 }}
-                           whileInView={{ opacity: 1, x: 0 }}
-                           transition={{ delay: 0.4 + (i * 0.15) }}
-                           className="flex items-center gap-5 text-[13px] font-bold text-gray-300 group/item cursor-default"
-                         >
-                           <motion.div 
-                             whileHover={{ scale: 1.3, rotate: 180, backgroundColor: "#2563eb", color: "#fff" }}
-                             className="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-blue-400 text-[11px] font-black border border-white/5 transition-all duration-500"
-                           >
-                             {i+1}
-                           </motion.div>
-                           <span className="group-hover/item:text-white group-hover/item:translate-x-2 transition-all duration-500">{tip}</span>
-                         </motion.div>
-                       ))}
-                     </div>
-                   </div>
-                   
-                   <div className="h-32 border-l border-white/10 hidden md:block"></div>
-                   
-                   <div className="text-center md:text-left relative z-10 p-6">
-                     <motion.div 
-                       animate={{ 
-                         scale: [1, 1.15, 1],
-                       }} 
-                       transition={{ duration: 3, repeat: Infinity }}
-                       className="text-6xl font-black text-white mb-2 leading-none"
-                     >
-                       3x
-                     </motion.div>
-                     <p className="text-[11px] text-blue-400 font-black uppercase tracking-[0.3em]">Visibilidad IA</p>
-                   </div>
-                </motion.div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-14">
-                  {/* MAIN CV CARD - 3D PARALLAX DEPTH */}
-                  <div style={{ perspective: 1500 }}>
-                    <motion.div 
-                      style={{ rotateX, rotateY }}
-                      className="relative h-full group/cv border border-gray-50 p-14 rounded-[60px] bg-white shadow-2xl flex flex-col items-center text-center transition-all duration-1000 hover:shadow-blue-900/15"
-                    >
-                        <motion.div 
-                          animate={{ 
-                            y: [0, -15, 0],
-                            rotateZ: [0, 8, 0]
-                          }}
-                          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                          className="w-32 h-32 rounded-[40px] bg-blue-600 shadow-[0_30px_60px_-10px_rgba(37,99,235,0.5)] flex items-center justify-center text-white mb-12 relative overflow-hidden"
+            {/* Section 6: Documentos */}
+            <div id="ver-cv" className="profile-section mb-24">
+              <div className="section-header">
+                <h2 className="section-title normal-case">Adjuntar documentos</h2>
+              </div>
+              <div className="section-content bg-white p-0">
+                {/* CV Section */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 border-b border-gray-100 items-center">
+                  <div>
+                    <h3 className="font-bold text-gray-800 text-sm mb-2">Subir currículum</h3>
+                    <input 
+                      type="file" 
+                      onChange={(e) => handleFileChange('cv', e)}
+                      className="text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 border border-gray-100 p-2 w-full rounded-xl bg-gray-50/50" 
+                    />
+                    <p className="text-[10px] text-gray-400 mt-2 font-medium">Formatos válidos PDF o Word</p>
+                  </div>
+                  
+                  <div className="h-full min-h-[80px]">
+                    {files.cv ? (
+                      <div className="p-4 bg-gray-50/50 rounded-xl border border-gray-100 flex items-center justify-between group">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-gray-200 p-2 rounded-lg text-gray-500">
+                            <FileText size={18} />
+                          </div>
+                          <div>
+                            <p className="text-[8px] text-gray-400 font-bold uppercase tracking-wider">Currículum Actual</p>
+                            <p className="text-[11px] font-medium text-gray-600 truncate max-w-[200px]">{files.cv}</p>
+                          </div>
+                        </div>
+                        <button 
+                          onClick={() => removeFile('cv')}
+                          className="text-gray-300 hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100"
                         >
-                          <motion.div 
-                             animate={{ x: [-100, 200] }}
-                             transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
-                          />
-                          <FileText size={64} strokeWidth={1} />
-                        </motion.div>
-                        
-                        <h4 className="text-4xl font-black text-[#0f172a] mb-3 tracking-tighter">Mi CV</h4>
-                        <p className="text-[12px] text-blue-500 font-black uppercase tracking-[0.4em] mb-14 opacity-50">Master Version</p>
-                        
-                        <AnimatePresence mode="wait">
-                          {files.cv ? (
-                            <motion.div 
-                              key="uploaded"
-                              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                              animate={{ opacity: 1, y: 0, scale: 1 }}
-                              exit={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-                              className="w-full bg-[#f8fafc] p-8 rounded-[35px] border border-blue-50 flex items-center gap-6 shadow-inner group/file"
-                            >
-                              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-blue-600 text-sm font-black shadow-sm group-hover/file:bg-blue-600 group-hover/file:text-white group-hover/file:rotate-6 transition-all duration-500">PDF</div>
-                              <div className="flex-1 text-left">
-                                <span className="text-xs text-[#0f172a] font-black block truncate mb-1">{files.cv}</span>
-                                <div className="flex items-center gap-2">
-                                  <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]" />
-                                  <span className="text-[11px] text-green-600 font-extrabold uppercase tracking-tighter">Verificado</span>
-                                </div>
-                              </div>
-                              <button 
-                                onClick={() => removeFile('cv')} 
-                                className="text-gray-300 hover:text-red-500 transition-all p-4 hover:bg-red-50 rounded-2xl"
-                              >
-                                <Trash2 size={24} />
-                              </button>
-                            </motion.div>
-                          ) : (
-                            <motion.div key="upload" className="w-full">
-                              <input type="file" className="hidden" id="file-cv" onChange={(e) => handleFileChange('cv', e)} />
-                              <motion.label 
-                                htmlFor="file-cv" 
-                                whileHover={{ scale: 1.05, backgroundColor: "#2563eb" }}
-                                whileTap={{ scale: 0.95 }}
-                                className="block w-full py-7 bg-[#0f172a] text-white rounded-[35px] text-[14px] font-black uppercase tracking-[0.25em] cursor-pointer shadow-3xl shadow-blue-900/40 text-center transition-all duration-500"
-                              >
-                                Cargar Ahora
-                              </motion.label>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                    </motion.div>
-                  </div>
-
-                  {/* GENERADOR PRO CARD - THE "GENIAL" BRAIN */}
-                  <div style={{ perspective: 1500 }}>
-                    <motion.div 
-                      style={{ rotateX, rotateY }}
-                      className="p-14 h-full rounded-[60px] bg-gradient-to-br from-blue-700 to-[#1e293b] text-white flex flex-col items-center justify-center text-center shadow-4xl shadow-blue-900/50 group relative overflow-hidden"
-                    >
-                      {/* Animated Glow Element */}
-                      <motion.div 
-                        animate={{ 
-                          scale: [1, 1.5, 1],
-                          opacity: [0.3, 0.6, 0.3]
-                        }}
-                        transition={{ duration: 10, repeat: Infinity }}
-                        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#22d3ee_0%,transparent_70%)] opacity-30 pointer-events-none"
-                      />
-                      
-                      <motion.div
-                        animate={{ 
-                          scale: [1, 1.1, 1],
-                          y: [0, -20, 0]
-                        }}
-                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                        className="relative z-10"
-                      >
-                        <div className="w-32 h-32 rounded-[45px] bg-white/10 backdrop-blur-2xl border border-white/20 flex items-center justify-center mb-12 shadow-3xl">
-                          <motion.div
-                            animate={{ rotateY: [0, 360] }}
-                            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-                          >
-                            <Edit2 size={64} className="text-cyan-400" />
-                          </motion.div>
-                        </div>
-                      </motion.div>
-
-                      <h5 className="text-[13px] font-black uppercase tracking-[0.5em] mb-6 relative z-10 text-cyan-400">Genial AI Builder</h5>
-                      <p className="text-[14px] text-blue-100/80 mb-14 leading-relaxed relative z-10 px-6 font-bold tracking-tight">
-                        Nuestro motor inteligente redactará tu perfil profesional en base a estándares <span className="text-white border-b-2 border-cyan-400">Acuícolas Globales</span>.
-                      </p>
-                      
-                      <motion.button 
-                        whileHover={{ 
-                          scale: 1.05,
-                          y: -5,
-                          boxShadow: "0 25px 50px rgba(34, 211, 238, 0.5)"
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-full py-7 bg-white text-[#0f172a] rounded-[35px] text-[13px] font-black uppercase tracking-[0.3em] shadow-2xl transition-all duration-700 relative z-10"
-                      >
-                        Comenzar Flujo AI
-                      </motion.button>
-                    </motion.div>
-                  </div>
-
-                  {/* SECONDARY DOCUMENTS - HIGH END LIST */}
-                  <div className="flex flex-col gap-6 justify-between">
-                    {[
-                      { id: 'extra1', label: 'Títulos & Grados', icon: Award },
-                      { id: 'extra2', label: 'Capacitaciones OS8', icon: Shield },
-                      { id: 'extra3', label: 'Antecedentes Penales', icon: Check }
-                    ].map((doc, idx) => (
-                      <motion.div 
-                        key={doc.id}
-                        initial={{ opacity: 0, x: 50, rotateX: 45 }}
-                        whileInView={{ opacity: 1, x: 0, rotateX: 0 }}
-                        transition={{ delay: 0.3 + (0.15 * idx), type: "spring", stiffness: 100 }}
-                        whileHover={{ x: -15, scale: 1.05, z: 20 }}
-                        className="p-7 rounded-[40px] border border-gray-100 bg-white shadow-2xl hover:shadow-blue-900/10 hover:border-blue-200 transition-all flex items-center gap-7 group cursor-pointer relative"
-                      >
-                        <div className="w-16 h-16 rounded-3xl bg-[#f8fafc] flex items-center justify-center text-gray-400 group-hover:bg-blue-600 group-hover:text-white group-hover:rotate-12 transition-all duration-700 shadow-sm border border-gray-50">
-                          <doc.icon size={32} />
-                        </div>
-                        <div className="flex-1">
-                          <h5 className="text-[12px] font-black text-[#0f172a] uppercase tracking-widest mb-1.5">{doc.label}</h5>
-                          {files[doc.id] ? (
-                            <motion.span 
-                              initial={{ opacity: 0 }} 
-                              animate={{ opacity: 1 }}
-                              className="text-[12px] text-blue-600 font-extrabold truncate block max-w-[160px]"
-                            >
-                              {files[doc.id]}
-                            </motion.span>
-                          ) : (
-                            <span className="text-[11px] text-gray-300 font-extrabold tracking-tighter italic">Ready for upload</span>
-                          )}
-                        </div>
-                        <input type="file" className="hidden" id={`file-${doc.id}`} onChange={(e) => handleFileChange(doc.id, e)} />
-                        <label htmlFor={`file-${doc.id}`} className="w-12 h-12 flex items-center justify-center cursor-pointer text-gray-200 hover:text-blue-600 transition-colors">
-                          <Plus size={32} />
-                        </label>
-                      </motion.div>
-                    ))}
+                          <X size={16} />
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="h-full border-2 border-dashed border-gray-100 rounded-2xl flex items-center justify-center p-6 bg-gray-50/10">
+                        <span className="text-xs text-gray-300 font-bold italic">El archivo aparecerá aquí al subirlo</span>
+                      </div>
+                    )}
                   </div>
                 </div>
-                
-                {/* COMPLETION ANALYTICS - ULTRA ANIMATED */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  className="mt-20 border-t border-gray-100 pt-20 flex flex-col md:flex-row justify-between items-center relative overflow-hidden group/analytics"
-                >
-                   <div className="flex items-center gap-10 relative z-10 mb-10 md:mb-0">
-                      <motion.div 
-                        animate={{ 
-                          rotate: 360,
-                        }}
-                        transition={{ 
-                          rotate: { duration: 15, repeat: Infinity, ease: "linear" },
-                        }}
-                        className="w-20 h-20 bg-blue-600 rounded-[28px] flex items-center justify-center shadow-2xl relative"
-                      >
-                        <TrendingUp size={40} className="text-white relative z-10" />
-                      </motion.div>
+
+                {/* Other Documents Section */}
+                {[1, 2, 3].map((num) => {
+                  const fileKey = `extra${num}`;
+                  return (
+                    <div key={num} className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 border-b border-gray-100 items-center last:border-0">
                       <div>
-                        <h4 className="font-black text-[11px] uppercase tracking-[0.6em] text-blue-400 mb-4">Elite Ranking Potential</h4>
-                        <p className="text-[18px] text-[#0f172a] font-black leading-tight">Tu perfil está al <span className="text-blue-600 text-2xl font-black">85%</span>.<br/><span className="text-[12px] text-gray-400 font-bold uppercase tracking-widest">Un paso de la certificación máxima.</span></p>
+                        <h3 className="font-bold text-gray-800 text-sm mb-2">Otro documento {num}</h3>
+                        <input 
+                          type="file" 
+                          onChange={(e) => handleFileChange(fileKey, e)}
+                          className="text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-gray-800 file:text-white hover:file:bg-black border border-gray-100 p-2 w-full rounded-xl bg-gray-50/50" 
+                        />
                       </div>
-                   </div>
-
-                   <div className="flex flex-col items-end gap-5 w-full md:w-auto relative z-10 px-4">
-                      <div className="flex items-baseline gap-3">
-                        <span className="text-6xl font-black text-[#0f172a] tracking-tighter">85</span>
-                        <span className="text-2xl font-black text-blue-500 tracking-widest">%</span>
+                      
+                      <div className="h-full min-h-[80px]">
+                        {files[fileKey] ? (
+                          <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-between group">
+                            <div className="flex items-center gap-3">
+                              <div className="bg-gray-200 p-2 rounded-lg text-gray-500">
+                                <FileText size={18} />
+                              </div>
+                              <div>
+                                <p className="text-[8px] text-gray-400 font-bold uppercase tracking-wider">Documento Adicional</p>
+                                <p className="text-[11px] font-medium text-gray-600 truncate max-w-[200px]">{files[fileKey]}</p>
+                              </div>
+                            </div>
+                            <button 
+                              onClick={() => removeFile(fileKey)}
+                              className="text-gray-300 hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100"
+                            >
+                              <X size={16} />
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="h-full border-2 border-dashed border-gray-100 rounded-2xl flex items-center justify-center p-6 bg-gray-50/10">
+                            <span className="text-xs text-gray-300 font-bold italic">Opcional</span>
+                          </div>
+                        )}
                       </div>
-                      <div className="w-full md:w-80 h-4 bg-gray-100 rounded-full overflow-hidden border border-gray-200 p-[2px] shadow-inner">
-                        <motion.div 
-                          initial={{ width: 0 }}
-                          whileInView={{ width: '85%' }}
-                          transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
-                          className="h-full bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-600 bg-[length:200%_100%] rounded-full relative" 
-                        >
-                           <motion.div
-                             animate={{ x: ['100%', '-100%'] }}
-                             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
-                           />
-                        </motion.div>
-                      </div>
-                   </div>
-                </motion.div>
+                    </div>
+                  );
+                })}
               </div>
-            </motion.div>
-
-            {/* Placeholder Sections */}
-            <div id="guardadas" className="profile-section mb-10 scroll-mt-24">
-              <div className="section-header">
-                <h2 className="section-title">Ofertas Guardadas</h2>
-              </div>
-              <div className="section-content flex flex-col items-center justify-center py-12 text-gray-400">
-                <Bookmark size={48} className="mb-4 opacity-20" />
-                <p>Aún no tienes ofertas guardadas.</p>
+              <div className="section-footer">
+                <button className="btn-save">Guardar cambios</button>
               </div>
             </div>
+            </div>
+            )}
 
-            <div id="mensajes" className="profile-section mb-10 scroll-mt-24">
-              <div className="section-header">
-                <h2 className="section-title">Mis Mensajes</h2>
-              </div>
-              <div className="section-content flex flex-col items-center justify-center py-12 text-gray-400">
-                <MessageSquare size={48} className="mb-4 opacity-20" />
-                <p>Tu bandeja de entrada está vacía.</p>
+            {currentHash === '#favoritos' && (
+            <div id="favoritos" style={{ width: '100%', maxWidth: '1024px', margin: '40px auto 120px auto' }}>
+              <div style={{ backgroundColor: '#ffffff', border: '1px solid #f8fafc', borderRadius: '40px', padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', boxShadow: '0 8px 30px rgba(0,0,0,0.02)' }}>
+                <div style={{ width: '64px', height: '64px', backgroundColor: '#fef2f2', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ef4444', marginBottom: '24px' }}>
+                  <Heart size={28} />
+                </div>
+                <h3 style={{ fontSize: '18px', fontWeight: '900', color: '#0f172a', marginBottom: '8px' }}>Mis Favoritos</h3>
+                <p style={{ fontSize: '12px', color: '#94a3b8', fontWeight: '500', maxWidth: '300px', margin: '0 auto 32px auto' }}>Aquí aparecerán las empresas y ofertas que hayas marcado como favoritas.</p>
+
               </div>
             </div>
+            )}
+
+            {currentHash === '#habilidades' && (
+            <div id="habilidades" style={{ width: '100%', maxWidth: '1024px', margin: '40px auto 120px auto' }}>
+              <div style={{ backgroundColor: '#ffffff', border: '1px solid #f8fafc', borderRadius: '40px', padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', boxShadow: '0 8px 30px rgba(0,0,0,0.02)' }}>
+                <div style={{ width: '64px', height: '64px', backgroundColor: '#f0f9ff', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0ea5e9', marginBottom: '24px' }}>
+                  <Award size={28} />
+                </div>
+                <h3 style={{ fontSize: '18px', fontWeight: '900', color: '#0f172a', marginBottom: '8px' }}>Test y Habilidades</h3>
+                <p style={{ fontSize: '12px', color: '#94a3b8', fontWeight: '500', maxWidth: '300px', margin: '0 auto 32px auto' }}>Potencia tu perfil completando evaluaciones técnicas y psicolaborales.</p>
+                <button className="bg-blue-600 text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-blue-700 transition-colors">
+                  Realizar primer test
+                </button>
+              </div>
+            </div>
+            )}
+
+            {currentHash === '#guardadas' && (
+            <div id="guardadas" style={{ width: '100%', maxWidth: '1024px', margin: '40px auto 120px auto' }}>
+              <div style={{ backgroundColor: '#ffffff', border: '1px solid #f8fafc', borderRadius: '40px', padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', transition: 'box-shadow 0.3s ease', cursor: 'pointer' }}
+                   onMouseOver={(e) => e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.05)'}
+                   onMouseOut={(e) => e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.02)'}>
+                <div style={{ width: '64px', height: '64px', backgroundColor: '#f8fafc', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0f172a', marginBottom: '24px' }}>
+                  <Bookmark size={28} strokeWidth={2} />
+                </div>
+                <h3 style={{ fontSize: '18px', fontWeight: '900', color: '#0f172a', marginBottom: '8px' }}>Ofertas Guardadas</h3>
+                <p style={{ fontSize: '12px', color: '#94a3b8', fontWeight: '500', maxWidth: '200px', margin: '0 auto 32px auto' }}>Aún no has guardado ninguna vacante para después.</p>
+
+              </div>
+            </div>
+            )}
+
+            {currentHash === '#mensajes' && (
+            <div id="mensajes" style={{ width: '100%', maxWidth: '1024px', margin: '40px auto 120px auto' }}>
+              <div style={{ backgroundColor: '#ffffff', border: '1px solid #f8fafc', borderRadius: '40px', padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', transition: 'box-shadow 0.3s ease', cursor: 'pointer' }}
+                   onMouseOver={(e) => e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.05)'}
+                   onMouseOut={(e) => e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.02)'}>
+                <div style={{ width: '64px', height: '64px', backgroundColor: '#f8fafc', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0f172a', marginBottom: '24px' }}>
+                  <MessageSquare size={28} strokeWidth={2} />
+                </div>
+                <h3 style={{ fontSize: '18px', fontWeight: '900', color: '#0f172a', marginBottom: '8px' }}>Bandeja de Entrada</h3>
+                <p style={{ fontSize: '12px', color: '#94a3b8', fontWeight: '500', maxWidth: '200px', margin: '0 auto 32px auto' }}>No tienes mensajes nuevos de reclutadores actualmente.</p>
+                <div style={{ fontSize: '10px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#0f172a' }}>
+                  Configurar Notificaciones
+                </div>
+              </div>
+
+            </div>
+            )}
+
           </div>
         </div>
-
-        {/* Right Help Sidebar */}
-        <aside className="profile-help-sidebar desktop-only">
-          <div className="profile-help-sidebar flex flex-col gap-6 sticky top-[90px] h-[calc(100vh-120px)] overflow-y-auto pr-2 custom-scrollbar">
-            <div className="help-card bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
-              <div className="bg-gradient-to-r from-blue-900 to-blue-800 p-4 text-white">
-                <div className="flex items-center gap-2 mb-1">
-                  <BookOpen size={16} />
-                  <h4 className="font-bold text-xs uppercase tracking-wider">Acceso Postulante</h4>
-                </div>
-                <h3 className="text-sm font-bold">Plantilla de Perfil Laboral</h3>
-              </div>
-              
-              <div className="p-4 space-y-6">
-                <div>
-                  <p className="text-[11px] text-gray-600 leading-relaxed mb-3">
-                    Completar tu perfil de manera estratégica en <strong>EmpleosAqua</strong> es clave para aumentar tus oportunidades en sectores técnicos y acuícolas.
-                  </p>
-                  <div className="bg-blue-50 p-3 rounded-lg">
-                    <h5 className="text-[10px] font-bold text-blue-900 mb-2">💎 ¿POR QUÉ ES IMPORTANTE?</h5>
-                    <ul className="text-[10px] text-blue-800/80 space-y-1">
-                      <li>• Las empresas usan filtros y palabras clave.</li>
-                      <li>• Un perfil completo genera mayor confianza.</li>
-                      <li>• Mejora tu posicionamiento en búsquedas.</li>
-                      <li>• Aumenta probabilidades de contacto directo.</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div>
-                  <h5 className="text-[10px] font-bold text-gray-800 mb-2">🚀 ¿CÓMO DESTACAR?</h5>
-                  <ul className="text-[10px] text-gray-600 space-y-2">
-                    <li className="flex gap-2"><span>✔</span> <span>Sé específico en cargo y funciones reales.</span></li>
-                    <li className="flex gap-2"><span>✔</span> <span>Incluye logros concretos, no solo tareas.</span></li>
-                    <li className="flex gap-2"><span>✔</span> <span>Agrega habilidades técnicas relevantes.</span></li>
-                    <li className="flex gap-2"><span>✔</span> <span>Mantén tu información actualizada.</span></li>
-                  </ul>
-                </div>
-
-                <div className="border-t border-gray-50 pt-4 space-y-4">
-                  <div>
-                    <h5 className="text-[10px] font-bold text-gray-400 mb-2 flex items-center gap-1">
-                      <div className="w-2 h-2 rounded-full bg-blue-500"></div> 1. DATOS PERSONALES
-                    </h5>
-                    <div className="space-y-2 text-[10px]">
-                      <p><strong>Nombres:</strong> Usa tu nombre real y completo.</p>
-                      <p><strong>Dirección:</strong> Clave en la industria. La cercanía a plantas es valorada.</p>
-                      <p><strong>Comuna/Ciudad:</strong> Ayuda a filtrar por zona.</p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h5 className="text-[10px] font-bold text-gray-400 mb-2 flex items-center gap-1">
-                      <div className="w-2 h-2 rounded-full bg-blue-500"></div> 2. EXPERIENCIA LABORAL
-                    </h5>
-                    <div className="space-y-2 text-[10px]">
-                      <p><strong>Empresa:</strong> Indica si fue del sector acuícola.</p>
-                      <p><strong>Desde/Hasta:</strong> Si sigues ahí, marca <strong>"Actual"</strong>.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="help-card bg-amber-50 border border-amber-100 rounded-2xl p-4">
-               <h4 className="font-bold text-amber-900 text-[10px] mb-2">💡 ÚLTIMA RECOMENDACIÓN</h4>
-               <p className="text-[10px] text-amber-800/80 leading-relaxed">
-                 Usa verbos de acción: <em>Coordiné, supervisé, implementé, gestioné, optimicé.</em>
-               </p>
-            </div>
-          </div>
-        </aside>
-
       </div>
     </DashboardLayout>
   );
